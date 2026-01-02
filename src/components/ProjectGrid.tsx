@@ -29,8 +29,8 @@ const ProjectGrid = () => {
                                 key={cat}
                                 onClick={() => setFilter(cat)}
                                 className={`text-sm font-bold uppercase tracking-wider px-4 py-2 border transition-all ${filter === cat
-                                        ? 'bg-text text-background border-text'
-                                        : 'text-text-muted border-transparent hover:text-white hover:border-white/20'
+                                    ? 'bg-text text-background border-text'
+                                    : 'text-text-muted border-transparent hover:text-white hover:border-white/20'
                                     }`}
                             >
                                 {cat}

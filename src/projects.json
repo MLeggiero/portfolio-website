@@ -6,7 +6,7 @@
         "image": "https://images.unsplash.com/photo-1506947411487-a56738267384?auto=format&fit=crop&q=80&w=800",
         "description": "Implemented SLAM and path planning algorithms for indoor drone navigation using ROS 2.",
         "links": {
-            "github": "https://github.com",
+            "github": "https://github.com/mleggiero",
             "demo": "https://youtube.com"
         }
     },

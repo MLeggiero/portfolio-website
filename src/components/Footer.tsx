@@ -7,13 +7,13 @@ const Footer = () => {
                 <h2 className="text-2xl font-heading font-bold mb-8">Ready to build something amazing?</h2>
 
                 <div className="flex justify-center space-x-8 mb-12">
-                    <a href="https://github.com" target="_blank" rel="noreferrer" className="p-4 rounded-full border border-white/10 hover:bg-primary hover:border-primary transition-all group">
+                    <a href="https://github.com/mleggiero" target="_blank" rel="noreferrer" className="p-4 rounded-full border border-white/10 hover:bg-primary hover:border-primary transition-all group">
                         <Github size={24} className="text-text-muted group-hover:text-white" />
                     </a>
-                    <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="p-4 rounded-full border border-white/10 hover:bg-primary hover:border-primary transition-all group">
+                    <a href="https://www.linkedin.com/in/mark-leggiero/" target="_blank" rel="noreferrer" className="p-4 rounded-full border border-white/10 hover:bg-primary hover:border-primary transition-all group">
                         <Linkedin size={24} className="text-text-muted group-hover:text-white" />
                     </a>
-                    <a href="mailto:hello@example.com" className="p-4 rounded-full border border-white/10 hover:bg-primary hover:border-primary transition-all group">
+                    <a href="mailto:mark.leggiero1@gmail.com" className="p-4 rounded-full border border-white/10 hover:bg-primary hover:border-primary transition-all group">
                         <Mail size={24} className="text-text-muted group-hover:text-white" />
                     </a>
                 </div>
