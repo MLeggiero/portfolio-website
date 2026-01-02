@@ -19,7 +19,7 @@ const Footer = () => {
                 </div>
 
                 <p className="text-text-muted text-sm">
-                    &copy; {new Date().getFullYear()} Alex Engineer. Built with React & Tailwind.
+                    &copy; {new Date().getFullYear()} Mark Leggiero. Built with React & Tailwind.
                 </p>
             </div>
         </footer>
