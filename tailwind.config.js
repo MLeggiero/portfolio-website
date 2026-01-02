@@ -9,7 +9,7 @@ export default {
             colors: {
                 background: '#0F172A', // Slate 900
                 surface: '#1E293B',    // Slate 800
-                primary: '#EF4444',    // Red 500
+                primary: '#243eb1ff',    // Red 500
                 text: '#F1F5F9',       // Slate 100
                 'text-muted': '#94A3B8', // Slate 400
             },
