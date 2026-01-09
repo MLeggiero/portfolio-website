@@ -1,10 +1,15 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ProjectCard from './ProjectCard';
-import projectData from '../projects.json';
+import ProjectModal, { type Project } from './ProjectModal';
+import projectDataRaw from '../projects.json';
+
+// Cast JSON data to Project type
+const projectData = projectDataRaw as Project[];
 
 const ProjectGrid = () => {
     const [filter, setFilter] = useState('All');
+    const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
     // Extract unique categories
     const categories = ['All', ...new Set(projectData.map(p => p.category))];
@@ -43,11 +48,38 @@ const ProjectGrid = () => {
                 <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0">
                     <AnimatePresence>
                         {filteredProjects.map((project) => (
-                            <ProjectCard key={project.id} {...project} />
+                            <motion.div
+                                key={project.id}
+                                layout
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                exit={{ opacity: 0, scale: 0.9 }}
+                                transition={{ duration: 0.3 }}
+                                onClick={() => setSelectedProject(project)}
+                                className="cursor-pointer"
+                            >
+                                <ProjectCard
+                                    title={project.title}
+                                    category={project.category}
+                                    image={project.image}
+                                    description={project.description}
+                                    links={project.links}
+                                />
+                            </motion.div>
                         ))}
                     </AnimatePresence>
                 </motion.div>
             </div>
+
+            {/* Modal */}
+            <AnimatePresence>
+                {selectedProject && (
+                    <ProjectModal
+                        project={selectedProject}
+                        onClose={() => setSelectedProject(null)}
+                    />
+                )}
+            </AnimatePresence>
         </section>
     );
 };

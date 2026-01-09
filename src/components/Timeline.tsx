@@ -5,25 +5,47 @@ const experiences = [
         role: "STEM Education Teacher",
         company: "Peace Corps Kenya",
         period: "Oct 2022 - Nov 2024",
-        description: "Taught Math/Physics and led community development projects: built a school laboratory, established a demonstration garden, and implemented a pumped water system."
+        description: "",
+        points: [
+            "Taught Math and Physics to students from rural areas, combining engineering practice with global development.",
+            "Established a Science and Engineering Club to encourage critical thinking.",
+            "Led community projects including grant writing, developing a demonstration garden, and implementing a pumped potable water system.",
+            "Acquired intermediate Swahili language skills and advanced classroom management techniques."
+        ]
     },
     {
         role: "Technical Lead",
         company: "Engineers Without Borders",
         period: "Aug 2020 - May 2021",
-        description: "Led the design and implementation of sanitation latrines for a school in Malawi. Managed technical drawings and cross-continental project coordination."
+        description: "",
+        points: [
+            "Managed the implementation of sanitation latrines and handwashing stations for Mpitilira primary school in Malawi.",
+            "Conducted rigorous needs assessments and design iterations using decision matrices.",
+            "Coordinated with partners like Bless Bay Foundation and Freshwater Project International.",
+            "Successfully managed the sanitation upgrade fully remotely during the COVID-19 pandemic."
+        ]
     },
     {
         role: "Student Researcher",
         company: "VAMPIRE Lab (Georgia Tech)",
         period: "Jan 2019 - Aug 2021",
-        description: "Conducted research on building heat loss. Authored papers on thermal analysis and sensor networks."
+        description: "Conducted research on building heat loss using drone-based thermal imaging.",
+        points: [
+            "Utilized drones equipped with thermal cameras and surface-from-motion photogrammetry to capture building thermal profiles.",
+            "Designed and implemented custom numerical surface integration software to process thermal OBJ files.",
+            "Authored papers on thermal analysis and sensor networks."
+        ]
     },
     {
         role: "Senior Capstone Design",
         company: "Georgia Tech",
         period: "Jan 2021 - May 2022",
-        description: "Designed 'Keep The Beep' - a ruggedized soft housing for GE Carescape physiological monitors for transport scenarios."
+        description: "",
+        points: [
+            "Designed 'Keep The Beep', a ruggedized soft housing for GE Carescape physiological monitors.",
+            "Utilized a FaroArm Quantum 3D Scanner to import monitor geometry into SolidWorks.",
+            "Rapidly prototyped the design using 3D printing with soft TPU filament."
+        ]
     }
 ];
 
@@ -55,9 +77,18 @@ const Timeline = () => {
                                     <span className="text-xs font-mono text-primary bg-primary/10 px-2 py-1 rounded">{exp.period}</span>
                                 </div>
                                 <div className="text-sm font-bold text-text-muted mb-4 uppercase tracking-wide">{exp.company}</div>
-                                <p className="text-gray-400 text-sm leading-relaxed">
-                                    {exp.description}
-                                </p>
+
+                                {exp.points ? (
+                                    <ul className="list-disc list-outside ml-4 text-gray-400 text-sm leading-relaxed space-y-2 marker:text-primary/70">
+                                        {exp.points.map((point, i) => (
+                                            <li key={i}>{point}</li>
+                                        ))}
+                                    </ul>
+                                ) : (
+                                    <p className="text-gray-400 text-sm leading-relaxed">
+                                        {exp.description}
+                                    </p>
+                                )}
                             </div>
                         </motion.div>
                     ))}

@@ -4,7 +4,15 @@
     "title": "Peace Corps Kenya",
     "category": "Service",
     "image": "https://images.unsplash.com/photo-1541252260730-0412e8e2108e?auto=format&fit=crop&q=80&w=800",
-    "description": "Served as a STEM teacher and led community development projects including building a school laboratory, establishing a demonstration garden, and implementing a pumped water system.",
+    "description": "Served as a STEM Education Teacher in rural Kenya, leading community development projects and teaching Math/Physics.",
+    "longDescription": "As a STEM Education Teacher in Kakamega county, Kenya, I combined engineering practice with global development (Humanitarian Engineering). I taught Math and Physics to students in rural areas, adapting to extremely limited resources.\n\nKey Achievements & Projects:\n• Established a Science and Engineering Club to encourage critical thinking and practical skill-building.\n• Utilized school projectors and mobile phones to bolster instruction and led meetings with fellow teachers on technology literacy.\n• Led community projects involving grant writing, developing a demonstration garden, and implementing a pumped potable water system.\n• Acquired intermediate Swahili language skills and advanced classroom management techniques.",
+    "tags": [
+      "Humanitarian Engineering",
+      "Project Management",
+      "Grant Writing",
+      "STEM Education",
+      "Community Development"
+    ],
     "links": {
       "demo": "https://markleggiero1.wixsite.com/mleggiero/peacecorps"
     }
@@ -15,24 +23,53 @@
     "category": "Engineering",
     "image": "https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&q=80&w=800",
     "description": "Designed a ruggedized soft housing for GE Carescape physiological monitors to prevent damage during high-pressure patient transport.",
+    "longDescription": "For my Capstone Design project, I worked with Emory University Hospital to solve a critical issue: GE Carescape B450 physiological monitors were being damaged during patient transport. The solution was 'Keep The Beep', a ruggedized soft housing.\n\nTechnical Approach:\n• Designed a soft, chemically inert, and easily sanitized protective housing.\n• Utilized a FaroArm Quantum 3D Scanner to import monitor geometry into SolidWorks and Fusion360.\n• Rapidly prototyped the design using 3D printing with soft TPU filament for the impact-absorbing body and PLA for rigid connection points.",
+    "tags": [
+      "SolidWorks",
+      "Fusion360",
+      "3D Scanning (FaroArm)",
+      "Rapid Prototyping",
+      "TPU/PLA 3D Printing",
+      "Product Design"
+    ],
     "links": {
       "demo": "https://markleggiero1.wixsite.com/mleggiero/capstone"
     }
   },
   {
     "id": 3,
-    "title": "Rainfall Sensor Network",
-    "category": "Research",
-    "image": "https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?auto=format&fit=crop&q=80&w=800",
-    "description": "Developed low-cost distributed rainfall sensors for localized weather data collection and analysis.",
-    "links": {}
+    "title": "Sanitation Infrastructure",
+    "category": "Service",
+    "image": "https://images.unsplash.com/photo-1594901968538-230f2c417935?auto=format&fit=crop&q=80&w=800",
+    "description": "Led the design and implementation of sanitation latrines and handwashing stations for Mpitilira primary school in Malawi.",
+    "longDescription": "Serving as Technical Lead (2021-2022) and Project Lead (2022) for Engineers Without Borders (EWB-GT), I managed the implementation of sanitation infrastructure for a school in Eastern Malawi.\n\nProject Details:\n• Designed ventilated double pit latrine blocks and handwashing stations to improve sanitation for students.\n• Conducted rigorous needs assessments and design iterations using decision matrices and community feedback.\n• Coordinated with partners like Bless Bay Foundation and Freshwater Project International.\n• Successfully managed the sanitation upgrade fully remotely during the COVID-19 pandemic constraints.",
+    "tags": [
+      "EWB",
+      "Civil Engineering",
+      "Remote Project Management",
+      "Sanitation Design",
+      "Community Feedback"
+    ],
+    "links": {
+      "demo": "https://markleggiero1.wixsite.com/mleggiero/ewb-gt"
+    }
   },
   {
     "id": 4,
     "title": "Personal Robotics",
     "category": "Robotics",
     "image": "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=800",
-    "description": "A collection of mechatronics projects including a 4-DOF robotic arm, self-balancing robot, and 3D printed hexapod.",
+    "description": "A collection of mechatronics projects including a 3D-printed quadruped robot and a self-balancing robot.",
+    "longDescription": "A portfolio of personal robotics projects demonstrating skills in mechatronics and control theory.\n\n1. Micro-Spot Quadruped:\n• A fully 3D-printed quadruped robot powered by 12 servo actuators and an ESP32 microcontroller.\n• Developed custom inverse kinematic code and algorithms to control limb movements.\n\n2. Two-Wheel Balancing Robot:\n• Built using parts sourced entirely from local online vendors in rural Western Kenya.\n• Implements a PID controller on an ESP32 with an MPU6050 gyroscope for active balancing.",
+    "tags": [
+      "Robotics",
+      "ESP32",
+      "Inverse Kinematics",
+      "PID Control",
+      "Mechatronics",
+      "C++",
+      "MPU6050"
+    ],
     "links": {
       "demo": "https://markleggiero1.wixsite.com/mleggiero/personalrobots"
     }
@@ -42,19 +79,18 @@
     "title": "VAMPIRE Research",
     "category": "Research",
     "image": "https://images.unsplash.com/photo-1532619675605-1eda28c9eb8b?auto=format&fit=crop&q=80&w=800",
-    "description": "Conducted research on building heat loss using sensor networks. Authored papers on thermal analysis and sensor networks.",
+    "description": "Conducted research on building heat loss using drone-based thermal imaging and sensor networks.",
+    "longDescription": "VAMPIRE (Fast Radiative Heat Analysis) is a research initiative aimed at estimating radiative heat loss from structures in the built environment.\n\nTechnical Contributions:\n• Utilized drones equipped with thermal cameras and surface-from-motion photogrammetry to capture building thermal profiles.\n• Designed and implemented custom numerical surface integration software to process thermal OBJ files and calculate heat loss metrics.",
+    "tags": [
+      "Thermal Imaging",
+      "Photogrammetry",
+      "Numerical Analysis",
+      "Drones",
+      "Research",
+      "Software Development"
+    ],
     "links": {
       "demo": "https://markleggiero1.wixsite.com/mleggiero/vampire"
-    }
-  },
-  {
-    "id": 6,
-    "title": "Sanitation Infrastructure",
-    "category": "Service",
-    "image": "https://images.unsplash.com/photo-1594901968538-230f2c417935?auto=format&fit=crop&q=80&w=800",
-    "description": "Technical Lead for Engineers Without Borders. Designed and managed the implementation of sanitation latrines for a school in Malawi.",
-    "links": {
-      "demo": "https://markleggiero1.wixsite.com/mleggiero/ewb-gt"
     }
   }
 ]
