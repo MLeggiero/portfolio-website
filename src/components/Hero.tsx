@@ -22,8 +22,9 @@ const Hero = () => {
                         SYSTEMS
                     </h1>
                     <p className="text-text-muted text-lg mb-8 max-w-lg leading-relaxed">
-                        I design and build autonomous systems, blending mechanical engineering with modern software.
-                        Focused on robotics, embedded systems, and scalable web solutions.
+                        Mechanical Engineering & Physics graduate from Georgia Tech.
+                        Returned Peace Corps Volunteer (Kenya) focused on humanitarian engineering,
+                        prototype design, and mechatronics.
                     </p>
 
                     <div className="flex flex-wrap gap-4">

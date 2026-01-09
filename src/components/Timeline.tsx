@@ -2,22 +2,28 @@ import { motion } from 'framer-motion';
 
 const experiences = [
     {
-        role: "Senior Systems Engineer",
-        company: "RoboCorp",
-        period: "2023 - Present",
-        description: "Leading the navigation stack team for autonomous warehouse robots."
+        role: "STEM Education Teacher",
+        company: "Peace Corps Kenya",
+        period: "Oct 2022 - Nov 2024",
+        description: "Taught Math/Physics and led community development projects: built a school laboratory, established a demonstration garden, and implemented a pumped water system."
     },
     {
-        role: "Embedded Software Engineer",
-        company: "TechSolutions Inc",
-        period: "2021 - 2023",
-        description: "Developed firmware for IoT devices using RTOS and BLE protocols."
+        role: "Technical Lead",
+        company: "Engineers Without Borders",
+        period: "Aug 2020 - May 2021",
+        description: "Led the design and implementation of sanitation latrines for a school in Malawi. Managed technical drawings and cross-continental project coordination."
     },
     {
-        role: "Mechanical Engineering Intern",
-        company: "AeroSpace Labs",
-        period: "2020",
-        description: "Designed and FEA tested lightweight structural components."
+        role: "Student Researcher",
+        company: "VAMPIRE Lab (Georgia Tech)",
+        period: "Jan 2019 - Aug 2021",
+        description: "Conducted research on building heat loss. Authored papers on thermal analysis and sensor networks."
+    },
+    {
+        role: "Senior Capstone Design",
+        company: "Georgia Tech",
+        period: "Jan 2021 - May 2022",
+        description: "Designed 'Keep The Beep' - a ruggedized soft housing for GE Carescape physiological monitors for transport scenarios."
     }
 ];
 

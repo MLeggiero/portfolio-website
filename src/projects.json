@@ -1,43 +1,60 @@
 [
-    {
-        "id": 1,
-        "title": "Autonomous Drone Navigation",
-        "category": "Robotics",
-        "image": "https://images.unsplash.com/photo-1506947411487-a56738267384?auto=format&fit=crop&q=80&w=800",
-        "description": "Implemented SLAM and path planning algorithms for indoor drone navigation using ROS 2.",
-        "links": {
-            "github": "https://github.com/mleggiero",
-            "demo": "https://youtube.com"
-        }
-    },
-    {
-        "id": 2,
-        "title": "Industrial CNC Controller",
-        "category": "Firmware",
-        "image": "https://images.unsplash.com/photo-1565439396605-e421e4cb8c92?auto=format&fit=crop&q=80&w=800",
-        "description": "Designed a real-time motion controller for 3-axis CNC machines using STM32 microcontrollers.",
-        "links": {
-            "github": "https://github.com"
-        }
-    },
-    {
-        "id": 3,
-        "title": "Soft Robot Gripper",
-        "category": "Mechanical",
-        "image": "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=800",
-        "description": "Fabricated and tested a pneumatic soft gripper for handling delicate objects.",
-        "links": {
-            "paper": "https://google.com"
-        }
-    },
-    {
-        "id": 4,
-        "title": "Portfolio Website",
-        "category": "Software",
-        "image": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=800",
-        "description": "A modern, high-performance portfolio website built with React and Tailwind CSS.",
-        "links": {
-            "github": "https://github.com"
-        }
+  {
+    "id": 1,
+    "title": "Peace Corps Kenya",
+    "category": "Service",
+    "image": "https://images.unsplash.com/photo-1541252260730-0412e8e2108e?auto=format&fit=crop&q=80&w=800",
+    "description": "Served as a STEM teacher and led community development projects including building a school laboratory, establishing a demonstration garden, and implementing a pumped water system.",
+    "links": {
+      "demo": "https://markleggiero1.wixsite.com/mleggiero/peacecorps"
     }
+  },
+  {
+    "id": 2,
+    "title": "Keep The Beep",
+    "category": "Engineering",
+    "image": "https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&q=80&w=800",
+    "description": "Designed a ruggedized soft housing for GE Carescape physiological monitors to prevent damage during high-pressure patient transport.",
+    "links": {
+      "demo": "https://markleggiero1.wixsite.com/mleggiero/capstone"
+    }
+  },
+  {
+    "id": 3,
+    "title": "Rainfall Sensor Network",
+    "category": "Research",
+    "image": "https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?auto=format&fit=crop&q=80&w=800",
+    "description": "Developed low-cost distributed rainfall sensors for localized weather data collection and analysis.",
+    "links": {}
+  },
+  {
+    "id": 4,
+    "title": "Personal Robotics",
+    "category": "Robotics",
+    "image": "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=800",
+    "description": "A collection of mechatronics projects including a 4-DOF robotic arm, self-balancing robot, and 3D printed hexapod.",
+    "links": {
+      "demo": "https://markleggiero1.wixsite.com/mleggiero/personalrobots"
+    }
+  },
+  {
+    "id": 5,
+    "title": "VAMPIRE Research",
+    "category": "Research",
+    "image": "https://images.unsplash.com/photo-1532619675605-1eda28c9eb8b?auto=format&fit=crop&q=80&w=800",
+    "description": "Conducted research on building heat loss using sensor networks. Authored papers on thermal analysis and sensor networks.",
+    "links": {
+      "demo": "https://markleggiero1.wixsite.com/mleggiero/vampire"
+    }
+  },
+  {
+    "id": 6,
+    "title": "Sanitation Infrastructure",
+    "category": "Service",
+    "image": "https://images.unsplash.com/photo-1594901968538-230f2c417935?auto=format&fit=crop&q=80&w=800",
+    "description": "Technical Lead for Engineers Without Borders. Designed and managed the implementation of sanitation latrines for a school in Malawi.",
+    "links": {
+      "demo": "https://markleggiero1.wixsite.com/mleggiero/ewb-gt"
+    }
+  }
 ]
