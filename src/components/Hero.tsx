@@ -47,7 +47,7 @@ const Hero = () => {
                 >
                     <div className="aspect-square bg-surface rounded-full opacity-20 absolute -top-10 -right-10 w-full h-full animate-pulse" />
                     <img
-                        src="https://images.unsplash.com/photo-1581092921461-eab62e97a783?auto=format&fit=crop&q=80&w=1000"
+                        src="https://res.cloudinary.com/dzbaeix94/image/upload/v1767977974/180920-leggiero-mark-2286_j2ofoo.jpg"
                         alt="Engineering Workspace"
                         className="relative z-10 w-full h-[500px] object-cover grayscale hover:grayscale-0 transition-all duration-700 rounded-sm shadow-2xl border-b-4 border-primary"
                     />
