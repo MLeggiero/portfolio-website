@@ -85,7 +85,7 @@ const AboutPage = () => {
                             beautiful, and loud, African bird).
                         </p>
                         <p>
-                            In my free time I enjoy hiking, biking, baking, and small mechatronics
+                            In my free time I enjoy hiking, biking, baking, and mechatronics/robotics
                             projects.
                         </p>
                     </motion.div>

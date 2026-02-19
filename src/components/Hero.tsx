@@ -13,7 +13,7 @@ const Hero = () => {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.8 }}
                 >
-                    <h2 className="text-primary font-bold tracking-widest uppercase mb-4 text-sm">Robotics & Software Engineer</h2>
+                    <h2 className="text-primary font-bold tracking-widest uppercase mb-4 text-sm">Engineer</h2>
                     <h1 className="text-5xl md:text-7xl font-heading font-extrabold leading-tight mb-6">
                         BUILDING <br />
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-400">
@@ -23,8 +23,8 @@ const Hero = () => {
                     </h1>
                     <p className="text-text-muted text-lg mb-8 max-w-lg leading-relaxed">
                         Mechanical Engineering & Physics graduate from Georgia Tech.
-                        Returned Peace Corps Volunteer (Kenya) focused on humanitarian engineering,
-                        prototype design, and mechatronics.
+                        Returned Peace Corps Volunteer focused on robotics, prototype design,
+                        and humanitarian projects.
                     </p>
 
                     <div className="flex flex-wrap gap-4">
