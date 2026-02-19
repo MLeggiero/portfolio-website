@@ -1,11 +1,28 @@
 [
   {
     "id": 1,
+    "slug": "peace-corps",
     "title": "Peace Corps Kenya",
     "category": "Service",
+    "role": "STEM Education Teacher",
+    "period": "Oct 2022 – Nov 2024",
     "image": "https://res.cloudinary.com/dzbaeix94/image/upload/v1767977975/WhatsApp_Image_2023-11-20_at_12.33.43_cc04dd1c_ghwkh2.jpg",
     "description": "Served as a STEM Education Teacher in rural Kenya, leading community development projects and teaching Math/Physics.",
-    "longDescription": "As a STEM Education Teacher in Kakamega county, Kenya, I combined engineering practice with global development (Humanitarian Engineering). I taught Math and Physics to students in rural areas, adapting to extremely limited resources.\n\nKey Achievements & Projects:\n• Established a Science and Engineering Club to encourage critical thinking and practical skill-building.\n• Utilized school projectors and mobile phones to bolster instruction and led meetings with fellow teachers on technology literacy.\n• Led community projects involving grant writing, developing a demonstration garden, and implementing a pumped potable water system.\n• Acquired intermediate Swahili language skills and advanced classroom management techniques.",
+    "sections": [
+      {
+        "content": "Teaching Math and Physics in Kakamega county secondary school as a Peace Corps Volunteer. My host school mostly comprises students from rural areas and humble backgrounds. A volunteer was requested by the Kakamega host community specifically to aid in teaching; however, I additionally took on side projects with my fellow teachers, students, and other community stakeholders."
+      },
+      {
+        "heading": "Key Contributions",
+        "bullets": [
+          "Prioritized integration into the host community — learned intermediate Swahili and adopted effective methods for classroom management, teaching with extremely limited resources, grant writing, and local lifestyle skills.",
+          "Utilized the school's previously untouched projector (when electricity was available) and mobile phones to bring technology literacy and engagement, and led meetings with fellow teachers on technology use.",
+          "Started the 'Science and Engineering Club' to encourage critical thinking and practical skill-building with projects like the egg-drop challenge and a DIY anemometer.",
+          "Created a 'Climate Smart Kitchen Garden' demonstration plot to encourage improved farming practices and diversified household nutrition, more resilient during increasingly common droughts.",
+          "Conducted formal needs analysis with school and community leaders, applied for and received a USAID Small Project Assistance grant, and coordinated construction of a solar well pump, water tower, and distribution pipes serving over 2,000 individuals."
+        ]
+      }
+    ],
     "tags": [
       "Humanitarian Engineering",
       "Project Management",
@@ -13,17 +30,40 @@
       "STEM Education",
       "Community Development"
     ],
-    "links": {
-      "demo": "https://markleggiero1.wixsite.com/mleggiero/peacecorps"
-    }
+    "links": {}
   },
   {
     "id": 2,
+    "slug": "capstone",
     "title": "Keep The Beep",
     "category": "Engineering",
+    "role": "Senior Capstone Design Team",
+    "period": "Jan 2021 – May 2022",
     "image": "https://res.cloudinary.com/dzbaeix94/image/upload/v1767977973/Better_Case_Rendering_lo1esl.png",
     "description": "Designed a ruggedized soft housing for GE Carescape physiological monitors to prevent damage during high-pressure patient transport.",
-    "longDescription": "For my Capstone Design project, I worked with Emory University Hospital to solve a critical issue: GE Carescape B450 physiological monitors were being damaged during patient transport. The solution was 'Keep The Beep', a ruggedized soft housing.\n\nTechnical Approach:\n• Designed a soft, chemically inert, and easily sanitized protective housing.\n• Utilized a FaroArm Quantum 3D Scanner to import monitor geometry into SolidWorks and Fusion360.\n• Rapidly prototyped the design using 3D printing with soft TPU filament for the impact-absorbing body and PLA for rigid connection points.",
+    "sections": [
+      {
+        "heading": "The Problem",
+        "content": "Emory University Hospital relies on the GE Carescape B450 physiological monitor, however it is frequently damaged during high-pressure patient transport due to rough handling and loose mounting on hospital beds."
+      },
+      {
+        "heading": "The Solution",
+        "content": "Create a soft protective housing designed for manufacture and tested for use in Emory Hospital Midtown. The case must protect all monitor regions from impact, be chemically inert, and easily sanitized."
+      },
+      {
+        "heading": "Key Contributions",
+        "bullets": [
+          "Used FaroArm Quantum 3D Scanner and 3D printing to enable rapid design and prototyping — quickly imported geometry into SolidWorks CAD and Fusion360 for fast and accurate modeling.",
+          "Conducted impact analysis to optimize design parameters — created custom testing apparatus using a parallel configuration of strain gauge pads and Adafruit Metro M4 microcontroller.",
+          "Led the prototype manufacturing. Design is modular, chemically inert, completely recyclable or down-cyclable, and highly impact resistant. Hardware is nylon, soft body parts TPU, interior connectors PLA, front door cover polycarbonate, and front lock a neodymium magnet.",
+          "Conducted manufacturing feasibility study and plan for quick deployment."
+        ]
+      },
+      {
+        "heading": "Recognition",
+        "content": "Our project won first place in Georgia Tech's Mechanical Engineering Summer Capstone Exposition."
+      }
+    ],
     "tags": [
       "SolidWorks",
       "Fusion360",
@@ -32,35 +72,77 @@
       "TPU/PLA 3D Printing",
       "Product Design"
     ],
-    "links": {
-      "demo": "https://markleggiero1.wixsite.com/mleggiero/capstone"
-    }
+    "links": {}
   },
   {
     "id": 3,
-    "title": "Sanitation Infrastructure",
+    "slug": "ewb-gt",
+    "title": "EWB-GT: Malawi Project",
     "category": "Service",
+    "role": "Technical Lead (2021–2022) / Project Lead (2022)",
+    "period": "Aug 2020 – May 2022",
     "image": "https://res.cloudinary.com/dzbaeix94/image/upload/v1767977973/unnamed_wpbtxu.jpg",
     "description": "Led the design and implementation of sanitation latrines and handwashing stations for Mpitilira primary school in Malawi.",
-    "longDescription": "Serving as Technical Lead (2021-2022) and Project Lead (2022) for Engineers Without Borders (EWB-GT), I managed the implementation of sanitation infrastructure for a school in Eastern Malawi.\n\nProject Details:\n• Designed ventilated double pit latrine blocks and handwashing stations to improve sanitation for students.\n• Conducted rigorous needs assessments and design iterations using decision matrices and community feedback.\n• Coordinated with partners like Bless Bay Foundation and Freshwater Project International.\n• Successfully managed the sanitation upgrade fully remotely during the COVID-19 pandemic constraints.",
+    "sections": [
+      {
+        "heading": "The Problem",
+        "content": "Mpitilira primary school in Eastern Malawi lacked sufficient sanitation infrastructure to accommodate the growing school population, and was suffering from disease outbreaks due to open defecation."
+      },
+      {
+        "heading": "The Solution",
+        "content": "Designed and implemented ventilated double pit latrine blocks for the school alongside handwashing stations to accommodate the existing and future school population. Assessment, designing, construction, and quality control were conducted remotely due to the ongoing COVID-19 pandemic."
+      },
+      {
+        "heading": "Key Contributions",
+        "bullets": [
+          "Completed a fully remote sanitation infrastructure upgrade during the COVID-19 pandemic.",
+          "Researched latrine design and iterated features using a decision matrix and community feedback. Multiple alternatives were provided for community input.",
+          "Conducted manual structural calculations with additional safety checks given soil pressure and environmental factors.",
+          "Used Fusion 360 and AutoCAD for 3D design and dimensioned drawings for use by contractors.",
+          "Coordinated with contractors for materials acquisition, construction, and quality control. Under my time, two student latrine blocks (8 toilets) were constructed and the staff latrine block design was finalized."
+        ]
+      }
+    ],
     "tags": [
       "EWB",
       "Civil Engineering",
       "Remote Project Management",
       "Sanitation Design",
-      "Community Feedback"
+      "Fusion 360",
+      "AutoCAD"
     ],
-    "links": {
-      "demo": "https://markleggiero1.wixsite.com/mleggiero/ewb-gt"
-    }
+    "links": {}
   },
   {
     "id": 4,
-    "title": "Personal Robotics",
+    "slug": "personal-robots",
+    "title": "Personal Robot Projects",
     "category": "Robotics",
+    "role": "Personal Projects",
+    "period": "Ongoing",
     "image": "https://res.cloudinary.com/dzbaeix94/image/upload/v1767977999/IMG_20211006_191242_01_jenhmb.jpg",
     "description": "A collection of mechatronics projects including a 3D-printed quadruped robot and a self-balancing robot.",
-    "longDescription": "A portfolio of personal robotics projects demonstrating skills in mechatronics and control theory.\n\n1. Micro-Spot Quadruped:\n• A fully 3D-printed quadruped robot powered by 12 servo actuators and an ESP32 microcontroller.\n• Developed custom inverse kinematic code and algorithms to control limb movements.\n\n2. Two-Wheel Balancing Robot:\n• Built using parts sourced entirely from local online vendors in rural Western Kenya.\n• Implements a PID controller on an ESP32 with an MPU6050 gyroscope for active balancing.",
+    "sections": [
+      {
+        "heading": "Micro-Spot Quadruped",
+        "content": "Fully 3D-printed quadruped in development using 12 servo actuators and ESP32 microcontroller. Personally developed inverse kinematic code and algorithm for limb movements given desired end-effector position.",
+        "bullets": [
+          "Learned inverse kinematic techniques to control basic coordinated limb movements — standing, sitting, pan, tilt, and roll functions.",
+          "Created an iterative algorithm for solving servo angles for correct end-effector spatial placement with minimal travel distance.",
+          "Wrote end-effector optimal movement software in Python for use as a ROS2 service.",
+          "Currently researching quadruped gait for walking using reinforcement learning on a Raspberry Pi 4, and redesigning leg limbs for more natural movements."
+        ]
+      },
+      {
+        "heading": "Two-Wheel Balancing Robot",
+        "content": "Two-wheeled self-balancing robot built using only parts available from Kenyan companies serving rural villages — hobby-grade geared motors, 18650 lipo batteries, H-bridge motor controller, and ESP32 microcontroller.",
+        "bullets": [
+          "Used Kalman filtering to improve the signal of the low-cost MPU6050 gyroscope for accurate angle measurement.",
+          "Implemented PID controller for motor control to provide stability.",
+          "Currently sourcing motor encoders to enhance stability and transitioning to microROS for external computer communication."
+        ]
+      }
+    ],
     "tags": [
       "Robotics",
       "ESP32",
@@ -68,29 +150,138 @@
       "PID Control",
       "Mechatronics",
       "C++",
-      "MPU6050"
+      "ROS2",
+      "Python"
     ],
-    "links": {
-      "demo": "https://markleggiero1.wixsite.com/mleggiero/personalrobots"
-    }
+    "links": {}
   },
   {
     "id": 5,
-    "title": "VAMPIRE Research",
+    "slug": "vampire",
+    "title": "VAMPIRE: Fast Radiative Heat Analysis",
     "category": "Research",
+    "role": "Student Researcher & Primary Author",
+    "period": "Jan 2019 – Aug 2021",
     "image": "https://res.cloudinary.com/dzbaeix94/image/upload/v1767977973/unnamed_2_xpxxjv.png",
-    "description": "Conducted research on building heat loss using drone-based thermal imaging and sensor networks.",
-    "longDescription": "VAMPIRE (Fast Radiative Heat Analysis) is a research initiative aimed at estimating radiative heat loss from structures in the built environment.\n\nTechnical Contributions:\n• Utilized drones equipped with thermal cameras and surface-from-motion photogrammetry to capture building thermal profiles.\n• Designed and implemented custom numerical surface integration software to process thermal OBJ files and calculate heat loss metrics.",
+    "description": "Developed an end-to-end method for estimating the radiative heat loss from structures in the built-environment using drone-based thermal imaging.",
+    "sections": [
+      {
+        "heading": "The Problem",
+        "content": "There are limited ways to estimate the radiative heat loss from a building's surface (envelope). With the growing threat of climate change pushing for more sophisticated ways of improving energy efficiency in buildings, I collaborated with two research professors and other students to design an end-to-end workflow for obtaining the total radiative heat loss from a structure."
+      },
+      {
+        "heading": "The Solution",
+        "content": "Our method, dubbed VAMPIRE, uses drones outfitted with thermal cameras, surface-from-motion photogrammetry, and numerical surface integration software I designed to process thermal OBJ files."
+      },
+      {
+        "heading": "Key Contributions",
+        "bullets": [
+          "Researched flight paths, view angles, and image overlap for optimal thermographic 3D model creation using DJI Inspire 1 drone with Zenmuse XT 1 thermal imager.",
+          "Used Agisoft Metashape photogrammetry software to generate 3D thermal models from thermal images and tagged drone positions.",
+          "Created software to discretize building thermal models and perform surface numerical integration through the OBJ file structure.",
+          "Developed a GUI in MATLAB to streamline processing of thermal OBJ files.",
+          "Published as primary author in the journal Energy and Buildings."
+        ]
+      },
+      {
+        "heading": "Publication",
+        "content": "Mark Leggiero, Bradley Andrew, Ryan Elliott, John Indergaard, J.B. Sharma, Thomas Vogel, \"Radiative heat loss estimation of building envelopes based on 3D thermographic models utilizing small unmanned aerial systems (sUAS)\", Energy and Buildings, Volume 244, 2021."
+      }
+    ],
     "tags": [
       "Thermal Imaging",
       "Photogrammetry",
       "Numerical Analysis",
       "Drones",
-      "Research",
-      "Software Development"
+      "MATLAB",
+      "Research"
     ],
     "links": {
-      "demo": "https://markleggiero1.wixsite.com/mleggiero/vampire"
+      "github": "https://github.com/MLeggiero/vampire",
+      "paper": "https://doi.org/10.1016/j.enbuild.2021.110957"
+    }
+  },
+  {
+    "id": 6,
+    "slug": "brookhaven",
+    "title": "ERNEST: Sample Exchange Robot",
+    "category": "Research",
+    "role": "Controls & Robotics Intern",
+    "period": "May – Aug 2019",
+    "image": "https://res.cloudinary.com/dzbaeix94/image/upload/v1767977973/unnamed_2_xpxxjv.png",
+    "description": "Developed a highly precise robotic sample exchange system using a 3-axis piezo-electric manipulator for the Hard X-Ray Nanoprobe at Brookhaven National Laboratory.",
+    "sections": [
+      {
+        "heading": "The Problem",
+        "content": "The sample exchange process at the Hard X-Ray Nanoprobe (HXN) beamline at the National Synchrotron Light Source-II (NSLS-II) in Brookhaven National Laboratory requires breaking the vacuum with subsequent thermalization of the microscope's components which may take up to a few hours."
+      },
+      {
+        "heading": "The Solution",
+        "content": "To increase efficiency and throughput of the HXN end station, develop an internal automatic sample exchange system — the Exchange Robot for the Nanoprobe Experimental Station (ERNEST) — that enables a quick and reliable sample exchange process."
+      },
+      {
+        "heading": "Key Contributions",
+        "bullets": [
+          "Performed system calibration for strain gauges and linear encoders for all axes with high-accuracy calibration and position repeatability testing.",
+          "Created animation to preview movements using Fusion360 simulation.",
+          "Designed the sample pegs and environment for manufacturing in the lab machine shop.",
+          "Wrote the control algorithm in LabVIEW with accompanying GUI — piezo-electric linear actuators achieved less than 10 nanometer precision in all movements.",
+          "Used force-sensing and placement for all actions to confirm positions.",
+          "Selected to give a poster presentation and oral presentation to laboratory staff."
+        ]
+      }
+    ],
+    "tags": [
+      "Robotics",
+      "LabVIEW",
+      "Piezo-Electric Actuators",
+      "Precision Controls",
+      "Fusion360",
+      "Calibration"
+    ],
+    "links": {
+      "demo": "https://drive.google.com/drive/folders/1lciVKTs6yfjmWy5copqRsNOv2ojnBqKq?usp=drive_link"
+    }
+  },
+  {
+    "id": 7,
+    "slug": "smart-sea-level-sensors",
+    "title": "SMART Sea Level Sensors",
+    "category": "Research",
+    "role": "Engineering Intern — Environmental Sensor Development",
+    "period": "2021",
+    "image": "https://res.cloudinary.com/dzbaeix94/image/upload/v1767977973/unnamed_2_xpxxjv.png",
+    "description": "Incorporated rainfall sensors into an IoT mesh network of water-level sensors used by climate researchers and disaster relief managers in Chatham County, Georgia.",
+    "sections": [
+      {
+        "heading": "The Problem",
+        "content": "The Smart Sea Level Sensors project operates a mesh network of water-level sensors in Chatham county, Georgia, used by climate researchers and disaster relief managers. To provide more comprehensive environmental data, rainfall sensors needed to be incorporated into the network."
+      },
+      {
+        "heading": "The Solution",
+        "content": "Add high-grade rainfall sensors using the existing LoRaWAN IoT network hardware, and ensure the system is battery powered, running for at least 6 months without replacement. This greatly improves the ability of county management to monitor and predict heavy storms and floods."
+      },
+      {
+        "heading": "Key Contributions",
+        "bullets": [
+          "Conducted market analysis for optimal rain gauge sensor given price, power requirements, accuracy, and measurement resolution — selected the TB4 tipping-bucket rain gauge.",
+          "Developed a low-power algorithm that records rainfall on triggered interrupt events using C/C++ on the GaTech Environmental Sensor ESP-32 development board.",
+          "Used LoRaWAN small packet communication to relay data to an IoT server.",
+          "Currently 12+ rain gauges are sending continuous rainfall measurements to the SMART Sea Level Sensors dashboard."
+        ]
+      }
+    ],
+    "tags": [
+      "IoT",
+      "LoRaWAN",
+      "ESP32",
+      "C/C++",
+      "Environmental Sensors",
+      "Low-Power Systems"
+    ],
+    "links": {
+      "demo": "https://dashboard.sealevelsensors.org/",
+      "paper": "https://www.sealevelsensors.org/blog/rain-gauges-dashboards-and-cellular-capable-sensors-my-summer-on-the-ssls-team/"
     }
   }
 ]

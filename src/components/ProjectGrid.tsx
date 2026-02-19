@@ -1,15 +1,25 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import ProjectCard from './ProjectCard';
-import ProjectModal, { type Project } from './ProjectModal';
 import projectDataRaw from '../projects.json';
 
-// Cast JSON data to Project type
+interface Project {
+    id: number;
+    slug: string;
+    title: string;
+    category: string;
+    image: string;
+    description: string;
+    tags?: string[];
+    links: { github?: string; demo?: string; paper?: string };
+}
+
 const projectData = projectDataRaw as Project[];
 
 const ProjectGrid = () => {
     const [filter, setFilter] = useState('All');
-    const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+    const navigate = useNavigate();
 
     // Extract unique categories
     const categories = ['All', ...new Set(projectData.map(p => p.category))];
@@ -55,7 +65,7 @@ const ProjectGrid = () => {
                                 animate={{ opacity: 1, scale: 1 }}
                                 exit={{ opacity: 0, scale: 0.9 }}
                                 transition={{ duration: 0.3 }}
-                                onClick={() => setSelectedProject(project)}
+                                onClick={() => navigate(`/projects/${project.slug}`)}
                                 className="cursor-pointer"
                             >
                                 <ProjectCard
@@ -70,16 +80,6 @@ const ProjectGrid = () => {
                     </AnimatePresence>
                 </motion.div>
             </div>
-
-            {/* Modal */}
-            <AnimatePresence>
-                {selectedProject && (
-                    <ProjectModal
-                        project={selectedProject}
-                        onClose={() => setSelectedProject(null)}
-                    />
-                )}
-            </AnimatePresence>
         </section>
     );
 };
