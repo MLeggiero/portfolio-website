@@ -71,7 +71,7 @@ const ProjectDetailPage = () => {
                 {/* Back button */}
                 <button
                     onClick={() => navigate('/')}
-                    className="absolute top-8 left-8 z-10 flex items-center gap-2 text-sm text-neutral-400 
+                    className="absolute top-24 left-8 z-10 flex items-center gap-2 text-sm text-neutral-400 
                                hover:text-white transition-colors font-mono uppercase tracking-wider"
                 >
                     <ChevronLeft size={16} />
