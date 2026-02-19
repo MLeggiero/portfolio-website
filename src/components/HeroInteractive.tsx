@@ -42,7 +42,7 @@ const HeroInteractive = () => {
                         className="text-6xl md:text-8xl lg:text-9xl font-heading font-extrabold leading-[0.85] mb-8 tracking-tight"
                     >
                         <span className="block text-white">MARK</span>
-                        <span className="block text-white/20">LEGGIERO</span>
+                        <span className="block text-primary">LEGGIERO</span>
                     </motion.h1>
 
                     {/* Tagline */}
