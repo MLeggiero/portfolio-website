@@ -268,12 +268,12 @@ const BlueprintCanvas = () => {
           const a2 = Math.atan2(next.y - curr.y, next.x - curr.x);
           let angle = ((a2 - a1) * 180) / Math.PI;
           if (angle < 0) angle += 360;
-          ctx.fillStyle = 'rgba(44,77,228,0.35)';
+          ctx.fillStyle = 'rgba(44,77,228,0.7)';
           ctx.fillText(`θ${i} ${angle.toFixed(1)}°`, curr.x + 14, curr.y - 8);
         }
 
         // End‑effector position
-        ctx.fillStyle = 'rgba(255,255,255,0.25)';
+        ctx.fillStyle = 'rgba(255,255,255,0.55)';
         ctx.fillText(
           `${Math.floor(endJ.x)}, ${Math.floor(endJ.y)}`,
           mx + 20,
@@ -284,7 +284,7 @@ const BlueprintCanvas = () => {
         const dist = Math.sqrt(
           (endJ.x - basePos.x) ** 2 + (endJ.y - basePos.y) ** 2,
         );
-        ctx.fillStyle = 'rgba(255,255,255,0.18)';
+        ctx.fillStyle = 'rgba(255,255,255,0.45)';
         ctx.fillText(`r ${dist.toFixed(0)}`, mx + 20, my + 2);
 
         // Subtle leader line
