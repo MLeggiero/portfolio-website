@@ -2,28 +2,34 @@ import { motion } from 'framer-motion';
 import { GraduationCap, Wrench, MapPin } from 'lucide-react';
 
 const skills = {
-    Advanced: ['Fusion360', '3D Printing', 'MATLAB', 'Python', 'ROS2'],
-    Proficient: [
-        'Arduino IDE',
-        'AutoCAD',
+    'Programming': ['Python', 'C++', 'C', 'MATLAB', 'LabVIEW'],
+    'CAD & Fabrication': [
         'SolidWorks',
-        'LabVIEW',
-        'EduPack',
+        'Fusion360',
+        'Revit',
+        'AutoCAD',
+        '3D Printing',
         '3D Scanning',
         'Laser Cutting',
-        'C/C++',
-        'ESP32',
     ],
+    'Robotics & Embedded': ['ROS2', 'ESP32', 'Arduino IDE'],
 };
 
 const education = [
     {
+        degree: 'MS Mechanical Engineering',
+        school: 'Georgia Institute of Technology',
+        detail: 'Started Aug 2025',
+    },
+    {
         degree: 'BS Mechanical Engineering',
         school: 'Georgia Institute of Technology',
+        detail: 'Aug 2022',
     },
     {
         degree: 'BS Physics',
         school: 'University of North Georgia',
+        detail: 'Aug 2022',
     },
 ];
 
@@ -113,6 +119,11 @@ const AboutPage = () => {
                                     <p className="text-neutral-400 font-mono text-sm">
                                         {edu.school}
                                     </p>
+                                    {edu.detail && (
+                                        <p className="text-neutral-500 font-mono text-xs mt-1">
+                                            {edu.detail}
+                                        </p>
+                                    )}
                                 </div>
                             ))}
                         </div>
@@ -144,10 +155,7 @@ const AboutPage = () => {
                                     {items.map((skill) => (
                                         <span
                                             key={skill}
-                                            className={`px-4 py-2 border rounded-sm text-sm font-medium ${level === 'Advanced'
-                                                    ? 'border-primary/30 text-primary bg-primary/5'
-                                                    : 'border-white/10 text-neutral-300 bg-white/5'
-                                                }`}
+                                            className="px-4 py-2 border border-white/10 text-neutral-300 bg-white/5 rounded-sm text-sm font-medium"
                                         >
                                             {skill}
                                         </span>

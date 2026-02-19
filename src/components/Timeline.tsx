@@ -2,49 +2,61 @@ import { motion } from 'framer-motion';
 
 const experiences = [
     {
-        role: "STEM Education Teacher",
-        company: "Peace Corps Kenya",
-        period: "Oct 2022 - Nov 2024",
+        role: "Mechanical Engineer I",
+        company: "CORE|EPC",
+        period: "Apr 2025 – Present",
         description: "",
         points: [
-            "Taught Math and Physics to students from rural areas, combining engineering practice with global development.",
-            "Established a Science and Engineering Club to encourage critical thinking.",
-            "Led community projects including grant writing, developing a demonstration garden, and implementing a pumped potable water system.",
-            "Acquired intermediate Swahili language skills and advanced classroom management techniques."
+            "Designed building and manufacturing systems for $500K+ commercial and industrial projects, ensuring client satisfaction and regulatory compliance.",
+            "Worked in multi-disciplinary teams across recycling, renewable power generation, chemical production, and manufacturing sectors."
+        ]
+    },
+    {
+        role: "Board Member",
+        company: "Kiwimbi International",
+        period: "Jan 2025 – Present",
+        description: "",
+        points: [
+            "Guide strategic decisions for $300,000 nonprofit improving child nutrition, primary and high school education, and quality employment in Kenya."
+        ]
+    },
+    {
+        role: "Education Volunteer",
+        company: "Peace Corps Kenya",
+        period: "Oct 2022 – Nov 2024",
+        description: "",
+        points: [
+            "Led $12,000 USAID project for village-scale water distribution system serving 2,000+ individuals.",
+            "Taught Math and Physics to 250+ high school students in a resource-constrained environment."
         ]
     },
     {
         role: "Technical Lead",
-        company: "Engineers Without Borders",
-        period: "Aug 2020 - May 2021",
+        company: "Engineers Without Borders GT",
+        period: "Aug 2020 – Aug 2022",
         description: "",
         points: [
-            "Managed the implementation of sanitation latrines and handwashing stations for Mpitilira primary school in Malawi.",
-            "Conducted rigorous needs assessments and design iterations using decision matrices.",
-            "Coordinated with partners like Bless Bay Foundation and Freshwater Project International.",
-            "Successfully managed the sanitation upgrade fully remotely during the COVID-19 pandemic."
+            "Led 10-engineer team conducting remote needs-analysis for sanitation solutions in rural Malawi.",
+            "Designed eight ventilation-improved latrines (SolidWorks) for primary school of 300+ students."
         ]
     },
     {
-        role: "Student Researcher",
-        company: "VAMPIRE Lab (Georgia Tech)",
-        period: "Jan 2019 - Aug 2021",
-        description: "Conducted research on building heat loss using drone-based thermal imaging.",
+        role: "Research Intern",
+        company: "Smart Sea Level Sensors Project",
+        period: "May 2021 – Aug 2021",
+        description: "",
         points: [
-            "Utilized drones equipped with thermal cameras and surface-from-motion photogrammetry to capture building thermal profiles.",
-            "Designed and implemented custom numerical surface integration software to process thermal OBJ files.",
-            "Authored papers on thermal analysis and sensor networks."
+            "Upgraded firmware (C++) for ESP-32 IoT controller to allow for dense LoRaWAN network rainfall data collection in Savannah, Georgia.",
+            "Conducted market analysis optimizing rainfall sensor cost and reliability; developed cellular-capable telemetry redundancy plan."
         ]
     },
     {
-        role: "Senior Capstone Design",
-        company: "Georgia Tech",
-        period: "Jan 2021 - May 2022",
+        role: "Research Intern",
+        company: "Brookhaven National Laboratory",
+        period: "May 2019 – Aug 2019",
         description: "",
         points: [
-            "Designed 'Keep The Beep', a ruggedized soft housing for GE Carescape physiological monitors.",
-            "Utilized a FaroArm Quantum 3D Scanner to import monitor geometry into SolidWorks.",
-            "Rapidly prototyped the design using 3D printing with soft TPU filament."
+            "Developed sample exchange robotic system and GUI (LabVIEW) for in-vacuum x-ray imaging beamlines with postdoctoral research staff."
         ]
     }
 ];
