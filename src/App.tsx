@@ -2,6 +2,7 @@ import Navbar from './components/Navbar';
 import HeroInteractive from './components/HeroInteractive';
 import ProjectGrid from './components/ProjectGrid';
 import Timeline from './components/Timeline';
+import Contact from './components/Contact';
 import Footer from './components/Footer';
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
       <HeroInteractive />
       <ProjectGrid />
       <Timeline />
+      <Contact />
       <Footer />
     </div>
   );
