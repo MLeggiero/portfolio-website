@@ -31,7 +31,7 @@ const HeroInteractive = () => {
                         transition={{ delay: 0.4, duration: 1 }}
                         className="text-neutral-500 text-xs tracking-[0.4em] uppercase mb-8 font-mono"
                     >
-                        Robotics Engineer
+                        Engineer
                     </motion.p>
 
                     {/* Name — big, bold, clean */}
