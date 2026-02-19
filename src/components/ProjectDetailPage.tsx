@@ -27,6 +27,7 @@ interface Project {
         paper?: string;
     };
     gallery?: { src: string; caption?: string }[];
+    video?: string;
 }
 
 const projects = projectData as Project[];
@@ -184,6 +185,29 @@ const ProjectDetailPage = () => {
                         transition={{ delay: 0.5, duration: 0.5 }}
                     >
                         <ProjectGallery images={project.gallery} />
+                    </motion.div>
+                )}
+
+                {/* Video embed */}
+                {project.video && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.5, duration: 0.5 }}
+                        className="mb-10 pt-8 border-t border-white/10"
+                    >
+                        <p className="text-xs text-neutral-500 uppercase tracking-widest font-mono mb-4">
+                            Video
+                        </p>
+                        <div className="relative w-full aspect-video rounded-sm overflow-hidden">
+                            <iframe
+                                src={project.video}
+                                className="absolute inset-0 w-full h-full"
+                                allow="autoplay; encrypted-media"
+                                allowFullScreen
+                                title={`${project.title} video`}
+                            />
+                        </div>
                     </motion.div>
                 )}
 

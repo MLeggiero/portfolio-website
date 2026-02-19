@@ -118,27 +118,101 @@
   },
   {
     "id": 4,
-    "slug": "personal-robots",
-    "title": "Personal Robot Projects",
+    "slug": "mimic-robot-arm",
+    "title": "Mimic: 3-Axis Robot Arm",
     "category": "Robotics",
-    "role": "Personal Projects",
-    "period": "Ongoing",
-    "image": "https://res.cloudinary.com/dzbaeix94/image/upload/v1767977999/IMG_20211006_191242_01_jenhmb.jpg",
-    "description": "A collection of mechatronics projects including a 3D-printed quadruped robot and a self-balancing robot.",
+    "role": "Personal Project — Design, Fabrication & Controls",
+    "period": "2025 – Present",
+    "image": "https://lh3.googleusercontent.com/d/1GX8IendAmCU8e76z1EmwLSd_nEMY5H6Z",
+    "description": "A 3-axis brushless DC robot arm using ODrive motor controllers, custom KiCAD PCB design, and CAN bus communication — built from scratch for learning industrial motion control.",
     "sections": [
       {
-        "heading": "Micro-Spot Quadruped",
-        "content": "Fully 3D-printed quadruped in development using 12 servo actuators and ESP32 microcontroller. Personally developed inverse kinematic code and algorithm for limb movements given desired end-effector position.",
+        "content": "Mimic is a personal project to design and build a capable robot arm from the ground up, using industrial-grade components rather than hobby servos. The goal is to learn brushless motor control, power electronics, encoder feedback, and real-time communication protocols used in professional robotic systems."
+      },
+      {
+        "heading": "System Architecture",
+        "bullets": [
+          "3 axes driven by EaglePro 8803 BLDC motors with ODrive S1 motor controllers for FOC (Field-Oriented Control).",
+          "AS5600 magnetic encoders for precise angular position feedback on each joint.",
+          "120VAC to 24VDC power supply with 24V-to-12V buck converter for logic power, and 24V relay-based motor enable circuit with hardware e-stop.",
+          "USB-C to CAN adapter for real-time host communication over CAN bus.",
+          "Custom KiCAD schematic and PCB design for clean wiring and brake resistor integration."
+        ]
+      },
+      {
+        "heading": "Key Contributions",
+        "bullets": [
+          "Designed full electrical schematic in KiCAD including power distribution, motor drives, encoder interfaces, and safety circuits.",
+          "Integrated brake resistors for regenerative braking energy dissipation on each ODrive channel.",
+          "Built custom 3D-printed structural components for the arm links and joints.",
+          "Developing Python control software for trajectory planning and teleoperation."
+        ]
+      }
+    ],
+    "tags": [
+      "Robotics",
+      "BLDC Motors",
+      "ODrive",
+      "CAN Bus",
+      "KiCAD",
+      "Motion Control",
+      "3D Printing",
+      "Power Electronics"
+    ],
+    "links": {},
+    "gallery": [],
+    "video": "https://drive.google.com/file/d/147hkyyvl6r338-8Wq39_mcBeDfMEDEUs/preview"
+  },
+  {
+    "id": 8,
+    "slug": "micro-spot",
+    "title": "Micro-Spot Quadruped Robot",
+    "category": "Robotics",
+    "role": "Personal Project",
+    "period": "2021 – Present",
+    "image": "https://res.cloudinary.com/dzbaeix94/image/upload/v1767977999/IMG_20211006_191242_01_jenhmb.jpg",
+    "description": "A fully 3D-printed 12-DoF quadruped robot with custom inverse kinematics, controlled via ROS2 and Raspberry Pi.",
+    "sections": [
+      {
+        "content": "Fully 3D-printed quadruped in development using 12 servo actuators and ESP32 microcontroller. Personally developed inverse kinematic code and algorithm for limb movements given desired end-effector position."
+      },
+      {
+        "heading": "Key Contributions",
         "bullets": [
           "Learned inverse kinematic techniques to control basic coordinated limb movements — standing, sitting, pan, tilt, and roll functions.",
           "Created an iterative algorithm for solving servo angles for correct end-effector spatial placement with minimal travel distance.",
           "Wrote end-effector optimal movement software in Python for use as a ROS2 service.",
           "Currently researching quadruped gait for walking using reinforcement learning on a Raspberry Pi 4, and redesigning leg limbs for more natural movements."
         ]
+      }
+    ],
+    "tags": [
+      "Robotics",
+      "Inverse Kinematics",
+      "ROS2",
+      "ESP32",
+      "Python",
+      "3D Printing",
+      "Raspberry Pi"
+    ],
+    "links": {},
+    "gallery": []
+  },
+  {
+    "id": 9,
+    "slug": "macgyver-bot",
+    "title": "MacGyver Bot: Self-Balancing Robot",
+    "category": "Robotics",
+    "role": "Personal Project — Built in Rural Kenya",
+    "period": "2023",
+    "image": "https://res.cloudinary.com/dzbaeix94/image/upload/v1767977999/IMG_20211006_191242_01_jenhmb.jpg",
+    "description": "A PID-controlled two-wheeled self-balancing robot built using only materials accessible in a rural Kenyan village.",
+    "sections": [
+      {
+        "content": "Two-wheeled self-balancing robot built using only parts available from Kenyan companies serving rural villages — hobby-grade geared motors, 18650 lipo batteries, H-bridge motor controller, and ESP32 microcontroller."
       },
       {
-        "heading": "Two-Wheel Balancing Robot",
-        "content": "Two-wheeled self-balancing robot built using only parts available from Kenyan companies serving rural villages — hobby-grade geared motors, 18650 lipo batteries, H-bridge motor controller, and ESP32 microcontroller.",
+        "heading": "Key Contributions",
         "bullets": [
           "Used Kalman filtering to improve the signal of the low-cost MPU6050 gyroscope for accurate angle measurement.",
           "Implemented PID controller for motor control to provide stability.",
@@ -148,13 +222,11 @@
     ],
     "tags": [
       "Robotics",
-      "ESP32",
-      "Inverse Kinematics",
       "PID Control",
-      "Mechatronics",
+      "Kalman Filter",
+      "ESP32",
       "C++",
-      "ROS2",
-      "Python"
+      "Mechatronics"
     ],
     "links": {},
     "gallery": []
