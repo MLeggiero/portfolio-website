@@ -287,6 +287,30 @@ const BlueprintCanvas = () => {
         ctx.fillStyle = 'rgba(255,255,255,0.45)';
         ctx.fillText(`r ${dist.toFixed(0)}`, mx + 20, my + 2);
 
+        // ── Singularity detection ──────────────────────────
+        const totalReach = NUM_SEGMENTS * SEGMENT_LENGTH;
+        const reachRatio = dist / totalReach;
+        // Position singularity: near workspace boundary
+        const positionSingularity = reachRatio > 0.95;
+        // Velocity singularity: any joint nearly collinear (angle ≈ 180°)
+        let velocitySingularity = false;
+        for (let i = 1; i < joints.length - 1; i++) {
+          const prev = joints[i - 1];
+          const curr = joints[i];
+          const next = joints[i + 1];
+          const a1 = Math.atan2(prev.y - curr.y, prev.x - curr.x);
+          const a2 = Math.atan2(next.y - curr.y, next.x - curr.x);
+          let ang = Math.abs(((a2 - a1) * 180) / Math.PI);
+          if (ang > 180) ang = 360 - ang;
+          if (ang > 172) { velocitySingularity = true; break; }
+        }
+
+        if (positionSingularity || velocitySingularity) {
+          ctx.font = '10px "JetBrains Mono", monospace';
+          ctx.fillStyle = 'rgba(180,40,40,0.7)';
+          ctx.fillText('SINGULARITY', mx + 20, my + 16);
+        }
+
         // Subtle leader line
         ctx.strokeStyle = 'rgba(255,255,255,0.08)';
         ctx.lineWidth = 0.5;
