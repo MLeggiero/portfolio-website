@@ -2,6 +2,7 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft, ArrowRight, Github, ExternalLink, FileText, ChevronLeft } from 'lucide-react';
 import projectData from '../projects.json';
+import ProjectGallery from './ProjectGallery';
 
 interface Section {
     heading?: string;
@@ -25,6 +26,7 @@ interface Project {
         demo?: string;
         paper?: string;
     };
+    gallery?: { src: string; caption?: string }[];
 }
 
 const projects = projectData as Project[];
@@ -171,6 +173,17 @@ const ProjectDetailPage = () => {
                                 {tag}
                             </span>
                         ))}
+                    </motion.div>
+                )}
+
+                {/* Gallery */}
+                {project.gallery && project.gallery.length > 0 && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.5, duration: 0.5 }}
+                    >
+                        <ProjectGallery images={project.gallery} />
                     </motion.div>
                 )}
 

@@ -30,7 +30,8 @@
       "STEM Education",
       "Community Development"
     ],
-    "links": {}
+    "links": {},
+    "gallery": []
   },
   {
     "id": 2,
@@ -72,7 +73,8 @@
       "TPU/PLA 3D Printing",
       "Product Design"
     ],
-    "links": {}
+    "links": {},
+    "gallery": []
   },
   {
     "id": 3,
@@ -111,7 +113,8 @@
       "Fusion 360",
       "AutoCAD"
     ],
-    "links": {}
+    "links": {},
+    "gallery": []
   },
   {
     "id": 4,
@@ -153,7 +156,8 @@
       "ROS2",
       "Python"
     ],
-    "links": {}
+    "links": {},
+    "gallery": []
   },
   {
     "id": 5,
@@ -199,7 +203,8 @@
     "links": {
       "github": "https://github.com/MLeggiero/vampire",
       "paper": "https://doi.org/10.1016/j.enbuild.2021.110957"
-    }
+    },
+    "gallery": []
   },
   {
     "id": 6,
@@ -208,7 +213,7 @@
     "category": "Research",
     "role": "Controls & Robotics Intern",
     "period": "May – Aug 2019",
-    "image": "https://res.cloudinary.com/dzbaeix94/image/upload/v1767977973/unnamed_2_xpxxjv.png",
+    "image": "https://lh3.googleusercontent.com/d/19hrSDkr0OGWdCzwL3NlKBbFvgnlRnMfe",
     "description": "Developed a highly precise robotic sample exchange system using a 3-axis piezo-electric manipulator for the Hard X-Ray Nanoprobe at Brookhaven National Laboratory.",
     "sections": [
       {
@@ -241,7 +246,8 @@
     ],
     "links": {
       "demo": "https://drive.google.com/drive/folders/1lciVKTs6yfjmWy5copqRsNOv2ojnBqKq?usp=drive_link"
-    }
+    },
+    "gallery": []
   },
   {
     "id": 7,
@@ -250,7 +256,7 @@
     "category": "Research",
     "role": "Engineering Intern — Environmental Sensor Development",
     "period": "2021",
-    "image": "https://res.cloudinary.com/dzbaeix94/image/upload/v1767977973/unnamed_2_xpxxjv.png",
+    "image": "https://lh3.googleusercontent.com/d/1qC4z5wDRuh9Yezm7nhDdph9SwYQpL4pR",
     "description": "Incorporated rainfall sensors into an IoT mesh network of water-level sensors used by climate researchers and disaster relief managers in Chatham County, Georgia.",
     "sections": [
       {
@@ -282,6 +288,7 @@
     "links": {
       "demo": "https://dashboard.sealevelsensors.org/",
       "paper": "https://www.sealevelsensors.org/blog/rain-gauges-dashboards-and-cellular-capable-sensors-my-summer-on-the-ssls-team/"
-    }
+    },
+    "gallery": []
   }
 ]
