@@ -48,7 +48,7 @@ const Contact = () => {
                     <p className="text-neutral-400 text-base md:text-lg max-w-xl mx-auto leading-relaxed font-light">
                         I'm always excited to discuss new opportunities in robotics,
                         mechatronics, and embedded systems. Whether you have a project in mind
-                        or just want to connect — reach out.
+                        or just want to connect, please reach out!
                     </p>
                 </motion.div>
 
