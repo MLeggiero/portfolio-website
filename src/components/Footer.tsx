@@ -1,4 +1,5 @@
 import { Github, Linkedin, Mail } from 'lucide-react';
+import HuggingFaceIcon from './icons/HuggingFaceIcon';
 
 const Footer = () => {
     return (
@@ -12,6 +13,9 @@ const Footer = () => {
                     </a>
                     <a href="https://www.linkedin.com/in/mark-leggiero/" target="_blank" rel="noreferrer" className="p-4 rounded-full border border-white/10 hover:bg-primary hover:border-primary transition-all group">
                         <Linkedin size={24} className="text-text-muted group-hover:text-white" />
+                    </a>
+                    <a href="https://huggingface.co/MLeggiero" target="_blank" rel="noreferrer" className="p-4 rounded-full border border-white/10 hover:bg-primary hover:border-primary transition-all group">
+                        <HuggingFaceIcon size={24} className="text-text-muted group-hover:text-white" />
                     </a>
                     <a href="mailto:mark.leggiero1@gmail.com" className="p-4 rounded-full border border-white/10 hover:bg-primary hover:border-primary transition-all group">
                         <Mail size={24} className="text-text-muted group-hover:text-white" />

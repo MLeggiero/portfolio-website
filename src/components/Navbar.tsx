@@ -32,7 +32,7 @@ const Navbar = () => {
             if (el) el.scrollIntoView({ behavior: 'smooth' });
         } else {
             // On other pages, navigate to home then scroll
-            window.location.href = '/' + href;
+            window.location.assign('/' + href);
         }
     };
 

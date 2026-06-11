@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { Mail, Github, Linkedin, MapPin, ArrowUpRight } from 'lucide-react';
+import HuggingFaceIcon from './icons/HuggingFaceIcon';
 
 const socials = [
     {
@@ -13,6 +14,12 @@ const socials = [
         href: 'https://www.linkedin.com/in/mark-leggiero/',
         icon: Linkedin,
         label: 'mark-leggiero',
+    },
+    {
+        name: 'Hugging Face',
+        href: 'https://huggingface.co/MLeggiero',
+        icon: HuggingFaceIcon,
+        label: 'MLeggiero',
     },
 ];
 
@@ -88,7 +95,7 @@ const Contact = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.35, duration: 0.8 }}
-                    className="grid grid-cols-1 md:grid-cols-3 gap-4"
+                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
                 >
                     {socials.map((s) => (
                         <a

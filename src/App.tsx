@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import HeroInteractive from './components/HeroInteractive';
 import ProjectGrid from './components/ProjectGrid';
 import Timeline from './components/Timeline';
+import Activity from './components/Activity';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import ProjectDetailPage from './components/ProjectDetailPage';
@@ -15,6 +16,7 @@ function HomePage() {
       <HeroInteractive />
       <ProjectGrid />
       <Timeline />
+      <Activity />
       <Contact />
     </>
   );
