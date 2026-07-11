@@ -55,6 +55,12 @@ const Navbar = () => {
                         </button>
                     ))}
                     <Link
+                        to="/robotics"
+                        className="text-sm font-medium hover:text-primary transition-colors"
+                    >
+                        Robotics
+                    </Link>
+                    <Link
                         to="/about"
                         className="text-sm font-medium hover:text-primary transition-colors"
                     >
@@ -90,6 +96,13 @@ const Navbar = () => {
                                     {link.name}
                                 </button>
                             ))}
+                            <Link
+                                to="/robotics"
+                                onClick={() => setIsOpen(false)}
+                                className="text-lg font-medium hover:text-primary"
+                            >
+                                Robotics
+                            </Link>
                             <Link
                                 to="/about"
                                 onClick={() => setIsOpen(false)}
