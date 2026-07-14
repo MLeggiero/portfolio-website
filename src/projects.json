@@ -170,7 +170,7 @@
     "category": "Robotics",
     "role": "Personal Project — Design, Fabrication & Controls",
     "period": "2025 – Present",
-    "image": "https://lh3.googleusercontent.com/d/1GX8IendAmCU8e76z1EmwLSd_nEMY5H6Z",
+    "image": "/images/mimic-robot-arm.png",
     "description": "A 3-axis brushless DC robot arm using ODrive motor controllers, custom KiCAD PCB design, and CAN bus communication — built from scratch for learning industrial motion control.",
     "sections": [
       {
@@ -332,7 +332,7 @@
     "category": "Research",
     "role": "Controls & Robotics Intern",
     "period": "May – Aug 2019",
-    "image": "https://lh3.googleusercontent.com/d/19hrSDkr0OGWdCzwL3NlKBbFvgnlRnMfe",
+    "image": "/images/ernest-brookhaven.jpg",
     "description": "Developed a highly precise robotic sample exchange system using a 3-axis piezo-electric manipulator for the Hard X-Ray Nanoprobe at Brookhaven National Laboratory.",
     "sections": [
       {
@@ -375,7 +375,7 @@
     "category": "Research",
     "role": "Engineering Intern — Environmental Sensor Development",
     "period": "2021",
-    "image": "https://lh3.googleusercontent.com/d/1qC4z5wDRuh9Yezm7nhDdph9SwYQpL4pR",
+    "image": "/images/sea-level-map.png",
     "description": "Incorporated rainfall sensors into an IoT mesh network of water-level sensors used by climate researchers and disaster relief managers in Chatham County, Georgia.",
     "sections": [
       {
