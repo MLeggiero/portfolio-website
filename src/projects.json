@@ -117,13 +117,60 @@
     "gallery": []
   },
   {
+    "id": 10,
+    "slug": "vqactflow",
+    "title": "VQActFlow: Action Mode Steering",
+    "category": "Robotics",
+    "role": "Research Project — Robot Learning",
+    "period": "2025 – Present",
+    "image": "https://vqactflow.github.io/vqactflow/assets/videos/posters/g1_ball.jpg",
+    "description": "Vector-quantized action generation for multi-task robot manipulation — steering which task a policy commits to at inference time, validated on a Unitree G1 humanoid, a bimanual platform, and LIBERO in simulation.",
+    "sections": [
+      {
+        "content": "In multi-task manipulation, a policy has to commit to the action mode that matches the current instruction — pick the wrong mode and the robot does the wrong task. VQActFlow tokenizes action chunks into a discrete codebook and generates the codes with Variational Flow Matching, so it carries a distribution over action modes through every step of generation. At inference time, classifier-free guidance and a learned codebook critic reshape that distribution — neither one retrains the policy."
+      },
+      {
+        "heading": "Results",
+        "bullets": [
+          "81.0% peak success on LIBERO-Goal (w=4), vs. 61.5% for the closest discrete baseline.",
+          "80.5% success on LIBERO-90 with CFG and the codebook critic — best of every baseline run.",
+          "57.5% success on Unitree G1 humanoid hardware at w=6, up from 23.8% with no guidance.",
+          "77.5% average success on an ALOHA-style bimanual platform with CFG and the critic together."
+        ]
+      },
+      {
+        "heading": "Key Contributions",
+        "bullets": [
+          "Designed a VQ-VAE action tokenizer that compresses action chunks into a discrete codebook of reusable motion primitives.",
+          "Trained a Variational Flow Matching generator over codebook indices, preserving a full distribution over action modes during generation.",
+          "Developed inference-time steering with classifier-free guidance and a learned codebook critic — no policy retraining required.",
+          "Validated on real hardware: Unitree G1 humanoid and ALOHA-style bimanual manipulation, plus LIBERO benchmarks in simulation."
+        ]
+      }
+    ],
+    "tags": [
+      "Robotics",
+      "Robot Learning",
+      "Imitation Learning",
+      "Flow Matching",
+      "VQ-VAE",
+      "Humanoid",
+      "Bimanual Manipulation",
+      "PyTorch"
+    ],
+    "links": {
+      "demo": "https://vqactflow.github.io/vqactflow/"
+    },
+    "gallery": []
+  },
+  {
     "id": 4,
     "slug": "mimic-robot-arm",
     "title": "Mimic: 3-Axis Robot Arm",
     "category": "Robotics",
     "role": "Personal Project — Design, Fabrication & Controls",
     "period": "2025 – Present",
-    "image": "https://lh3.googleusercontent.com/d/1GX8IendAmCU8e76z1EmwLSd_nEMY5H6Z",
+    "image": "/images/mimic-robot-arm.png",
     "description": "A 3-axis brushless DC robot arm using ODrive motor controllers, custom KiCAD PCB design, and CAN bus communication — built from scratch for learning industrial motion control.",
     "sections": [
       {
@@ -205,7 +252,7 @@
     "category": "Robotics",
     "role": "Personal Project — Built in Rural Kenya",
     "period": "2023",
-    "image": "https://drive.google.com/file/d/1vrhXu0N_Mtu9FWmPo1Dw8MZdFHsrsE-P/view?usp=sharing",
+    "image": "/images/macgyver-bot.jpg",
     "description": "A PID-controlled two-wheeled self-balancing robot built using only materials accessible in a rural Kenyan village.",
     "sections": [
       {
@@ -285,7 +332,7 @@
     "category": "Research",
     "role": "Controls & Robotics Intern",
     "period": "May – Aug 2019",
-    "image": "https://lh3.googleusercontent.com/d/19hrSDkr0OGWdCzwL3NlKBbFvgnlRnMfe",
+    "image": "/images/ernest-brookhaven.jpg",
     "description": "Developed a highly precise robotic sample exchange system using a 3-axis piezo-electric manipulator for the Hard X-Ray Nanoprobe at Brookhaven National Laboratory.",
     "sections": [
       {
@@ -328,7 +375,7 @@
     "category": "Research",
     "role": "Engineering Intern — Environmental Sensor Development",
     "period": "2021",
-    "image": "https://lh3.googleusercontent.com/d/1qC4z5wDRuh9Yezm7nhDdph9SwYQpL4pR",
+    "image": "/images/sea-level-map.png",
     "description": "Incorporated rainfall sensors into an IoT mesh network of water-level sensors used by climate researchers and disaster relief managers in Chatham County, Georgia.",
     "sections": [
       {

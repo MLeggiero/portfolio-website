@@ -8,6 +8,7 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import ProjectDetailPage from './components/ProjectDetailPage';
 import AboutPage from './components/AboutPage';
+import RoboticsPage from './components/RoboticsPage';
 import ScrollToTop from './components/ScrollToTop';
 
 function HomePage() {
@@ -32,6 +33,7 @@ function AppContent() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
+        <Route path="/robotics" element={<RoboticsPage />} />
         <Route path="/projects/:slug" element={<ProjectDetailPage />} />
       </Routes>
       {!isHome && <Footer />}
