@@ -252,7 +252,7 @@
     "category": "Robotics",
     "role": "Personal Project — Built in Rural Kenya",
     "period": "2023",
-    "image": "https://lh3.googleusercontent.com/d/1vrhXu0N_Mtu9FWmPo1Dw8MZdFHsrsE-P",
+    "image": "/images/macgyver-bot.jpg",
     "description": "A PID-controlled two-wheeled self-balancing robot built using only materials accessible in a rural Kenyan village.",
     "sections": [
       {
