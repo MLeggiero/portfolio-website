@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 
 const experiences = [
     {
-        role: "Mechanical Engineer I",
+        role: "Mechanical Engineer II",
         company: "CORE|EPC",
         period: "Apr 2025 – Present",
         description: "",

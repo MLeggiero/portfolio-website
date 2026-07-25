@@ -3,6 +3,8 @@ import { motion } from 'framer-motion';
 import { ArrowLeft, ArrowRight, Github, ExternalLink, FileText, ChevronLeft } from 'lucide-react';
 import projectData from '../projects.json';
 import ProjectGallery from './ProjectGallery';
+import ClipGallery from './ClipGallery';
+import { VQ_BASE, VQ_ARXIV, clipGroups } from '../data/vqactflowClips';
 
 interface Section {
     heading?: string;
@@ -57,6 +59,8 @@ const ProjectDetailPage = () => {
     const prevProject = currentIndex > 0 ? projects[currentIndex - 1] : null;
     const nextProject =
         currentIndex < projects.length - 1 ? projects[currentIndex + 1] : null;
+
+    const isVQ = project.slug === 'vqactflow';
 
     return (
         <div className="min-h-screen bg-background">
@@ -121,6 +125,34 @@ const ProjectDetailPage = () => {
                     </div>
                 </motion.div>
 
+                {/* VQActFlow: prominent project-page CTA */}
+                {isVQ && (
+                    <motion.a
+                        href={`${VQ_BASE}/`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        initial={{ opacity: 0, y: 15 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.18, duration: 0.5 }}
+                        className="group flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-12
+                                   bg-primary/10 border border-primary/40 hover:border-primary hover:bg-primary/15
+                                   transition-all p-6 md:p-8"
+                    >
+                        <div>
+                            <p className="text-xs text-primary uppercase tracking-widest font-mono mb-2">
+                                Explore the full project
+                            </p>
+                            <p className="text-xl md:text-2xl font-heading font-bold text-white leading-snug">
+                                Videos, interactive demos &amp; results on the project page
+                            </p>
+                        </div>
+                        <span className="flex items-center gap-2 px-6 py-3 bg-primary text-white shrink-0
+                                         text-sm font-bold uppercase tracking-wider group-hover:gap-3 transition-all">
+                            <ExternalLink size={18} /> Visit Project Page
+                        </span>
+                    </motion.a>
+                )}
+
                 {/* Sections */}
                 {project.sections.map((section, idx) => (
                     <motion.div
@@ -174,6 +206,33 @@ const ProjectDetailPage = () => {
                                 {tag}
                             </span>
                         ))}
+                    </motion.div>
+                )}
+
+                {/* VQActFlow: real-hardware demonstrations */}
+                {isVQ && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.5, duration: 0.5 }}
+                        className="mb-10 pt-8 border-t border-white/10"
+                    >
+                        <p className="text-xs text-neutral-500 uppercase tracking-widest font-mono mb-4">
+                            Demonstrations
+                        </p>
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+                            {clipGroups.map((group) => (
+                                <ClipGallery key={group.name} group={group} />
+                            ))}
+                        </div>
+                        <a
+                            href={VQ_ARXIV}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-sm text-primary hover:underline font-mono"
+                        >
+                            Read the paper on arXiv →
+                        </a>
                     </motion.div>
                 )}
 

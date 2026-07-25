@@ -18,7 +18,7 @@ interface Project {
 const projectData = projectDataRaw as Project[];
 
 const ProjectGrid = () => {
-    const [filter, setFilter] = useState('All');
+    const [filter, setFilter] = useState('Robotics');
     const navigate = useNavigate();
 
     // Extract unique categories

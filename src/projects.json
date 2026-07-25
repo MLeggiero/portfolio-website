@@ -1,139 +1,22 @@
 [
   {
-    "id": 1,
-    "slug": "peace-corps",
-    "title": "Peace Corps Kenya",
-    "category": "Service",
-    "role": "STEM Education Teacher",
-    "period": "Oct 2022 – Nov 2024",
-    "image": "https://res.cloudinary.com/dzbaeix94/image/upload/v1767977975/WhatsApp_Image_2023-11-20_at_12.33.43_cc04dd1c_ghwkh2.jpg",
-    "description": "Served as a STEM Education Teacher in rural Kenya, leading community development projects and teaching Math/Physics.",
-    "sections": [
-      {
-        "content": "Teaching Math and Physics in Kakamega county secondary school as a Peace Corps Volunteer. My host school mostly comprises students from rural areas and humble backgrounds. A volunteer was requested by the Kakamega host community specifically to aid in teaching; however, I additionally took on side projects with my fellow teachers, students, and other community stakeholders."
-      },
-      {
-        "heading": "Key Contributions",
-        "bullets": [
-          "Prioritized integration into the host community — learned intermediate Swahili and adopted effective methods for classroom management, teaching with extremely limited resources, grant writing, and local lifestyle skills.",
-          "Utilized the school's previously untouched projector (when electricity was available) and mobile phones to bring technology literacy and engagement, and led meetings with fellow teachers on technology use.",
-          "Started the 'Science and Engineering Club' to encourage critical thinking and practical skill-building with projects like the egg-drop challenge and a DIY anemometer.",
-          "Created a 'Climate Smart Kitchen Garden' demonstration plot to encourage improved farming practices and diversified household nutrition, more resilient during increasingly common droughts.",
-          "Conducted formal needs analysis with school and community leaders, applied for and received a USAID Small Project Assistance grant, and coordinated construction of a solar well pump, water tower, and distribution pipes serving over 2,000 individuals."
-        ]
-      }
-    ],
-    "tags": [
-      "Humanitarian Engineering",
-      "Project Management",
-      "Grant Writing",
-      "STEM Education",
-      "Community Development"
-    ],
-    "links": {},
-    "gallery": []
-  },
-  {
-    "id": 2,
-    "slug": "capstone",
-    "title": "Keep The Beep",
-    "category": "Engineering",
-    "role": "Senior Capstone Design Team",
-    "period": "Jan 2021 – May 2022",
-    "image": "https://res.cloudinary.com/dzbaeix94/image/upload/v1767977973/Better_Case_Rendering_lo1esl.png",
-    "description": "Designed a ruggedized soft housing for GE Carescape physiological monitors to prevent damage during high-pressure patient transport.",
-    "sections": [
-      {
-        "heading": "The Problem",
-        "content": "Emory University Hospital relies on the GE Carescape B450 physiological monitor, however it is frequently damaged during high-pressure patient transport due to rough handling and loose mounting on hospital beds."
-      },
-      {
-        "heading": "The Solution",
-        "content": "Create a soft protective housing designed for manufacture and tested for use in Emory Hospital Midtown. The case must protect all monitor regions from impact, be chemically inert, and easily sanitized."
-      },
-      {
-        "heading": "Key Contributions",
-        "bullets": [
-          "Used FaroArm Quantum 3D Scanner and 3D printing to enable rapid design and prototyping — quickly imported geometry into SolidWorks CAD and Fusion360 for fast and accurate modeling.",
-          "Conducted impact analysis to optimize design parameters — created custom testing apparatus using a parallel configuration of strain gauge pads and Adafruit Metro M4 microcontroller.",
-          "Led the prototype manufacturing. Design is modular, chemically inert, completely recyclable or down-cyclable, and highly impact resistant. Hardware is nylon, soft body parts TPU, interior connectors PLA, front door cover polycarbonate, and front lock a neodymium magnet.",
-          "Conducted manufacturing feasibility study and plan for quick deployment."
-        ]
-      },
-      {
-        "heading": "Recognition",
-        "content": "Our project won first place in Georgia Tech's Mechanical Engineering Summer Capstone Exposition."
-      }
-    ],
-    "tags": [
-      "SolidWorks",
-      "Fusion360",
-      "3D Scanning (FaroArm)",
-      "Rapid Prototyping",
-      "TPU/PLA 3D Printing",
-      "Product Design"
-    ],
-    "links": {},
-    "gallery": []
-  },
-  {
-    "id": 3,
-    "slug": "ewb-gt",
-    "title": "EWB-GT: Malawi Project",
-    "category": "Service",
-    "role": "Technical Lead (2021–2022) / Project Lead (2022)",
-    "period": "Aug 2020 – May 2022",
-    "image": "https://res.cloudinary.com/dzbaeix94/image/upload/v1767977973/unnamed_wpbtxu.jpg",
-    "description": "Led the design and implementation of sanitation latrines and handwashing stations for Mpitilira primary school in Malawi.",
-    "sections": [
-      {
-        "heading": "The Problem",
-        "content": "Mpitilira primary school in Eastern Malawi lacked sufficient sanitation infrastructure to accommodate the growing school population, and was suffering from disease outbreaks due to open defecation."
-      },
-      {
-        "heading": "The Solution",
-        "content": "Designed and implemented ventilated double pit latrine blocks for the school alongside handwashing stations to accommodate the existing and future school population. Assessment, designing, construction, and quality control were conducted remotely due to the ongoing COVID-19 pandemic."
-      },
-      {
-        "heading": "Key Contributions",
-        "bullets": [
-          "Completed a fully remote sanitation infrastructure upgrade during the COVID-19 pandemic.",
-          "Researched latrine design and iterated features using a decision matrix and community feedback. Multiple alternatives were provided for community input.",
-          "Conducted manual structural calculations with additional safety checks given soil pressure and environmental factors.",
-          "Used Fusion 360 and AutoCAD for 3D design and dimensioned drawings for use by contractors.",
-          "Coordinated with contractors for materials acquisition, construction, and quality control. Under my time, two student latrine blocks (8 toilets) were constructed and the staff latrine block design was finalized."
-        ]
-      }
-    ],
-    "tags": [
-      "EWB",
-      "Civil Engineering",
-      "Remote Project Management",
-      "Sanitation Design",
-      "Fusion 360",
-      "AutoCAD"
-    ],
-    "links": {},
-    "gallery": []
-  },
-  {
     "id": 10,
     "slug": "vqactflow",
     "title": "VQActFlow: Action Mode Steering",
     "category": "Robotics",
-    "role": "Research Project — Robot Learning",
-    "period": "2025 – Present",
+    "role": "Robot Learning Research",
+    "period": "Jan 2026 – Present",
     "image": "https://vqactflow.github.io/vqactflow/assets/videos/posters/g1_ball.jpg",
-    "description": "Vector-quantized action generation for multi-task robot manipulation — steering which task a policy commits to at inference time, validated on a Unitree G1 humanoid, a bimanual platform, and LIBERO in simulation.",
+    "description": "Vector-quantized action generation for multi-task robot manipulation that steers which task a policy commits to at inference time, validated on a Unitree G1 humanoid, a bimanual platform, and LIBERO in simulation.",
     "sections": [
       {
-        "content": "In multi-task manipulation, a policy has to commit to the action mode that matches the current instruction — pick the wrong mode and the robot does the wrong task. VQActFlow tokenizes action chunks into a discrete codebook and generates the codes with Variational Flow Matching, so it carries a distribution over action modes through every step of generation. At inference time, classifier-free guidance and a learned codebook critic reshape that distribution — neither one retrains the policy."
+        "content": "In multi-task manipulation, a policy has to commit to the action mode that matches the current instruction. Pick the wrong mode and the robot does the wrong task. VQActFlow tokenizes action chunks into a discrete codebook and generates the codes with Variational Flow Matching, so it carries a distribution over action modes through every step of generation. At inference time, classifier-free guidance and a learned codebook critic reshape that distribution, and neither one retrains the policy."
       },
       {
         "heading": "Results",
         "bullets": [
           "81.0% peak success on LIBERO-Goal (w=4), vs. 61.5% for the closest discrete baseline.",
-          "80.5% success on LIBERO-90 with CFG and the codebook critic — best of every baseline run.",
+          "80.5% success on LIBERO-90 with CFG and the codebook critic, the best of every baseline run.",
           "57.5% success on Unitree G1 humanoid hardware at w=6, up from 23.8% with no guidance.",
           "77.5% average success on an ALOHA-style bimanual platform with CFG and the critic together."
         ]
@@ -143,9 +26,13 @@
         "bullets": [
           "Designed a VQ-VAE action tokenizer that compresses action chunks into a discrete codebook of reusable motion primitives.",
           "Trained a Variational Flow Matching generator over codebook indices, preserving a full distribution over action modes during generation.",
-          "Developed inference-time steering with classifier-free guidance and a learned codebook critic — no policy retraining required.",
+          "Developed inference-time steering with classifier-free guidance and a learned codebook critic, with no policy retraining required.",
           "Validated on real hardware: Unitree G1 humanoid and ALOHA-style bimanual manipulation, plus LIBERO benchmarks in simulation."
         ]
+      },
+      {
+        "heading": "Publication",
+        "content": "Zhigen Zhao, Mark Leggiero, Yipu Chen, Haoran Liu, Yifan Wu, Huishu Xue, Sirui Zhan, Ye Zhao, \"VQActFlow: Vector-Quantized Action Mode Steering for Multi-Task Robot Manipulation,\" arXiv:2606.21600 (2026). Second of eight authors."
       }
     ],
     "tags": [
@@ -159,22 +46,36 @@
       "PyTorch"
     ],
     "links": {
-      "demo": "https://vqactflow.github.io/vqactflow/"
+      "demo": "https://vqactflow.github.io/vqactflow/",
+      "paper": "https://arxiv.org/abs/2606.21600"
     },
-    "gallery": []
+    "gallery": [
+      {
+        "src": "https://vqactflow.github.io/vqactflow/assets/figures/fig1_framework.png",
+        "caption": "Framework: a VQ-VAE tokenizes action chunks into a discrete codebook; a Variational Flow Matching policy generates code sequences while keeping logits over the full codebook at every step, and inference-time CFG plus a learned codebook critic steer mode commitment."
+      },
+      {
+        "src": "https://vqactflow.github.io/vqactflow/assets/videos/posters/bimanual_sweep.jpg",
+        "caption": "ALOHA-style bimanual platform performing contact-rich sweeping and insertion from a single multi-task policy."
+      },
+      {
+        "src": "https://vqactflow.github.io/vqactflow/assets/figures/fig2_cfg_sweep.png",
+        "caption": "Classifier-free guidance weight sweep on LIBERO-Goal, showing how mode-steering strength trades off against success."
+      }
+    ]
   },
   {
     "id": 4,
     "slug": "mimic-robot-arm",
     "title": "Mimic: 3-Axis Robot Arm",
     "category": "Robotics",
-    "role": "Personal Project — Design, Fabrication & Controls",
+    "role": "Personal Project: Design, Fabrication & Controls",
     "period": "2025 – Present",
     "image": "/images/mimic-robot-arm.png",
-    "description": "A 3-axis brushless DC robot arm using ODrive motor controllers, custom KiCAD PCB design, and CAN bus communication — built from scratch for learning industrial motion control.",
+    "description": "A 3-axis brushless DC robot arm using ODrive motor controllers, custom KiCAD PCB design, and CAN bus communication, built to learn industrial motion control.",
     "sections": [
       {
-        "content": "Mimic is a personal project to design and build a capable robot arm from the ground up, using industrial-grade components rather than hobby servos. The goal is to learn brushless motor control, power electronics, encoder feedback, and real-time communication protocols used in professional robotic systems."
+        "content": "Mimic is a personal project to design and build a capable robot arm using industrial-grade components rather than hobby servos. The goal is to learn brushless motor control, power electronics, encoder feedback, and real-time communication protocols used in professional robotic systems."
       },
       {
         "heading": "System Architecture",
@@ -211,52 +112,17 @@
     "video": "https://drive.google.com/file/d/147hkyyvl6r338-8Wq39_mcBeDfMEDEUs/preview"
   },
   {
-    "id": 8,
-    "slug": "micro-spot",
-    "title": "Micro-Spot Quadruped Robot",
-    "category": "Robotics",
-    "role": "Personal Project",
-    "period": "2021 – Present",
-    "image": "https://res.cloudinary.com/dzbaeix94/image/upload/v1767977999/IMG_20211006_191242_01_jenhmb.jpg",
-    "description": "A fully 3D-printed 12-DoF quadruped robot with custom inverse kinematics, controlled via ROS2 and Raspberry Pi.",
-    "sections": [
-      {
-        "content": "Fully 3D-printed quadruped in development using 12 servo actuators and ESP32 microcontroller. Personally developed inverse kinematic code and algorithm for limb movements given desired end-effector position."
-      },
-      {
-        "heading": "Key Contributions",
-        "bullets": [
-          "Learned inverse kinematic techniques to control basic coordinated limb movements — standing, sitting, pan, tilt, and roll functions.",
-          "Created an iterative algorithm for solving servo angles for correct end-effector spatial placement with minimal travel distance.",
-          "Wrote end-effector optimal movement software in Python for use as a ROS2 service.",
-          "Currently researching quadruped gait for walking using reinforcement learning on a Raspberry Pi 4, and redesigning leg limbs for more natural movements."
-        ]
-      }
-    ],
-    "tags": [
-      "Robotics",
-      "Inverse Kinematics",
-      "ROS2",
-      "ESP32",
-      "Python",
-      "3D Printing",
-      "Raspberry Pi"
-    ],
-    "links": {},
-    "gallery": []
-  },
-  {
     "id": 9,
     "slug": "macgyver-bot",
     "title": "MacGyver Bot: Self-Balancing Robot",
     "category": "Robotics",
-    "role": "Personal Project — Built in Rural Kenya",
+    "role": "Personal Project, Built in Rural Kenya",
     "period": "2023",
     "image": "/images/macgyver-bot.jpg",
     "description": "A PID-controlled two-wheeled self-balancing robot built using only materials accessible in a rural Kenyan village.",
     "sections": [
       {
-        "content": "Two-wheeled self-balancing robot built using only parts available from Kenyan companies serving rural villages — hobby-grade geared motors, 18650 lipo batteries, H-bridge motor controller, and ESP32 microcontroller."
+        "content": "Two-wheeled self-balancing robot built using only parts available from Kenyan companies serving rural villages: hobby-grade geared motors, 18650 lipo batteries, an H-bridge motor controller, and an ESP32 microcontroller."
       },
       {
         "heading": "Key Contributions",
@@ -279,11 +145,131 @@
     "gallery": []
   },
   {
+    "id": 8,
+    "slug": "micro-spot",
+    "title": "Micro-Spot Quadruped Robot",
+    "category": "Robotics",
+    "role": "Personal Project",
+    "period": "2021 – Present",
+    "image": "https://res.cloudinary.com/dzbaeix94/image/upload/v1767977999/IMG_20211006_191242_01_jenhmb.jpg",
+    "description": "A fully 3D-printed 12-DoF quadruped robot with custom inverse kinematics, controlled via ROS2 and Raspberry Pi.",
+    "sections": [
+      {
+        "content": "Fully 3D-printed quadruped in development using 12 servo actuators and ESP32 microcontroller. Personally developed inverse kinematic code and algorithm for limb movements given desired end-effector position."
+      },
+      {
+        "heading": "Key Contributions",
+        "bullets": [
+          "Learned inverse kinematic techniques to control basic coordinated limb movements: standing, sitting, pan, tilt, and roll.",
+          "Created an iterative algorithm for solving servo angles for correct end-effector spatial placement with minimal travel distance.",
+          "Wrote end-effector optimal movement software in Python for use as a ROS2 service.",
+          "Currently researching quadruped gait for walking using reinforcement learning on a Raspberry Pi 4, and redesigning leg limbs for more natural movements."
+        ]
+      }
+    ],
+    "tags": [
+      "Robotics",
+      "Inverse Kinematics",
+      "ROS2",
+      "ESP32",
+      "Python",
+      "3D Printing",
+      "Raspberry Pi"
+    ],
+    "links": {},
+    "gallery": []
+  },
+  {
+    "id": 7,
+    "slug": "smart-sea-level-sensors",
+    "title": "SMART Sea Level Sensors",
+    "category": "Research",
+    "role": "Engineering Intern, Environmental Sensor Development",
+    "period": "2021",
+    "image": "/images/sea-level-map.png",
+    "description": "Incorporated rainfall sensors into an IoT mesh network of water-level sensors used by climate researchers and disaster relief managers in Chatham County, Georgia.",
+    "sections": [
+      {
+        "heading": "The Problem",
+        "content": "The Smart Sea Level Sensors project operates a mesh network of water-level sensors in Chatham county, Georgia, used by climate researchers and disaster relief managers. To provide more comprehensive environmental data, rainfall sensors needed to be incorporated into the network."
+      },
+      {
+        "heading": "The Solution",
+        "content": "Add high-grade rainfall sensors using the existing LoRaWAN IoT network hardware, and ensure the system is battery powered, running for at least 6 months without replacement. This greatly improves the ability of county management to monitor and predict heavy storms and floods."
+      },
+      {
+        "heading": "Key Contributions",
+        "bullets": [
+          "Conducted market analysis for optimal rain gauge sensor given price, power requirements, accuracy, and measurement resolution, and selected the TB4 tipping-bucket rain gauge.",
+          "Developed a low-power algorithm that records rainfall on triggered interrupt events using C/C++ on the GaTech Environmental Sensor ESP-32 development board.",
+          "Used LoRaWAN small packet communication to relay data to an IoT server.",
+          "Currently 12+ rain gauges are sending continuous rainfall measurements to the SMART Sea Level Sensors dashboard."
+        ]
+      }
+    ],
+    "tags": [
+      "IoT",
+      "LoRaWAN",
+      "ESP32",
+      "C/C++",
+      "Environmental Sensors",
+      "Low-Power Systems"
+    ],
+    "links": {
+      "demo": "https://dashboard.sealevelsensors.org/",
+      "paper": "https://www.sealevelsensors.org/blog/rain-gauges-dashboards-and-cellular-capable-sensors-my-summer-on-the-ssls-team/"
+    },
+    "gallery": []
+  },
+  {
+    "id": 6,
+    "slug": "brookhaven",
+    "title": "ERNEST: Sample Exchange Robot",
+    "category": "Research",
+    "role": "Controls & Robotics Intern",
+    "period": "May – Aug 2019",
+    "image": "/images/ernest-brookhaven.jpg",
+    "description": "Developed a highly precise robotic sample exchange system using a 3-axis piezo-electric manipulator for the Hard X-Ray Nanoprobe at Brookhaven National Laboratory.",
+    "sections": [
+      {
+        "heading": "The Problem",
+        "content": "The sample exchange process at the Hard X-Ray Nanoprobe (HXN) beamline at the National Synchrotron Light Source-II (NSLS-II) in Brookhaven National Laboratory requires breaking the vacuum with subsequent thermalization of the microscope's components which may take up to a few hours."
+      },
+      {
+        "heading": "The Solution",
+        "content": "To increase efficiency and throughput of the HXN end station, develop an internal automatic sample exchange system, the Exchange Robot for the Nanoprobe Experimental Station (ERNEST), that enables a quick and reliable sample exchange process."
+      },
+      {
+        "heading": "Key Contributions",
+        "bullets": [
+          "Performed system calibration for strain gauges and linear encoders for all axes with high-accuracy calibration and position repeatability testing.",
+          "Created animation to preview movements using Fusion360 simulation.",
+          "Designed the sample pegs and environment for manufacturing in the lab machine shop.",
+          "Wrote the control algorithm in LabVIEW with accompanying GUI. The piezo-electric linear actuators achieved less than 10 nanometer precision in all movements.",
+          "Used force-sensing and placement for all actions to confirm positions.",
+          "Selected to give a poster presentation and oral presentation to laboratory staff."
+        ]
+      }
+    ],
+    "tags": [
+      "Robotics",
+      "LabVIEW",
+      "Piezo-Electric Actuators",
+      "Precision Controls",
+      "Fusion360",
+      "Calibration"
+    ],
+    "links": {
+      "demo": "https://drive.google.com/drive/folders/1lciVKTs6yfjmWy5copqRsNOv2ojnBqKq?usp=drive_link"
+    },
+    "gallery": []
+  },
+  {
     "id": 5,
     "slug": "vampire",
     "title": "VAMPIRE: Fast Radiative Heat Analysis",
     "category": "Research",
-    "role": "Student Researcher — Vogel Lab, University of North Georgia",
+    "role": "Student Researcher, Vogel Lab, University of North Georgia",
     "period": "Jan 2019 – Aug 2021",
     "image": "https://res.cloudinary.com/dzbaeix94/image/upload/v1767977973/unnamed_2_xpxxjv.png",
     "description": "Developed an end-to-end method for estimating the radiative heat loss from structures in the built-environment using drone-based thermal imaging.",
@@ -326,88 +312,120 @@
     "gallery": []
   },
   {
-    "id": 6,
-    "slug": "brookhaven",
-    "title": "ERNEST: Sample Exchange Robot",
-    "category": "Research",
-    "role": "Controls & Robotics Intern",
-    "period": "May – Aug 2019",
-    "image": "/images/ernest-brookhaven.jpg",
-    "description": "Developed a highly precise robotic sample exchange system using a 3-axis piezo-electric manipulator for the Hard X-Ray Nanoprobe at Brookhaven National Laboratory.",
+    "id": 2,
+    "slug": "capstone",
+    "title": "Keep The Beep",
+    "category": "Engineering",
+    "role": "Senior Capstone Design Team",
+    "period": "Jan 2021 – May 2022",
+    "image": "https://res.cloudinary.com/dzbaeix94/image/upload/v1767977973/Better_Case_Rendering_lo1esl.png",
+    "description": "Designed a ruggedized soft housing for GE Carescape physiological monitors to prevent damage during high-pressure patient transport.",
     "sections": [
       {
         "heading": "The Problem",
-        "content": "The sample exchange process at the Hard X-Ray Nanoprobe (HXN) beamline at the National Synchrotron Light Source-II (NSLS-II) in Brookhaven National Laboratory requires breaking the vacuum with subsequent thermalization of the microscope's components which may take up to a few hours."
+        "content": "Emory University Hospital relies on the GE Carescape B450 physiological monitor, however it is frequently damaged during high-pressure patient transport due to rough handling and loose mounting on hospital beds."
       },
       {
         "heading": "The Solution",
-        "content": "To increase efficiency and throughput of the HXN end station, develop an internal automatic sample exchange system — the Exchange Robot for the Nanoprobe Experimental Station (ERNEST) — that enables a quick and reliable sample exchange process."
+        "content": "Create a soft protective housing designed for manufacture and tested for use in Emory Hospital Midtown. The case must protect all monitor regions from impact, be chemically inert, and easily sanitized."
       },
       {
         "heading": "Key Contributions",
         "bullets": [
-          "Performed system calibration for strain gauges and linear encoders for all axes with high-accuracy calibration and position repeatability testing.",
-          "Created animation to preview movements using Fusion360 simulation.",
-          "Designed the sample pegs and environment for manufacturing in the lab machine shop.",
-          "Wrote the control algorithm in LabVIEW with accompanying GUI — piezo-electric linear actuators achieved less than 10 nanometer precision in all movements.",
-          "Used force-sensing and placement for all actions to confirm positions.",
-          "Selected to give a poster presentation and oral presentation to laboratory staff."
+          "Used FaroArm Quantum 3D Scanner and 3D printing to enable rapid design and prototyping, quickly importing geometry into SolidWorks CAD and Fusion360 for fast, accurate modeling.",
+          "Conducted impact analysis to optimize design parameters, building a custom testing apparatus using a parallel configuration of strain gauge pads and an Adafruit Metro M4 microcontroller.",
+          "Led the prototype manufacturing. Design is modular, chemically inert, completely recyclable or down-cyclable, and highly impact resistant. Hardware is nylon, soft body parts TPU, interior connectors PLA, front door cover polycarbonate, and front lock a neodymium magnet.",
+          "Conducted manufacturing feasibility study and plan for quick deployment."
         ]
+      },
+      {
+        "heading": "Recognition",
+        "content": "Our project won first place in Georgia Tech's Mechanical Engineering Summer Capstone Exposition."
       }
     ],
     "tags": [
-      "Robotics",
-      "LabVIEW",
-      "Piezo-Electric Actuators",
-      "Precision Controls",
+      "SolidWorks",
       "Fusion360",
-      "Calibration"
+      "3D Scanning (FaroArm)",
+      "Rapid Prototyping",
+      "TPU/PLA 3D Printing",
+      "Product Design"
     ],
-    "links": {
-      "demo": "https://drive.google.com/drive/folders/1lciVKTs6yfjmWy5copqRsNOv2ojnBqKq?usp=drive_link"
-    },
+    "links": {},
     "gallery": []
   },
   {
-    "id": 7,
-    "slug": "smart-sea-level-sensors",
-    "title": "SMART Sea Level Sensors",
-    "category": "Research",
-    "role": "Engineering Intern — Environmental Sensor Development",
-    "period": "2021",
-    "image": "/images/sea-level-map.png",
-    "description": "Incorporated rainfall sensors into an IoT mesh network of water-level sensors used by climate researchers and disaster relief managers in Chatham County, Georgia.",
+    "id": 1,
+    "slug": "peace-corps",
+    "title": "Peace Corps Kenya",
+    "category": "Service",
+    "role": "STEM Education Teacher",
+    "period": "Oct 2022 – Nov 2024",
+    "image": "https://res.cloudinary.com/dzbaeix94/image/upload/v1767977975/WhatsApp_Image_2023-11-20_at_12.33.43_cc04dd1c_ghwkh2.jpg",
+    "description": "Served as a STEM Education Teacher in rural Kenya, leading community development projects and teaching Math/Physics.",
     "sections": [
       {
-        "heading": "The Problem",
-        "content": "The Smart Sea Level Sensors project operates a mesh network of water-level sensors in Chatham county, Georgia, used by climate researchers and disaster relief managers. To provide more comprehensive environmental data, rainfall sensors needed to be incorporated into the network."
-      },
-      {
-        "heading": "The Solution",
-        "content": "Add high-grade rainfall sensors using the existing LoRaWAN IoT network hardware, and ensure the system is battery powered, running for at least 6 months without replacement. This greatly improves the ability of county management to monitor and predict heavy storms and floods."
+        "content": "Teaching Math and Physics in Kakamega county secondary school as a Peace Corps Volunteer. My host school mostly comprises students from rural areas and humble backgrounds. A volunteer was requested by the Kakamega host community specifically to aid in teaching; however, I additionally took on side projects with my fellow teachers, students, and other community stakeholders."
       },
       {
         "heading": "Key Contributions",
         "bullets": [
-          "Conducted market analysis for optimal rain gauge sensor given price, power requirements, accuracy, and measurement resolution — selected the TB4 tipping-bucket rain gauge.",
-          "Developed a low-power algorithm that records rainfall on triggered interrupt events using C/C++ on the GaTech Environmental Sensor ESP-32 development board.",
-          "Used LoRaWAN small packet communication to relay data to an IoT server.",
-          "Currently 12+ rain gauges are sending continuous rainfall measurements to the SMART Sea Level Sensors dashboard."
+          "Prioritized integration into the host community: learned intermediate Swahili and adopted effective methods for classroom management, teaching with extremely limited resources, grant writing, and local lifestyle skills.",
+          "Utilized the school's previously untouched projector (when electricity was available) and mobile phones to bring technology literacy and engagement, and led meetings with fellow teachers on technology use.",
+          "Started the 'Science and Engineering Club' to encourage critical thinking and practical skill-building with projects like the egg-drop challenge and a DIY anemometer.",
+          "Created a 'Climate Smart Kitchen Garden' demonstration plot to encourage improved farming practices and diversified household nutrition, more resilient during increasingly common droughts.",
+          "Conducted formal needs analysis with school and community leaders, applied for and received a USAID Small Project Assistance grant, and coordinated construction of a solar well pump, water tower, and distribution pipes serving over 2,000 individuals."
         ]
       }
     ],
     "tags": [
-      "IoT",
-      "LoRaWAN",
-      "ESP32",
-      "C/C++",
-      "Environmental Sensors",
-      "Low-Power Systems"
+      "Humanitarian Engineering",
+      "Project Management",
+      "Grant Writing",
+      "STEM Education",
+      "Community Development"
     ],
-    "links": {
-      "demo": "https://dashboard.sealevelsensors.org/",
-      "paper": "https://www.sealevelsensors.org/blog/rain-gauges-dashboards-and-cellular-capable-sensors-my-summer-on-the-ssls-team/"
-    },
+    "links": {},
+    "gallery": []
+  },
+  {
+    "id": 3,
+    "slug": "ewb-gt",
+    "title": "EWB-GT: Malawi Project",
+    "category": "Service",
+    "role": "Technical Lead (2021–2022) / Project Lead (2022)",
+    "period": "Aug 2020 – May 2022",
+    "image": "https://res.cloudinary.com/dzbaeix94/image/upload/v1767977973/unnamed_wpbtxu.jpg",
+    "description": "Led the design and implementation of sanitation latrines and handwashing stations for Mpitilira primary school in Malawi.",
+    "sections": [
+      {
+        "heading": "The Problem",
+        "content": "Mpitilira primary school in Eastern Malawi lacked sufficient sanitation infrastructure to accommodate the growing school population, and was suffering from disease outbreaks due to open defecation."
+      },
+      {
+        "heading": "The Solution",
+        "content": "Designed and implemented ventilated double pit latrine blocks for the school alongside handwashing stations to accommodate the existing and future school population. Assessment, designing, construction, and quality control were conducted remotely due to the ongoing COVID-19 pandemic."
+      },
+      {
+        "heading": "Key Contributions",
+        "bullets": [
+          "Completed a fully remote sanitation infrastructure upgrade during the COVID-19 pandemic.",
+          "Researched latrine design and iterated features using a decision matrix and community feedback. Multiple alternatives were provided for community input.",
+          "Conducted manual structural calculations with additional safety checks given soil pressure and environmental factors.",
+          "Used Fusion 360 and AutoCAD for 3D design and dimensioned drawings for use by contractors.",
+          "Coordinated with contractors for materials acquisition, construction, and quality control. Under my time, two student latrine blocks (8 toilets) were constructed and the staff latrine block design was finalized."
+        ]
+      }
+    ],
+    "tags": [
+      "EWB",
+      "Civil Engineering",
+      "Remote Project Management",
+      "Sanitation Design",
+      "Fusion 360",
+      "AutoCAD"
+    ],
+    "links": {},
     "gallery": []
   }
 ]

@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:vqactflow.github.io)",
+      "Bash(wsl -e bash -lc 'cd ~/portfolio-website && node -v && npx tsc -b --noEmit 2>&1 | head -50; echo \"EXIT:${PIPESTATUS[0]}\"')",
+      "Bash(wsl -e bash -c 'export NVM_DIR=\"$HOME/.nvm\"; [ -s \"$NVM_DIR/nvm.sh\" ] && . \"$NVM_DIR/nvm.sh\"; cd ~/portfolio-website && node -v && npx tsc -b --noEmit 2>&1 | head -60; echo \"EXIT:${PIPESTATUS[0]}\"')",
+      "Bash(wsl -e bash -c 'export NVM_DIR=\"$HOME/.nvm\"; [ -s \"$NVM_DIR/nvm.sh\" ] && . \"$NVM_DIR/nvm.sh\"; cd ~/portfolio-website && npx vite build 2>&1 | tail -25; echo \"EXIT:${PIPESTATUS[0]}\"')",
+      "Bash(wsl -e bash -c 'export NVM_DIR=\"$HOME/.nvm\"; [ -s \"$NVM_DIR/nvm.sh\" ] && . \"$NVM_DIR/nvm.sh\"; cd ~/portfolio-website && npx tsc -b --noEmit 2>&1 | head -40; echo \"TSC_EXIT:${PIPESTATUS[0]}\"; npx vite build 2>&1 | tail -12; echo \"VITE_EXIT:${PIPESTATUS[0]}\"')"
+    ]
+  }
+}

@@ -77,7 +77,7 @@ const AboutPage = () => {
                         </p>
                         <p>
                             My journey to combine engineering practice with global development
-                            projects — often called <span className="text-white font-medium">Humanitarian Engineering</span> —
+                            projects (often called <span className="text-white font-medium">Humanitarian Engineering</span>)
                             culminated in joining the Peace Corps Kenya in 2022 as a volunteer STEM
                             Education Teacher. I taught Math and Physics in a Kakamega county high
                             school and worked on school programs and infrastructure. I also

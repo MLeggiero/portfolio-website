@@ -125,7 +125,7 @@ const Activity = () => {
                     <h2 className="text-4xl md:text-5xl font-heading font-bold mb-6">Activity</h2>
                     <div className="h-1 w-20 bg-primary mx-auto mb-8" />
                     <p className="text-neutral-400 text-base max-w-xl mx-auto leading-relaxed font-light">
-                        Building in public — from embedded firmware and robotics to reinforcement
+                        Building in public, from embedded firmware and robotics to reinforcement
                         learning models and datasets.
                     </p>
                 </motion.div>
