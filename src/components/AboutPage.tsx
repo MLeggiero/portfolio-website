@@ -68,25 +68,29 @@ const AboutPage = () => {
                         className="space-y-6 text-neutral-400 leading-relaxed text-base md:text-lg"
                     >
                         <p>
-                            Hi, I'm Mark! I'm from Oviedo, Florida, and have lived and journeyed
-                            throughout the southeastern US. I have always been drawn to technical
-                            projects, which paired with my education in Physics and Mechanical
-                            Engineering. However at home, my large adoptive family kept me
-                            globally-minded, which led me to focus on community development and
-                            poverty alleviation.
+                            Hi, I'm Mark and I'm from Oviedo, Florida. As an aspiring{' '}
+                            <span className="text-white font-medium">Humanitarian Engineer</span>, I
+                            combine my technical background in Physics and Mechanical Engineering with
+                            my experience in global development to create better solutions to
+                            humanity's problems. From working in a national lab to developing technical
+                            programs and infrastructure as a volunteer teacher in Kenya, my focus has
+                            consistently been human-centered technology.
                         </p>
                         <p>
-                            My journey to combine engineering practice with global development
-                            projects (often called <span className="text-white font-medium">Humanitarian Engineering</span>)
-                            culminated in joining the Peace Corps Kenya in 2022 as a volunteer STEM
-                            Education Teacher. I taught Math and Physics in a Kakamega county high
-                            school and worked on school programs and infrastructure. I also
-                            experimented with sustainable agriculture and raised Guinea fowl (a
-                            beautiful, and loud, African bird).
+                            Currently, I am pursuing my Masters in Mechanical Engineering at the
+                            Georgia Institute of Technology while also conducting research in the
+                            LIDAR Lab. In Professor Ye Zhao's group, I develop robot learning methods
+                            that teach humanoid and bimanual robots to carry out everyday manipulation
+                            tasks from plain-language instructions, so that machines can work safely and
+                            usefully in the cluttered, unstructured spaces where people actually live
+                            and work. I see this line of work extending to assistive and service robots
+                            that support caregiving, disaster response, and labor in under-resourced
+                            communities like the ones I served in Kenya, and I hope to build a research
+                            career aimed squarely at that kind of human-centered robotics.
                         </p>
                         <p>
                             In my free time I enjoy hiking, biking, baking, and mechatronics/robotics
-                            projects.
+                            projects, while also planning one day to start a sustainable farm.
                         </p>
                     </motion.div>
                 </div>
