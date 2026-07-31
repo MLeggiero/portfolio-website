@@ -11,6 +11,7 @@ interface Project {
     category: string;
     image: string;
     description: string;
+    date: number;
     tags?: string[];
     links: { github?: string; demo?: string; paper?: string };
 }
@@ -24,9 +25,19 @@ const ProjectGrid = () => {
     // Extract unique categories
     const categories = ['All', ...new Set(projectData.map(p => p.category))];
 
-    const filteredProjects = filter === 'All'
-        ? projectData
-        : projectData.filter(p => p.category === filter);
+    const isRobotics = (p: Project) => (p.tags?.includes('Robotics') ? 0 : 1);
+
+    const filteredProjects = (filter === 'All'
+        ? [...projectData]
+        : projectData.filter(p => p.category === filter)
+    ).sort((a, b) => {
+        // In the default view, float all Robotics projects to the top,
+        // then order everything newest-first within each group.
+        if (filter === 'All' && isRobotics(a) !== isRobotics(b)) {
+            return isRobotics(a) - isRobotics(b);
+        }
+        return b.date - a.date;
+    });
 
     return (
         <section id="projects" className="py-24 bg-background">

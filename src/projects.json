@@ -2,6 +2,7 @@
   {
     "id": 1,
     "slug": "peace-corps",
+    "date": 202210,
     "title": "Peace Corps Kenya",
     "category": "Service",
     "role": "STEM Education Teacher",
@@ -36,6 +37,7 @@
   {
     "id": 2,
     "slug": "capstone",
+    "date": 202101,
     "title": "Keep The Beep",
     "category": "Engineering",
     "role": "Senior Capstone Design Team",
@@ -79,6 +81,7 @@
   {
     "id": 3,
     "slug": "ewb-gt",
+    "date": 202008,
     "title": "EWB-GT: Malawi Project",
     "category": "Service",
     "role": "Technical Lead (2021–2022) / Project Lead (2022)",
@@ -119,6 +122,7 @@
   {
     "id": 10,
     "slug": "vqactflow",
+    "date": 202506,
     "title": "VQActFlow: Action Mode Steering",
     "category": "Robotics",
     "role": "Research Project — Robot Learning",
@@ -166,6 +170,7 @@
   {
     "id": 4,
     "slug": "mimic-robot-arm",
+    "date": 202501,
     "title": "Mimic: 3-Axis Robot Arm",
     "category": "Robotics",
     "role": "Personal Project — Design, Fabrication & Controls",
@@ -213,6 +218,7 @@
   {
     "id": 8,
     "slug": "micro-spot",
+    "date": 202101,
     "title": "Micro-Spot Quadruped Robot",
     "category": "Robotics",
     "role": "Personal Project",
@@ -248,6 +254,7 @@
   {
     "id": 9,
     "slug": "macgyver-bot",
+    "date": 202301,
     "title": "MacGyver Bot: Self-Balancing Robot",
     "category": "Robotics",
     "role": "Personal Project — Built in Rural Kenya",
@@ -281,6 +288,7 @@
   {
     "id": 5,
     "slug": "vampire",
+    "date": 201901,
     "title": "VAMPIRE: Fast Radiative Heat Analysis",
     "category": "Research",
     "role": "Student Researcher — Vogel Lab, University of North Georgia",
@@ -328,6 +336,7 @@
   {
     "id": 6,
     "slug": "brookhaven",
+    "date": 201905,
     "title": "ERNEST: Sample Exchange Robot",
     "category": "Research",
     "role": "Controls & Robotics Intern",
@@ -371,6 +380,7 @@
   {
     "id": 7,
     "slug": "smart-sea-level-sensors",
+    "date": 202101,
     "title": "SMART Sea Level Sensors",
     "category": "Research",
     "role": "Engineering Intern — Environmental Sensor Development",
