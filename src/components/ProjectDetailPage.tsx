@@ -4,6 +4,9 @@ import { ArrowLeft, ArrowRight, Github, ExternalLink, FileText, ChevronLeft } fr
 import projectData from '../projects.json';
 import ProjectGallery from './ProjectGallery';
 import ClipGallery from './ClipGallery';
+import StatTiles from './StatTiles';
+import BurgBotFace from './BurgBotFace';
+import BurgBotShowcase from './BurgBotShowcase';
 import { VQ_BASE, VQ_ARXIV, clipGroups } from '../data/vqactflowClips';
 
 interface Section {
@@ -30,6 +33,7 @@ interface Project {
     };
     gallery?: { src: string; caption?: string }[];
     video?: string;
+    stats?: { value: string; label: string }[];
 }
 
 const projects = projectData as Project[];
@@ -61,16 +65,27 @@ const ProjectDetailPage = () => {
         currentIndex < projects.length - 1 ? projects[currentIndex + 1] : null;
 
     const isVQ = project.slug === 'vqactflow';
+    const isBurgBot = project.slug === 'burg-bot';
 
     return (
         <div className="min-h-screen bg-background">
             {/* Hero Banner */}
             <div className="relative h-[50vh] min-h-[400px] overflow-hidden">
-                <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover"
-                />
+                {isBurgBot ? (
+                    // No still frame here: the robot's face is parametric, so it
+                    // renders live and stays crisp at any banner size. It sits in
+                    // the upper band, above the fade that exists to blend a photo
+                    // into the page and would otherwise dissolve the eyes.
+                    <div className="absolute inset-x-0 top-0 h-[68%] z-[1]">
+                        <BurgBotFace expression="neutral" />
+                    </div>
+                ) : (
+                    <img
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full h-full object-cover"
+                    />
+                )}
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
 
                 {/* Back button */}
@@ -84,7 +99,7 @@ const ProjectDetailPage = () => {
                 </button>
 
                 {/* Title overlay */}
-                <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12">
+                <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12 z-[2]">
                     <div className="container mx-auto max-w-4xl">
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
@@ -151,6 +166,20 @@ const ProjectDetailPage = () => {
                             <ExternalLink size={18} /> Visit Project Page
                         </span>
                     </motion.a>
+                )}
+
+                {isBurgBot && <BurgBotShowcase />}
+
+                {/* Headline numbers */}
+                {project.stats && project.stats.length > 0 && (
+                    <motion.div
+                        initial={{ opacity: 0, y: 15 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.18, duration: 0.5 }}
+                        className="mb-12"
+                    >
+                        <StatTiles stats={project.stats} />
+                    </motion.div>
                 )}
 
                 {/* Sections */}

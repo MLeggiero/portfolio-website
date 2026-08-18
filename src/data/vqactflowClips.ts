@@ -30,10 +30,3 @@ export const clipGroups: { name: string; blurb: string; clips: Clip[] }[] = [
         ],
     },
 ];
-
-export const stats = [
-    { value: '81.0%', label: 'LIBERO-Goal peak success, vs. 61.5% for the closest discrete baseline' },
-    { value: '80.5%', label: 'LIBERO-90 success with guidance and the codebook critic' },
-    { value: '57.5%', label: 'G1 humanoid success, up from 23.8% with no guidance' },
-    { value: '77.5%', label: 'Bimanual average success with CFG and the critic together' },
-];

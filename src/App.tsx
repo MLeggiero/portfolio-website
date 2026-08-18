@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import HeroInteractive from './components/HeroInteractive';
 import ProjectGrid from './components/ProjectGrid';
@@ -8,7 +8,6 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import ProjectDetailPage from './components/ProjectDetailPage';
 import AboutPage from './components/AboutPage';
-import RoboticsPage from './components/RoboticsPage';
 import ScrollToTop from './components/ScrollToTop';
 
 function HomePage() {
@@ -33,7 +32,8 @@ function AppContent() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
-        <Route path="/robotics" element={<RoboticsPage />} />
+        {/* The Robotics page is gone; its projects live in the main grid. */}
+        <Route path="/robotics" element={<Navigate to="/" replace />} />
         <Route path="/projects/:slug" element={<ProjectDetailPage />} />
       </Routes>
       {!isHome && <Footer />}
