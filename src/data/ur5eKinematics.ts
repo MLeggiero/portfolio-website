@@ -221,6 +221,50 @@ export function toolPosition(angles: JointAngles): Vec3 {
     return applyPoint(frames[frames.length - 1], TOOL_OFFSET);
 }
 
+/* ── keeping a requested point inside the workspace ───────────── */
+
+/** Closest the tool is asked to come to the shoulder. */
+const MIN_TRACK = 0.34;
+/** Furthest, kept off the boundary where the arm loses a degree of freedom. */
+const MAX_TRACK = 0.86;
+/** The arm cannot reach its own base axis, so targets are pushed out of it. */
+const MIN_PLANAR = 0.28;
+/** Nothing below this: the arm should never dive at the floor it stands on. */
+const MIN_Z = 0.06;
+
+/**
+ * Pull an arbitrary point into somewhere the arm can actually go.
+ *
+ * The cursor lands wherever it likes, including inside the base column and far
+ * outside the reachable shell. Rather than refusing those, the point is moved
+ * the shortest sensible way: distance from the shoulder is clamped along the
+ * same bearing, so the arm still points where the cursor is even when it
+ * cannot get there — which is what the old 2D arm did at full stretch.
+ */
+export function clampToWorkspace(p: Vec3): Vec3 {
+    let [x, y, z] = p;
+    z = Math.max(z, MIN_Z);
+
+    // Out of the base column first, keeping the bearing.
+    const planar = Math.hypot(x, y);
+    if (planar < MIN_PLANAR) {
+        const bearing = planar > 1e-6 ? Math.atan2(y, x) : 0;
+        x = Math.cos(bearing) * MIN_PLANAR;
+        y = Math.sin(bearing) * MIN_PLANAR;
+    }
+
+    // Then into the reachable shell, measured from the shoulder.
+    const dx = x, dy = y, dz = z - D1;
+    const dist = Math.hypot(dx, dy, dz);
+    if (dist > 1e-6) {
+        const scaled = clamp(dist, MIN_TRACK, MAX_TRACK) / dist;
+        x = dx * scaled;
+        y = dy * scaled;
+        z = D1 + dz * scaled;
+    }
+    return [x, y, Math.max(z, MIN_Z)];
+}
+
 /* ── inverse kinematics ───────────────────────────────────────── */
 
 export interface IKResult {

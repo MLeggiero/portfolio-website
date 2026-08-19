@@ -92,7 +92,8 @@
         "value": "77.5%",
         "label": "Bimanual average success with CFG and the critic together"
       }
-    ]
+    ],
+    "preview": "/images/previews/vqactflow.webp"
   },
   {
     "id": 11,
@@ -346,7 +347,8 @@
         "src": "https://res.cloudinary.com/dzbaeix94/image/upload/f_auto,q_auto,w_1400/v1767978006/Dog_movement_graph_zacyx8.png",
         "caption": "Limb-movement model: the commanded foot trajectories for one gait cycle, plotted in the body frame."
       }
-    ]
+    ],
+    "preview": "/images/previews/micro-spot.webp"
   },
   {
     "id": 7,
@@ -457,7 +459,8 @@
         "src": "/images/ernest/loading.webp",
         "caption": "Sample exchange, loading, at 2× speed. The pin is seated with a controlled downward force rather than dropped, which is what keeps placement repeatable."
       }
-    ]
+    ],
+    "preview": "/images/previews/ernest.webp"
   },
   {
     "id": 5,
@@ -589,7 +592,8 @@
         "src": "/images/keep-the-beep/expo-award.jpg",
         "caption": "The team at the Georgia Tech Capstone Design Expo, where Keep The Beep took the Mechanical Engineering award."
       }
-    ]
+    ],
+    "preview": "/images/previews/keep-the-beep.webp"
   },
   {
     "id": 1,

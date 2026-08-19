@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react';
 import { Github, ExternalLink, FileText } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -11,25 +12,68 @@ interface ProjectProps {
     title: string;
     category: string;
     image: string;
+    /** Animated clip shown in place of the still once the card is on screen. */
+    preview?: string;
     description: string;
     links: Link;
 }
 
-const ProjectCard = ({ title, category, image, description, links }: ProjectProps) => {
+const ProjectCard = ({ title, category, image, preview, description, links }: ProjectProps) => {
+    const cardRef = useRef<HTMLDivElement>(null);
+    const [showPreview, setShowPreview] = useState(false);
+    const [previewLoaded, setPreviewLoaded] = useState(false);
+
+    // The clips are the point of the grid, so they play on their own rather
+    // than waiting for a hover — but only once the card is actually near the
+    // viewport. Fetching every clip on load would put megabytes in front of a
+    // visitor who never scrolls past the hero.
+    useEffect(() => {
+        if (!preview) return;
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        const el = cardRef.current;
+        if (!el) return;
+
+        const io = new IntersectionObserver(
+            (entries) => {
+                if (entries.some((e) => e.isIntersecting)) {
+                    setShowPreview(true);
+                    io.disconnect();
+                }
+            },
+            { rootMargin: '250px' },
+        );
+        io.observe(el);
+        return () => io.disconnect();
+    }, [preview]);
+
     return (
         <motion.div
+            ref={cardRef}
             layout
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="group relative overflow-hidden bg-surface aspect-[4/3] cursor-pointer"
         >
-            {/* Background Image */}
+            {/* Still frame. Stays mounted underneath so the card never flashes
+                empty while the clip is still decoding. */}
             <img
                 src={image}
                 alt={title}
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
             />
+
+            {showPreview && preview && (
+                <img
+                    src={preview}
+                    alt=""
+                    aria-hidden="true"
+                    onLoad={() => setPreviewLoaded(true)}
+                    className="absolute inset-0 w-full h-full object-cover transition-all duration-700
+                               group-hover:scale-110"
+                    style={{ opacity: previewLoaded ? 1 : 0 }}
+                />
+            )}
 
             {/* Overlay */}
             <div className="absolute inset-0 bg-background/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-center p-6 text-center backdrop-blur-sm">

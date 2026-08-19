@@ -6,7 +6,7 @@ import {
     BASE_ROTATION,
     CHAIN,
     MAX_REACH,
-    clamp,
+    clampToWorkspace,
     singularity,
     solveIK,
     wrapAngle,
@@ -32,29 +32,27 @@ const MODEL_URL = `${import.meta.env.BASE_URL}models/ur5e.glb`;
 
 /* ── how the cursor maps into the robot's workspace ───────────── */
 
-/** Half the yaw the base sweeps across the viewport. */
-const SWING = 0.95;
-/** The arm faces the camera; this is where its plane points at rest. */
-const HEADING = Math.PI / 2;
-const TARGET_RADIUS = 0.56;
-const TARGET_Z_LOW = 0.12;
-const TARGET_Z_HIGH = 0.95;
 /** Exponential approach rate for the joints, in 1/s. */
 const TRACK_RATE = 3.4;
+/** Height the cursor plane is pinned at, roughly the shoulder. */
+const TRACK_PLANE_HEIGHT = 0.55;
+/** World-space extents the camera keeps in frame, in metres. */
+const FRAME_HEIGHT = 1.62;
+const FRAME_WIDTH = 1.5;
 
-/** Cursor position in normalised device coords to a point the arm can hit. */
-function targetFromPointer(nx: number, ny: number): Vec3 {
-    const azimuth = HEADING + clamp(nx, -1, 1) * SWING;
-    const z = TARGET_Z_LOW + (TARGET_Z_HIGH - TARGET_Z_LOW) * clamp((1 - ny) / 2, 0, 1);
-    // Reach further out toward the edges so the arm extends rather than just
-    // swivelling, but never far enough to hit the workspace boundary.
-    const radius = TARGET_RADIUS + 0.1 * Math.abs(clamp(nx, -1, 1));
-    return [Math.cos(azimuth) * radius, Math.sin(azimuth) * radius, z];
-}
-
-/** Idle drift, used before the pointer moves and on touch devices. */
+/**
+ * Idle drift, used before the pointer moves and on touch devices. Written in
+ * world space rather than in cursor space so it does not depend on where a
+ * pointer that never arrived would have been.
+ */
 function idleTarget(t: number): Vec3 {
-    return targetFromPointer(Math.sin(t * 0.31) * 0.75, Math.cos(t * 0.23) * 0.6);
+    const azimuth = Math.PI / 2 + Math.sin(t * 0.31) * 1.1;
+    const radius = 0.58 + 0.08 * Math.sin(t * 0.19);
+    return [
+        Math.cos(azimuth) * radius,
+        Math.sin(azimuth) * radius,
+        0.52 + Math.cos(t * 0.23) * 0.3,
+    ];
 }
 
 function hasWebGL() {
@@ -117,8 +115,10 @@ const RobotArmCanvas = () => {
             // no axis conversion has to be smuggled into the kinematics.
             const camera = new THREE.PerspectiveCamera(30, 1, 0.1, 40);
             camera.up.set(0, 0, 1);
-            camera.position.set(2.15, -1.62, 1.28);
-            camera.lookAt(0, 0, 0.52);
+            const LOOK_AT = new THREE.Vector3(0, 0, 0.52);
+            // Direction is fixed; only the distance along it changes with the
+            // viewport, so the framing stays the one that was signed off on.
+            const VIEW_DIR = new THREE.Vector3(2.15, -1.62, 1.28).sub(LOOK_AT).normalize();
 
             /* ── lighting: matte, one clear key, no environment ── */
             scene.add(new THREE.HemisphereLight(0x9fb4ff, 0x05070d, 0.55));
@@ -210,10 +210,16 @@ const RobotArmCanvas = () => {
             }
 
             /* ── pointer ── */
+            // Stored as normalised device coords, y up, because the target is
+            // found by casting the cursor into the scene rather than by
+            // mapping screen axes onto joint angles by hand. Hand-mapping is
+            // what made some directions come out inverted: which way the arm
+            // appears to move depends on where the camera is standing.
             const onPointer = (e: PointerEvent) => {
+                const rect = mount.getBoundingClientRect();
                 pointer.current = {
-                    x: (e.clientX / window.innerWidth) * 2 - 1,
-                    y: (e.clientY / window.innerHeight) * 2 - 1,
+                    x: ((e.clientX - rect.left) / rect.width) * 2 - 1,
+                    y: -(((e.clientY - rect.top) / rect.height) * 2 - 1),
                     active: true,
                 };
             };
@@ -229,16 +235,19 @@ const RobotArmCanvas = () => {
                 const h = mount.clientHeight;
                 if (!w || !h) return;
                 renderer.setSize(w, h);
-                camera.aspect = w / h;
-                // On wide screens bias the arm off-centre so it shares the
-                // hero with the name instead of sitting behind it.
-                // Nudge the arm off dead centre on wide screens; it still
-                // sits behind the name, which is the point of it.
-                if (w > 900) {
-                    camera.setViewOffset(w, h, -w * 0.17, h * 0.03, w, h);
-                } else {
-                    camera.clearViewOffset();
-                }
+                const aspect = w / h;
+                camera.aspect = aspect;
+
+                // Back off far enough that the arm fits in whichever dimension
+                // is tighter. Without this a phone in portrait, where width is
+                // the constraint, gets a robot the size of the screen.
+                const halfFov = (camera.fov * Math.PI) / 360;
+                const distance = Math.max(
+                    FRAME_HEIGHT / (2 * Math.tan(halfFov)),
+                    FRAME_WIDTH / (2 * Math.tan(halfFov) * aspect),
+                );
+                camera.position.copy(VIEW_DIR).multiplyScalar(distance).add(LOOK_AT);
+                camera.lookAt(LOOK_AT);
                 camera.updateProjectionMatrix();
             };
             resize();
@@ -246,6 +255,23 @@ const RobotArmCanvas = () => {
             ro.observe(mount);
 
             /* ── frame loop ── */
+            const raycaster = new THREE.Raycaster();
+            const trackPlane = new THREE.Plane();
+            const planeAnchor = new THREE.Vector3(0, 0, TRACK_PLANE_HEIGHT);
+            const facing = new THREE.Vector3();
+            const hit = new THREE.Vector3();
+            const ndc = new THREE.Vector2();
+
+            /** Where the cursor is, in the robot's own coordinates. */
+            const pointerTarget = (): Vec3 | null => {
+                ndc.set(pointer.current.x, pointer.current.y);
+                camera.getWorldDirection(facing);
+                trackPlane.setFromNormalAndCoplanarPoint(facing, planeAnchor);
+                raycaster.setFromCamera(ndc, camera);
+                if (!raycaster.ray.intersectPlane(trackPlane, hit)) return null;
+                return clampToWorkspace([hit.x, hit.y, hit.z]);
+            };
+
             const angles = [0, -1.3, 1.5, -1.75, 0, 0];
             const AXIS = { x: 'x', y: 'y', z: 'z' } as const;
             let raf = 0;
@@ -258,9 +284,9 @@ const RobotArmCanvas = () => {
                 last = now;
                 elapsed += dt;
 
-                const target = pointer.current.active
-                    ? targetFromPointer(pointer.current.x, pointer.current.y)
-                    : idleTarget(elapsed);
+                const target =
+                    (pointer.current.active ? pointerTarget() : null) ??
+                    clampToWorkspace(idleTarget(elapsed));
 
                 const solved = solveIK(target);
                 // Frame-rate independent smoothing, taking the short way round

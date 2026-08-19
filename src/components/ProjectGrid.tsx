@@ -10,6 +10,7 @@ interface Project {
     title: string;
     category: string;
     image: string;
+    preview?: string;
     description: string;
     tags?: string[];
     links: { github?: string; demo?: string; paper?: string };
@@ -72,6 +73,7 @@ const ProjectGrid = () => {
                                     title={project.title}
                                     category={project.category}
                                     image={project.image}
+                                    preview={project.preview}
                                     description={project.description}
                                     links={project.links}
                                 />
