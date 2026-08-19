@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
 import type { Object3D } from 'three';
-import BlueprintCanvas from './BlueprintCanvas';
 import {
     BASE_MESHES,
     BASE_ROTATION,
@@ -21,14 +20,66 @@ import {
  * than baked into the asset. Nothing is pre-rendered: every frame runs the
  * closed-form IK against the cursor and writes six joint angles.
  *
- * Three things keep this from being a liability on a landing page. It is
- * behind a dynamic import, so three.js is not in the main chunk. It only
- * mounts after the 2D canvas has already painted, so first paint never waits
- * on a mesh download. And anyone who asked not to see motion, or whose browser
- * has no WebGL, keeps the 2D canvas instead.
+ * Two things keep this from being a liability on a landing page. three.js is
+ * behind a dynamic import so it never enters the main chunk, and both that
+ * chunk and the model start downloading as soon as this module is evaluated
+ * rather than after React has mounted and run an effect — the browser cannot
+ * discover an import that only exists inside a component.
+ *
+ * Anyone who asked not to see motion gets the arm posed and still: the robot
+ * is the hero, so removing the motion should not remove the subject.
  */
 
 const MODEL_URL = `${import.meta.env.BASE_URL}models/ur5e.glb`;
+
+/* ── loading, started as early as the browser will allow ──────── */
+
+type ThreeBundle = [
+    typeof import('three'),
+    typeof import('three/examples/jsm/loaders/GLTFLoader.js'),
+    typeof import('three/examples/jsm/libs/meshopt_decoder.module.js'),
+];
+
+let bundlePromise: ThreeBundle extends never ? never : Promise<ThreeBundle> | null = null;
+let modelPromise: Promise<ArrayBuffer> | null = null;
+
+function loadBundle() {
+    bundlePromise ??= Promise.all([
+        import('three'),
+        import('three/examples/jsm/loaders/GLTFLoader.js'),
+        import('three/examples/jsm/libs/meshopt_decoder.module.js'),
+    ]) as Promise<ThreeBundle>;
+    return bundlePromise;
+}
+
+/**
+ * Fetched once as bytes and handed to the parser, rather than letting the
+ * loader fetch it. That way the early start is guaranteed to be the only
+ * download, instead of depending on the response being cacheable.
+ */
+function loadModel() {
+    modelPromise ??= fetch(MODEL_URL).then((r) => {
+        if (!r.ok) throw new Error(`model ${r.status}`);
+        return r.arrayBuffer();
+    });
+    return modelPromise;
+}
+
+function canRender3d() {
+    try {
+        const probe = document.createElement('canvas');
+        return !!(probe.getContext('webgl2') || probe.getContext('webgl'));
+    } catch {
+        return false;
+    }
+}
+
+// Module scope: this runs while the page is still parsing, so the chunk and
+// the mesh are in flight alongside everything else instead of waiting a mount.
+if (typeof document !== 'undefined' && canRender3d()) {
+    loadBundle();
+    loadModel().catch(() => {});
+}
 
 /* ── how the cursor maps into the robot's workspace ───────────── */
 
@@ -55,38 +106,22 @@ function idleTarget(t: number): Vec3 {
     ];
 }
 
-function hasWebGL() {
-    try {
-        const canvas = document.createElement('canvas');
-        return !!(canvas.getContext('webgl2') || canvas.getContext('webgl'));
-    } catch {
-        return false;
-    }
-}
-
 const RobotArmCanvas = () => {
     const mountRef = useRef<HTMLDivElement>(null);
     const readoutRef = useRef<HTMLDivElement>(null);
     const pointer = useRef({ x: 0, y: 0, active: false });
     const [ready, setReady] = useState(false);
-    const [use3d, setUse3d] = useState(false);
-    const [showFallback, setShowFallback] = useState(true);
+    // 'static' still builds and renders the arm, it just never animates it.
+    const [mode, setMode] = useState<'pending' | 'off' | 'static' | 'live'>('pending');
 
-    // Drop the 2D canvas once it has finished fading behind the arm.
     useEffect(() => {
-        if (!ready) return;
-        const id = window.setTimeout(() => setShowFallback(false), 1300);
-        return () => window.clearTimeout(id);
-    }, [ready]);
-
-    // Decide once, on the client, whether the 3D arm is appropriate at all.
-    useEffect(() => {
+        if (!canRender3d()) return setMode('off');
         const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        setUse3d(!reduced && hasWebGL());
+        setMode(reduced ? 'static' : 'live');
     }, []);
 
     useEffect(() => {
-        if (!use3d) return;
+        if (mode !== 'live' && mode !== 'static') return;
         const mount = mountRef.current;
         if (!mount) return;
 
@@ -94,11 +129,8 @@ const RobotArmCanvas = () => {
         let cleanup: (() => void) | undefined;
 
         (async () => {
-            const THREE = await import('three');
-            const { GLTFLoader } = await import('three/examples/jsm/loaders/GLTFLoader.js');
-            const { MeshoptDecoder } = await import(
-                'three/examples/jsm/libs/meshopt_decoder.module.js'
-            );
+            // Already in flight since module evaluation; this just awaits it.
+            const [THREE, { GLTFLoader }, { MeshoptDecoder }] = await loadBundle();
             if (disposed) return;
 
             const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
@@ -158,10 +190,16 @@ const RobotArmCanvas = () => {
 
             let gltf;
             try {
-                gltf = await loader.loadAsync(MODEL_URL);
+                const bytes = await loadModel();
+                if (disposed) throw new Error('unmounted');
+                gltf = await new Promise<Awaited<ReturnType<typeof loader.loadAsync>>>(
+                    (resolve, reject) => loader.parse(bytes, '', resolve, reject),
+                );
             } catch {
                 renderer.dispose();
-                mount.removeChild(renderer.domElement);
+                if (renderer.domElement.parentNode === mount) {
+                    mount.removeChild(renderer.domElement);
+                }
                 return;
             }
             if (disposed) {
@@ -226,8 +264,10 @@ const RobotArmCanvas = () => {
             const onLeave = () => {
                 pointer.current.active = false;
             };
-            window.addEventListener('pointermove', onPointer, { passive: true });
-            window.addEventListener('pointerleave', onLeave);
+            if (mode === 'live') {
+                window.addEventListener('pointermove', onPointer, { passive: true });
+                window.addEventListener('pointerleave', onLeave);
+            }
 
             /* ── framing ── */
             const resize = () => {
@@ -249,6 +289,11 @@ const RobotArmCanvas = () => {
                 camera.position.copy(VIEW_DIR).multiplyScalar(distance).add(LOOK_AT);
                 camera.lookAt(LOOK_AT);
                 camera.updateProjectionMatrix();
+
+                // Resizing reallocates and clears the drawing buffer. With no
+                // animation loop running — the reduced-motion case — nothing
+                // would ever redraw it, leaving an empty hero.
+                renderer.render(scene, camera);
             };
             resize();
             const ro = new ResizeObserver(resize);
@@ -297,9 +342,18 @@ const RobotArmCanvas = () => {
                     jointNodes[i].rotation[AXIS[CHAIN[i].axis]] = angles[i];
                 }
 
-                if (now - readoutAt > 90 && readoutRef.current) {
+                if (now - readoutAt > 90) {
                     readoutAt = now;
-                    const flag = singularity(angles, solved.reach);
+                    writeReadout(solved.reach);
+                }
+
+                renderer.render(scene, camera);
+                raf = requestAnimationFrame(frame);
+            };
+
+            const writeReadout = (reach: number) => {
+                if (readoutRef.current) {
+                    const flag = singularity(angles, reach);
                     readoutRef.current.innerHTML =
                         CHAIN.map(
                             (_j, i) =>
@@ -307,17 +361,25 @@ const RobotArmCanvas = () => {
                                     .toFixed(1)
                                     .padStart(7)}°`,
                         ).join('<br/>') +
-                        `<br/><span class="opacity-50">r</span> ${(solved.reach / MAX_REACH * 100)
+                        `<br/><span class="opacity-50">r</span> ${((reach / MAX_REACH) * 100)
                             .toFixed(0)
                             .padStart(6)}%` +
                         (flag ? `<br/><span class="text-red-500/80">${flag}</span>` : '');
                 }
-
-                renderer.render(scene, camera);
-                raf = requestAnimationFrame(frame);
             };
-            raf = requestAnimationFrame(frame);
+
+            // Pose and paint one frame before announcing readiness, so the
+            // fade-in never runs against a blank canvas.
+            const settled = solveIK(clampToWorkspace(idleTarget(0)));
+            for (let i = 0; i < angles.length; i++) {
+                angles[i] = settled.angles[i];
+                jointNodes[i].rotation[AXIS[CHAIN[i].axis]] = angles[i];
+            }
+            writeReadout(settled.reach);
+            renderer.render(scene, camera);
             setReady(true);
+
+            if (mode === 'live') raf = requestAnimationFrame(frame);
 
             cleanup = () => {
                 cancelAnimationFrame(raf);
@@ -344,25 +406,13 @@ const RobotArmCanvas = () => {
             disposed = true;
             cleanup?.();
         };
-    }, [use3d]);
+    }, [mode]);
 
     return (
         <>
-            {/* Paints immediately, then hands over. It is dropped once the
-                cross-fade is done rather than left at opacity zero, so the
-                page is not running a second animation loop forever. */}
-            {showFallback && (
+            {mode !== 'off' && (
                 <div
-                    className="absolute inset-0 transition-opacity duration-[1200ms]"
-                    style={{ opacity: ready ? 0 : 1 }}
-                >
-                    <BlueprintCanvas />
-                </div>
-            )}
-
-            {use3d && (
-                <div
-                    className="absolute inset-0 transition-opacity duration-[1200ms]"
+                    className="absolute inset-0 transition-opacity duration-500"
                     style={{ opacity: ready ? 1 : 0, zIndex: 0 }}
                 >
                     <div
@@ -373,12 +423,12 @@ const RobotArmCanvas = () => {
                 </div>
             )}
 
-            {use3d && (
+            {mode !== 'off' && (
                 <div
                     ref={readoutRef}
                     aria-hidden="true"
                     className="absolute bottom-8 right-8 z-[1] hidden md:block font-mono text-[10px]
-                               leading-relaxed text-primary/80 whitespace-pre transition-opacity duration-1000"
+                               leading-relaxed text-primary/80 whitespace-pre transition-opacity duration-700"
                     style={{ opacity: ready ? 1 : 0 }}
                 />
             )}
