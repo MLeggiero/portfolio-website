@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { ArrowRight, Download } from 'lucide-react';
 import { motion } from 'framer-motion';
-import BlueprintCanvas from './BlueprintCanvas';
+import RobotArmCanvas from './RobotArmCanvas';
 
 const HeroInteractive = () => {
     const sectionRef = useRef<HTMLElement>(null);
@@ -12,7 +12,7 @@ const HeroInteractive = () => {
             ref={sectionRef}
             className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black"
         >
-            <BlueprintCanvas />
+            <RobotArmCanvas />
 
             {/* Hero content */}
             <div

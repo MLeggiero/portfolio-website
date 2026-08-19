@@ -55,8 +55,20 @@
         "caption": "Framework: a VQ-VAE tokenizes action chunks into a discrete codebook; a Variational Flow Matching policy generates code sequences while keeping logits over the full codebook at every step, and inference-time CFG plus a learned codebook critic steer mode commitment."
       },
       {
-        "src": "https://vqactflow.github.io/vqactflow/assets/videos/posters/bimanual_sweep.jpg",
-        "caption": "ALOHA-style bimanual platform performing contact-rich sweeping and insertion from a single multi-task policy."
+        "src": "/images/vqactflow/g1_ball.webp",
+        "caption": "Unitree G1 humanoid running “place the red ball into the box” from the multi-task policy."
+      },
+      {
+        "src": "/images/vqactflow/g1_cup.webp",
+        "caption": "Same policy, different instruction: “place the cup into the box.” Which mode the policy commits to is what decides the task it actually performs."
+      },
+      {
+        "src": "/images/vqactflow/bimanual_sweep.webp",
+        "caption": "ALOHA-style bimanual platform sweeping the battery into the dust pan — contact-rich, and both arms have to agree on the plan."
+      },
+      {
+        "src": "/images/vqactflow/bimanual_ball_compare.webp",
+        "caption": "One instruction, two policies: the CFM baseline (top) leaves the red ball on the table, while VQActFlow (bottom) grasps it and carries it to the bin."
       },
       {
         "src": "https://vqactflow.github.io/vqactflow/assets/figures/fig2_cfg_sweep.png",
@@ -277,7 +289,12 @@
       "Mechatronics"
     ],
     "links": {},
-    "gallery": []
+    "gallery": [
+      {
+        "src": "https://res.cloudinary.com/dzbaeix94/image/upload/f_auto,q_auto,w_1400/v1767977998/BalanceBotAngle_shf5cf.png",
+        "caption": "Tilt angle over time while balancing, logged from the ESP32. The excursions are the disturbances it recovers from."
+      }
+    ]
   },
   {
     "id": 8,
@@ -312,7 +329,24 @@
       "Raspberry Pi"
     ],
     "links": {},
-    "gallery": []
+    "gallery": [
+      {
+        "src": "/images/micro-spot/walk.webp",
+        "caption": "Stepping through its gait on a glass table, tethered to the laptop running the controller."
+      },
+      {
+        "src": "/images/micro-spot/roll.webp",
+        "caption": "Body-roll demo: the feet hold their stance while the body rotates, which is the inverse-kinematics solver holding foot positions fixed in the world frame."
+      },
+      {
+        "src": "https://res.cloudinary.com/dzbaeix94/image/upload/f_auto,q_auto,w_1600/v1767977998/IMG_20210909_230245_01_qt4opg.jpg",
+        "caption": "The build on the bench: twelve servos, a printed frame, and the wiring harness before the covers went on."
+      },
+      {
+        "src": "https://res.cloudinary.com/dzbaeix94/image/upload/f_auto,q_auto,w_1400/v1767978006/Dog_movement_graph_zacyx8.png",
+        "caption": "Limb-movement model: the commanded foot trajectories for one gait cycle, plotted in the body frame."
+      }
+    ]
   },
   {
     "id": 7,
@@ -354,7 +388,16 @@
       "demo": "https://dashboard.sealevelsensors.org/",
       "paper": "https://www.sealevelsensors.org/blog/rain-gauges-dashboards-and-cellular-capable-sensors-my-summer-on-the-ssls-team/"
     },
-    "gallery": []
+    "gallery": [
+      {
+        "src": "https://res.cloudinary.com/dzbaeix94/image/upload/f_auto,q_auto,w_1600/v1767977990/edited_unnamed_1_bnnnlq.png",
+        "caption": "A deployed node on a dock piling: the sea level sensor below and the rain gauge above, on the same enclosure."
+      },
+      {
+        "src": "https://res.cloudinary.com/dzbaeix94/image/upload/f_auto,q_auto,w_1600/v1767977990/control-rg_tns9ll.png",
+        "caption": "Control flow for the rain gauge: bucket tips wake the ultra-low-power coprocessor, temperature and pressure are sampled every five minutes, and readings go out over the gateway to the API dashboard."
+      }
+    ]
   },
   {
     "id": 6,
@@ -397,7 +440,24 @@
     "links": {
       "demo": "https://drive.google.com/drive/folders/1lciVKTs6yfjmWy5copqRsNOv2ojnBqKq?usp=drive_link"
     },
-    "gallery": []
+    "gallery": [
+      {
+        "src": "/images/ernest/animation.webp",
+        "caption": "CAD animation of the sample-exchange assembly: the vertical actuator stack travelling over the linear stage that carries the sample rail."
+      },
+      {
+        "src": "/images/ernest/position-sensing.webp",
+        "caption": "Position sensing at 9× speed. Before any exchange, the end-effector sweeps to find the stage, since the routine cannot trust an assumed origin."
+      },
+      {
+        "src": "/images/ernest/grabbing.webp",
+        "caption": "Sample exchange, grabbing, at 2× speed: the jaws close on one pin out of the seven-slot rail and lift it clear."
+      },
+      {
+        "src": "/images/ernest/loading.webp",
+        "caption": "Sample exchange, loading, at 2× speed. The pin is seated with a controlled downward force rather than dropped, which is what keeps placement repeatable."
+      }
+    ]
   },
   {
     "id": 5,
@@ -444,7 +504,40 @@
       "github": "https://github.com/MLeggiero/vampire",
       "paper": "https://doi.org/10.1016/j.enbuild.2021.110957"
     },
-    "gallery": []
+    "gallery": [
+      {
+        "src": "/images/vampire/fig1-flight-paths.jpg",
+        "caption": "Three flight paths trialled for thermographic capture: (a) a rectangular grid at constant altitude and 90° view angle, (b) a single-altitude circular path at roughly 45°, and (c) the most effective — an ascending multi-circular path conforming to the building geometry, at view angles below 45°."
+      },
+      {
+        "src": "/images/vampire/fig2-photogrammetry.jpg",
+        "caption": "The 3D thermographic model creation process in Agisoft Metashape: point cloud from photogrammetry (left), triangular mesh built from it (middle), and the thermal texture mapped on top (right)."
+      },
+      {
+        "src": "/images/vampire/fig3-rogers-model.jpg",
+        "caption": "Rogers Hall as a thermographic model. The post-processed version (bottom right) has surrounding buildings, trees, and the roof removed, since they do not contribute to the envelope analysis."
+      },
+      {
+        "src": "/images/vampire/fig4-algorithm.png",
+        "caption": "The VAMPIRE Tools algorithm: how an OBJ file is restructured so that area, average temperature, and ground angle can be computed per mesh face, then integrated into a power output."
+      },
+      {
+        "src": "/images/vampire/fig5-gui.png",
+        "caption": "The MATLAB interface I built for the automated analysis — OBJ and texture in, ambient and dew point conditions set, radiative power out for three models."
+      },
+      {
+        "src": "/images/vampire/fig6-thermal-flir.jpg",
+        "caption": "A thermal image of one side of the Nesbitt building in FLIR Tools, with area measurements for brick siding and window. Enough such measurements estimate the loss by hand, which is what the automated result was checked against."
+      },
+      {
+        "src": "/images/vampire/fig7-verification-box.jpg",
+        "caption": "Verification against a known 9-W source: the texture file holding all thermal overlay data for the ‘unfolded’ box model, beside the box itself in Blender."
+      },
+      {
+        "src": "/images/vampire/fig8-nesbitt-model.jpg",
+        "caption": "The Nesbitt building model, before and after removing surrounding structures, trees, and surfaces outside the envelope analysis."
+      }
+    ]
   },
   {
     "id": 2,
@@ -487,7 +580,16 @@
       "Product Design"
     ],
     "links": {},
-    "gallery": []
+    "gallery": [
+      {
+        "src": "/images/keep-the-beep/drop-test.webp",
+        "caption": "Drop test: the monitor in its case takes a full-height fall onto concrete and keeps running. Surviving the drop is the whole point — a monitor that stops beeping stops being a monitor."
+      },
+      {
+        "src": "/images/keep-the-beep/expo-award.jpg",
+        "caption": "The team at the Georgia Tech Capstone Design Expo, where Keep The Beep took the Mechanical Engineering award."
+      }
+    ]
   },
   {
     "id": 1,

@@ -64,3 +64,13 @@ npm run deploy
 - Experience timeline
 - Social media integration
 - Fast loading times with Vite optimization
+
+## Third-party assets
+
+The hero arm's meshes are the Universal Robots UR5e visual meshes from
+[MuJoCo Menagerie](https://github.com/google-deepmind/mujoco_menagerie)
+(`universal_robots_ur5e`), originally from the ROS-Industrial Consortium and
+distributed under BSD-3-Clause — see `public/models/UR5E_LICENSE.txt`. They are
+decimated and packed into a single meshopt-compressed GLB
+(`public/models/ur5e.glb`, 187 KB). The kinematic chain, joint limits and axes
+in `src/data/ur5eKinematics.ts` are transcribed from the same package's MJCF.
