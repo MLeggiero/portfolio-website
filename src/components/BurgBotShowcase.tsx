@@ -21,19 +21,11 @@ const BurgBotShowcase = () => {
                 The face
             </h2>
             <p className="text-neutral-400 leading-relaxed mb-6">
-                The face is two light-blue ovals on black, with no mouth. People
-                read eyes far more strongly than mouths, and a face with no mouth
-                never lands in the uncanny valley of a bad one. That constraint
-                forces every emotion through eye geometry, timing and motion, which
-                leaves a face that is only numbers and so can be blended
-                continuously between any two poses.
-            </p>
-            <p className="text-neutral-400 leading-relaxed mb-6">
-                The panel below runs the robot's own renderer and animation layers on
-                a canvas instead of pygame, using the same coordinate system, easing
-                curves, blink distribution and keyframe values. Pick a pose and watch
-                it blend. The eyes track your cursor for the same reason the real
-                gaze layer tracks a lidar return: something is nearby, so look at it.
+                Two ovals on black and no mouth: every emotion comes out of eye
+                geometry and timing, which leaves a face that is only numbers. The
+                panel below runs the robot's own renderer on a canvas instead of
+                pygame, same keyframes and easing. The eyes track your cursor the way
+                the real gaze layer tracks a lidar return.
             </p>
 
             <div className="bg-surface border border-white/10 overflow-hidden">
@@ -86,12 +78,6 @@ const BurgBotShowcase = () => {
                 </div>
             </div>
 
-            <p className="text-sm text-neutral-500 leading-relaxed mt-4">
-                How fast a face arrives at a pose is part of the pose's meaning, so
-                every expression carries its own timing: startle snaps in elastically
-                in 0.12&nbsp;s, melancholy seeps in over 0.55&nbsp;s. Giving every
-                transition the same duration flattens all of them.
-            </p>
         </div>
     );
 };
