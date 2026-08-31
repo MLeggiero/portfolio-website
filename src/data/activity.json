@@ -1,81 +1,11 @@
 {
-  "generatedAt": "2026-08-19T00:57:28.575Z",
+  "generatedAt": "2026-08-31T20:08:34.324Z",
   "github": {
     "username": "MLeggiero",
-    "totalLastYear": 165,
-    "publicRepos": 14,
+    "totalLastYear": 178,
+    "publicRepos": 15,
     "followers": 1,
     "contributions": [
-      {
-        "date": "2025-08-17",
-        "count": 0,
-        "level": 0
-      },
-      {
-        "date": "2025-08-18",
-        "count": 0,
-        "level": 0
-      },
-      {
-        "date": "2025-08-19",
-        "count": 0,
-        "level": 0
-      },
-      {
-        "date": "2025-08-20",
-        "count": 0,
-        "level": 0
-      },
-      {
-        "date": "2025-08-21",
-        "count": 0,
-        "level": 0
-      },
-      {
-        "date": "2025-08-22",
-        "count": 0,
-        "level": 0
-      },
-      {
-        "date": "2025-08-23",
-        "count": 0,
-        "level": 0
-      },
-      {
-        "date": "2025-08-24",
-        "count": 0,
-        "level": 0
-      },
-      {
-        "date": "2025-08-25",
-        "count": 0,
-        "level": 0
-      },
-      {
-        "date": "2025-08-26",
-        "count": 0,
-        "level": 0
-      },
-      {
-        "date": "2025-08-27",
-        "count": 0,
-        "level": 0
-      },
-      {
-        "date": "2025-08-28",
-        "count": 0,
-        "level": 0
-      },
-      {
-        "date": "2025-08-29",
-        "count": 0,
-        "level": 0
-      },
-      {
-        "date": "2025-08-30",
-        "count": 0,
-        "level": 0
-      },
       {
         "date": "2025-08-31",
         "count": 0,
@@ -1838,13 +1768,73 @@
       },
       {
         "date": "2026-08-18",
-        "count": 6,
-        "level": 3
+        "count": 12,
+        "level": 4
       },
       {
         "date": "2026-08-19",
         "count": 0,
         "level": 0
+      },
+      {
+        "date": "2026-08-20",
+        "count": 1,
+        "level": 1
+      },
+      {
+        "date": "2026-08-21",
+        "count": 0,
+        "level": 0
+      },
+      {
+        "date": "2026-08-22",
+        "count": 0,
+        "level": 0
+      },
+      {
+        "date": "2026-08-23",
+        "count": 1,
+        "level": 1
+      },
+      {
+        "date": "2026-08-24",
+        "count": 0,
+        "level": 0
+      },
+      {
+        "date": "2026-08-25",
+        "count": 0,
+        "level": 0
+      },
+      {
+        "date": "2026-08-26",
+        "count": 1,
+        "level": 1
+      },
+      {
+        "date": "2026-08-27",
+        "count": 0,
+        "level": 0
+      },
+      {
+        "date": "2026-08-28",
+        "count": 2,
+        "level": 1
+      },
+      {
+        "date": "2026-08-29",
+        "count": 0,
+        "level": 0
+      },
+      {
+        "date": "2026-08-30",
+        "count": 0,
+        "level": 0
+      },
+      {
+        "date": "2026-08-31",
+        "count": 2,
+        "level": 1
       }
     ]
   },
@@ -1853,7 +1843,7 @@
     "fullname": "Mark Leggiero",
     "bio": "Robotics, DRL, DP",
     "models": 2,
-    "datasets": 7,
+    "datasets": 8,
     "spaces": 0
   }
 }
