@@ -14,9 +14,10 @@ interface Project {
     description: string;
     tags?: string[];
     links: { github?: string; demo?: string; paper?: string };
+    hidden?: boolean;
 }
 
-const projectData = projectDataRaw as Project[];
+const projectData = (projectDataRaw as Project[]).filter(p => !p.hidden);
 
 const ProjectGrid = () => {
     const [filter, setFilter] = useState('All');

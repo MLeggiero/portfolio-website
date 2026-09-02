@@ -34,9 +34,10 @@ interface Project {
     gallery?: { src: string; caption?: string }[];
     video?: string;
     stats?: { value: string; label: string }[];
+    hidden?: boolean;
 }
 
-const projects = projectData as Project[];
+const projects = (projectData as Project[]).filter((p) => !p.hidden);
 
 const ProjectDetailPage = () => {
     const { slug } = useParams<{ slug: string }>();
