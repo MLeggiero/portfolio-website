@@ -1,20 +1,15 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ChevronLeft, ChevronRight, Play } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface GalleryImage {
     src: string;
     caption?: string;
-    /** Still shown in the grid, and behind a video until it decodes. */
-    poster?: string;
 }
 
 interface ProjectGalleryProps {
     images: GalleryImage[];
 }
-
-/** Gallery entries are stills unless the source is a video file. */
-const isVideo = (src: string) => /\.(mp4|webm)$/i.test(src);
 
 const ProjectGallery = ({ images }: ProjectGalleryProps) => {
     const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
@@ -60,24 +55,12 @@ const ProjectGallery = ({ images }: ProjectGalleryProps) => {
                             className="relative aspect-[4/3] overflow-hidden group rounded-sm"
                         >
                             <img
-                                src={isVideo(img.src) ? img.poster : img.src}
-                                alt={img.caption || `Gallery item ${idx + 1}`}
+                                src={img.src}
+                                alt={img.caption || `Gallery image ${idx + 1}`}
                                 className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                                 loading="lazy"
                             />
                             <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors duration-300" />
-                            {isVideo(img.src) && (
-                                <span
-                                    aria-hidden="true"
-                                    className="absolute inset-0 flex items-center justify-center"
-                                >
-                                    <span className="flex items-center justify-center w-12 h-12 rounded-full bg-black/50 backdrop-blur-sm
-                                                     border border-white/30 text-white group-hover:bg-primary group-hover:border-primary
-                                                     transition-colors">
-                                        <Play size={18} className="translate-x-[1px]" fill="currentColor" />
-                                    </span>
-                                </span>
-                            )}
                             {img.caption && (
                                 <div className="absolute bottom-0 left-0 right-0 p-2 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                     <p className="text-white text-xs truncate">
@@ -140,25 +123,11 @@ const ProjectGallery = ({ images }: ProjectGalleryProps) => {
                             className="max-w-[90vw] max-h-[85vh] flex flex-col items-center"
                             onClick={(e) => e.stopPropagation()}
                         >
-                            {isVideo(images[lightboxIndex].src) ? (
-                                <video
-                                    key={images[lightboxIndex].src}
-                                    src={images[lightboxIndex].src}
-                                    poster={images[lightboxIndex].poster}
-                                    className="max-w-full max-h-[75vh] object-contain rounded-sm"
-                                    autoPlay
-                                    muted
-                                    loop
-                                    playsInline
-                                    controls
-                                />
-                            ) : (
-                                <img
-                                    src={images[lightboxIndex].src}
-                                    alt={images[lightboxIndex].caption || ''}
-                                    className="max-w-full max-h-[75vh] object-contain rounded-sm"
-                                />
-                            )}
+                            <img
+                                src={images[lightboxIndex].src}
+                                alt={images[lightboxIndex].caption || ''}
+                                className="max-w-full max-h-[75vh] object-contain rounded-sm"
+                            />
                             {images[lightboxIndex].caption && (
                                 <p className="text-neutral-400 text-sm mt-4 text-center max-w-lg">
                                     {images[lightboxIndex].caption}

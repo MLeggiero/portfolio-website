@@ -107,40 +107,53 @@
     "description": "A differential-drive robot running ROS 2 Jazzy that maps a space on its own, with no joystick and no waypoints, while a 7-inch display gives it a face that reacts to what it is actually doing.",
     "sections": [
       {
-        "content": "A differential-drive robot running ROS 2 Jazzy on a Raspberry Pi 4. It maps a space on its own, with no joystick and no waypoints, while a 7-inch display gives it a face that reacts to what it is actually doing."
+        "content": "burg-bot is a TurtleBot3-Burger-style differential-drive robot running ROS 2 Jazzy on a Raspberry Pi 4, with a full autonomy stack, an expressive animated face, and camera-based semantic mapping. It maps a space on its own, with no joystick and no waypoints, while a 7-inch display gives it a face that reacts to what it is actually doing, and a depth camera labels the objects it finds and pins them to the map."
       },
       {
         "heading": "Autonomous Mapping",
-        "content": "A frontier is the boundary between explored free space and the unknown, and driving to one is the entire idea. The package scores each frontier by size and distance, sends the winner to Nav2, and stops only when none remain.",
+        "content": "A frontier is the boundary between explored free space and the unknown, and driving to one is the entire idea behind autonomous exploration. The exploration package finds those boundaries, scores each by size and distance, and sends the winner to Nav2. It stops when no frontier remains, which is also what guarantees no unexplored pockets are left behind.",
         "bullets": [
-          "Detection and scoring are pure functions over an occupancy grid, so they are unit-tested on small synthetic grids with no ROS graph or SLAM running.",
-          "Nav2 plans and controls, an EKF fuses wheel odometry with the IMU, and slam_toolbox builds the map."
+          "Frontier detection and scoring are pure functions over an occupancy grid: plain arrays in, plain dataclasses out. The node is a thin wrapper that reads the map, calls into that module, and dispatches goals.",
+          "That split means the algorithm is unit-tested on small synthetic grids with no ROS graph, map server or SLAM running. The expression arbiter and the gesture library follow the same pattern.",
+          "Frontier cells are found with 8-connectivity rather than 4, so a boundary that only touches unknown space diagonally still counts. That happens constantly along a coarsely-resolved edge.",
+          "Each goal targets the cluster's nearest frontier cell to its own centroid, not the centroid itself, which can land off the frontier entirely for a concave or banana-shaped cluster.",
+          "Nav2 handles planning and control, robot_localization fuses wheel odometry with the IMU through an EKF, and slam_toolbox builds the map."
         ]
       },
       {
         "heading": "Expression as Telemetry",
-        "content": "Nothing the face does is decorative. Every mood traces back to something true about the robot: navigation status, lidar proximity, pose covariance, battery, touch. If the eyes look uncertain it is because the localization covariance genuinely grew.",
+        "content": "Nothing the face does is decorative. Every mood traces back to something true about the robot: navigation status, lidar proximity, pose covariance, battery level, touch. If the eyes look uncertain it is because the localization covariance genuinely grew, and if they look tired the battery genuinely is. That makes the face a piece of honest telemetry you can read across a room, which is far more useful than a mood that is merely charming.",
         "bullets": [
-          "Half a dozen sources have an opinion about the face at once, so each submits a candidate with a priority and an expiry and exactly one wins - twist_mux arbitration, applied to expression."
+          "Half a dozen independent sources have an opinion about the face at once. Publishing them all straight to the renderer makes it flicker between them, and a flickering face does not read as conflicted; it reads as broken.",
+          "So each source submits a candidate with a priority and an expiry, and exactly one wins. That is the same shape as twist_mux arbitrating velocity commands, applied to expression.",
+          "Four priority bands: ambient personality is the floor and is always present, current task sits above it, recoverable trouble above that, and immediate physical events always show. That last band covers a lidar return inside 22 cm, the safety stop firing, or someone touching the screen.",
+          "A minimum hold stops two equal-priority sources swapping the face every tick, while a genuine escalation still preempts instantly.",
+          "The arbiter is pure logic with no ROS dependency, so it can be reasoned about and unit-tested without a graph running."
         ]
       },
       {
         "heading": "Semantic Mapping",
-        "content": "A YOLOv8n detector runs on the colour stream. Detections are back-projected to 3D using the aligned depth image, transformed into the map frame, and folded into a persistent object layer that saves alongside the SLAM map.",
+        "content": "A YOLOv8n detector runs on the colour stream. Detections are back-projected to 3D using the aligned depth image and a pinhole model, transformed into the map frame, and folded into a persistent de-duplicated object layer that saves alongside the SLAM map.",
         "bullets": [
-          "That layer is deliberately parallel to the occupancy grid rather than part of it, because a probability grid is not a place to store \"this cell is a chair\"."
+          "The object layer is deliberately parallel to the occupancy grid rather than part of it, because a probability grid is not a place to store \"this cell is a chair\".",
+          "Inference is throttled to roughly 1.5 Hz rather than run per frame. The Pi 4 has no GPU or NPU, and objects worth labelling on a map do not move fast.",
+          "In the Gazebo testbed the chair was recognised at 0.88–0.95 confidence and tracked to within about 0.2 m of its true placement from 9 observations. That offset is expected rather than error: depth is sampled at the bounding-box centre, so the point lands on whichever surface faces the robot, not the object's centroid."
         ]
       },
       {
         "heading": "Hardware",
         "bullets": [
-          "A Raspberry Pi 4 for compute, a Pico driving motors and encoders over serial, a 2D lidar, an MPU6050 IMU, and a RealSense D435 for detection.",
-          "SDL renders the face straight to the 7-inch panel through KMS/DRM - no X, no Wayland, no desktop session - which is why the robot can run Ubuntu Server and still have a face."
+          "Raspberry Pi 4 (4 GB) running Ubuntu 24.04 Server as the main compute.",
+          "Raspberry Pi Pico handling motor control and encoders over serial, behind a ros2_control hardware interface.",
+          "DC motors with encoders for differential drive, a 2D lidar for SLAM and obstacle avoidance, and an MPU6050 IMU fused with wheel odometry via EKF.",
+          "The official Raspberry Pi 7-inch touch display for the face, over DSI. SDL renders straight to the panel through KMS/DRM, with no X, no Wayland and no desktop session, which is why the robot can run Ubuntu Server and still have a face.",
+          "Intel RealSense D435 for object detection and 3D projection.",
+          "Everything builds and runs in a container, so the Ubuntu 24.04 / ROS 2 Jazzy target need not match the development host."
         ]
       },
       {
         "heading": "Credit",
-        "content": "The robot design and the foundational ROS 2 packages come from Antonio Brandi's course, Self-Driving and ROS 2 - Learn by Doing! Plan & Navigation. Original here are the face renderer, the mood arbiter, frontier exploration, the perception stack and the Gazebo testbed."
+        "content": "The physical robot design and the foundational ROS 2 packages come from Antonio Brandi's course, Self-Driving and ROS 2 - Learn by Doing! Plan & Navigation. The description, controller, firmware, localization, mapping, navigation and safety-stop packages derive from that work. Original to this repository are the procedural face renderer, the mood arbiter and gesture library, frontier-based exploration, the perception and semantic-mapping stack, the custom message interfaces, the Docker development environment and the Gazebo testbed."
       }
     ],
     "stats": [
@@ -178,16 +191,6 @@
       "github": "https://github.com/MLeggiero/burg-bot"
     },
     "gallery": [
-      {
-        "src": "/videos/burg-bot/face_recover.mp4",
-        "poster": "/videos/burg-bot/face_recover.jpg",
-        "caption": "The robot on the floor. It holds the error pose, the flat red bars the face uses for a hard stop, then clears to the resting blue eyes."
-      },
-      {
-        "src": "/videos/burg-bot/driving.mp4",
-        "poster": "/videos/burg-bot/driving.jpg",
-        "caption": "Driving across the room under its own planning, with the face in its resting state."
-      },
       {
         "src": "/images/burg-bot/mapping.gif",
         "caption": "Autonomous frontier exploration in Gazebo. The occupancy grid fills in from the lidar, the orange trail is the robot's actual driven path, the blue square is the robot, and the dark disc is the obstacle it routes around."
