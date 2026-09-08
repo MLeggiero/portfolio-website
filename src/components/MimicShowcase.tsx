@@ -2,10 +2,8 @@ import { Box, ExternalLink } from 'lucide-react';
 import { ACTUATOR_PHOTOS, ACTUATOR_URL, FULL_ASSEMBLY_URL } from '../data/mimicCad';
 
 /**
- * A card that links out to a live Onshape document. Onshape refuses to be
- * framed on outside domains (SAMEORIGIN + a CSP locked to onshape.com), so
- * this is the closest thing to an "embedded" viewer that actually works: a
- * preview of what you're about to open, one click from the real model.
+ * Onshape blocks iframes on outside domains, so this links out to the real
+ * model instead of trying to embed it.
  */
 const CadLinkCard = ({
     href,
@@ -73,16 +71,14 @@ const MimicShowcase = ({ video }: { video?: string }) => {
                     The full model
                 </h2>
                 <p className="text-neutral-400 leading-relaxed mb-5">
-                    Every part of Mimic — links, joints, and all three actuators — is modeled
-                    and assembled in Onshape. The document below is the live model, not a
-                    snapshot: open it to orbit, section, and inspect the same assembly the
-                    arm was built from.
+                    The whole arm, all three actuators included, is modeled and assembled
+                    in Onshape. This is the live document.
                 </p>
                 <CadLinkCard
                     href={FULL_ASSEMBLY_URL}
                     eyebrow="Onshape Document"
-                    title="Mimic — full 3-axis assembly"
-                    description="Complete arm assembly: links, joints, and all three actuators."
+                    title="Full 3-axis assembly"
+                    description="Links, joints, and all three actuators."
                 />
             </div>
 
@@ -92,24 +88,23 @@ const MimicShowcase = ({ video }: { video?: string }) => {
                     The actuator
                 </h2>
                 <p className="text-neutral-400 leading-relaxed mb-4">
-                    Three of these were built, one per axis, and they're the part of Mimic
-                    I'm proudest of. Each is a self-contained BLDC servo actuator rather than
-                    an off-the-shelf gearmotor: a cross-roller bearing carries the output
-                    directly, so the joint takes radial, axial, and moment loads without a
-                    separate output support, and there's no backlash at the mounting
-                    interface the way there would be with a simple ball bearing pair.
+                    Three of these were built, one per axis. This is the part of Mimic
+                    I'm proudest of.
                 </p>
-                <p className="text-neutral-400 leading-relaxed mb-6">
-                    Behind that bearing sits a single-stage planetary gearbox at 11:1,
-                    chosen to multiply the torque of the EaglePro 8803 BLDC motor into the
-                    range each joint needs while staying far more backdrivable than a
-                    harmonic or cycloidal stage would be. Sizing the motor meant working
-                    backward from that output torque and speed envelope, and living with
-                    the tradeoff of picking a compact motor still meant designing for its
-                    thermal limit: an integrated fan pulls air through the housing so the
-                    motor can sit at continuous torque without derating. An AS5600 magnetic
-                    encoder closes the loop on joint position.
-                </p>
+                <ul className="space-y-2 mb-6 ml-1">
+                    {[
+                        'Cross-roller bearing output stage, carrying radial, axial, and moment loads with no backlash at the mount.',
+                        'Single-stage planetary gearbox, 11:1, sized to stay backdrivable rather than locked like a harmonic drive.',
+                        'EaglePro 8803 BLDC motor, sized to the output torque and speed the gearbox needs.',
+                        'Integrated cooling fan, so the motor holds continuous torque without derating.',
+                        'AS5600 magnetic encoder for closed-loop position feedback.',
+                    ].map((line) => (
+                        <li key={line} className="flex gap-3 text-neutral-400 leading-relaxed">
+                            <span className="text-primary mt-1.5 shrink-0">▸</span>
+                            <span>{line}</span>
+                        </li>
+                    ))}
+                </ul>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
                     {ACTUATOR_PHOTOS.map((photo) => (
@@ -130,8 +125,8 @@ const MimicShowcase = ({ video }: { video?: string }) => {
                 <CadLinkCard
                     href={ACTUATOR_URL}
                     eyebrow="Onshape Document"
-                    title="Mimic — actuator design"
-                    description="Cross-roller bearing, planetary gearbox, motor, and cooling in detail."
+                    title="Actuator design"
+                    description="Bearing, gearbox, motor, and cooling in detail."
                 />
             </div>
         </div>

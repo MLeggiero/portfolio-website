@@ -19,19 +19,16 @@ export interface ActuatorPhoto {
 }
 
 /**
- * Renders of the actuator built for each of the arm's three axes. The
- * source files live outside this repo — drop them in at these paths to
- * light up the actuator section on the project page.
+ * Renders of the actuator built for each of the arm's three axes. Drop the
+ * source files in at these paths to light up the actuator section.
  */
 export const ACTUATOR_PHOTOS: ActuatorPhoto[] = [
     {
         src: '/images/mimic-robot-arm/actuator-cutaway.png',
-        caption:
-            'Section view: cross-roller bearing output stage on top, single-stage planetary gearbox and BLDC motor stack below, encoder and driver board at the base.',
+        caption: 'Section view: bearing, gearbox, and motor stack.',
     },
     {
         src: '/images/mimic-robot-arm/actuator-assembly.png',
-        caption:
-            'The assembled actuator housing, with the cooling fan intake visible on the side wall.',
+        caption: 'Assembled actuator housing, fan intake on the side.',
     },
 ];
