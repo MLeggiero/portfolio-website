@@ -257,7 +257,9 @@
       "3D Printing",
       "Power Electronics"
     ],
-    "links": {},
+    "links": {
+      "cad": "https://cad.onshape.com/documents/6f74789e6928968fbbcf52b6/w/efcfbf1f57de97415874b8ae/e/aa2c3d6ff899997e372c49d5?renderMode=0&uiState=6aa05270dfb63f41b0244c64"
+    },
     "gallery": [],
     "video": "https://drive.google.com/file/d/147hkyyvl6r338-8Wq39_mcBeDfMEDEUs/preview"
   },

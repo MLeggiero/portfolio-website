@@ -1,12 +1,13 @@
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowLeft, ArrowRight, Github, ExternalLink, FileText, ChevronLeft } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Github, ExternalLink, FileText, Box, ChevronLeft } from 'lucide-react';
 import projectData from '../projects.json';
 import ProjectGallery from './ProjectGallery';
 import ClipGallery from './ClipGallery';
 import StatTiles from './StatTiles';
 import BurgBotFace from './BurgBotFace';
 import BurgBotShowcase from './BurgBotShowcase';
+import MimicShowcase from './MimicShowcase';
 import { VQ_BASE, VQ_ARXIV, clipGroups } from '../data/vqactflowClips';
 
 interface Section {
@@ -30,6 +31,7 @@ interface Project {
         github?: string;
         demo?: string;
         paper?: string;
+        cad?: string;
     };
     gallery?: { src: string; caption?: string }[];
     video?: string;
@@ -67,6 +69,7 @@ const ProjectDetailPage = () => {
 
     const isVQ = project.slug === 'vqactflow';
     const isBurgBot = project.slug === 'burg-bot';
+    const isMimic = project.slug === 'mimic-robot-arm';
 
     return (
         <div className="min-h-screen bg-background">
@@ -170,6 +173,7 @@ const ProjectDetailPage = () => {
                 )}
 
                 {isBurgBot && <BurgBotShowcase />}
+                {isMimic && <MimicShowcase video={project.video} />}
 
                 {/* Headline numbers */}
                 {project.stats && project.stats.length > 0 && (
@@ -278,7 +282,7 @@ const ProjectDetailPage = () => {
                 )}
 
                 {/* Video embed */}
-                {project.video && (
+                {project.video && !isMimic && (
                     <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
@@ -303,7 +307,8 @@ const ProjectDetailPage = () => {
                 {/* External links */}
                 {(project.links.github ||
                     project.links.demo ||
-                    project.links.paper) && (
+                    project.links.paper ||
+                    project.links.cad) && (
                         <motion.div
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
@@ -337,10 +342,21 @@ const ProjectDetailPage = () => {
                                     href={project.links.demo}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="flex items-center gap-2 px-5 py-2.5 border border-white/10 text-white 
+                                    className="flex items-center gap-2 px-5 py-2.5 border border-white/10 text-white
                                            hover:border-primary hover:text-primary transition-all text-sm font-bold uppercase tracking-wider"
                                 >
                                     <ExternalLink size={16} /> View Live
+                                </a>
+                            )}
+                            {project.links.cad && (
+                                <a
+                                    href={project.links.cad}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-center gap-2 px-5 py-2.5 border border-white/10 text-white
+                                           hover:border-primary hover:text-primary transition-all text-sm font-bold uppercase tracking-wider"
+                                >
+                                    <Box size={16} /> Full CAD Model
                                 </a>
                             )}
                         </motion.div>
