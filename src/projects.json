@@ -215,6 +215,106 @@
     "preview": "/images/previews/burg-bot.webp"
   },
   {
+    "id": 12,
+    "slug": "taxelscan",
+    "title": "TaxelScan: Tactile Sensor Reader",
+    "category": "Robotics",
+    "role": "Hardware, Firmware & Signal Conditioning",
+    "period": "Aug 2026 – Present",
+    "image": "/images/taxelscan/pcb-connectors.png",
+    "description": "An open reader board and embedded conditioning stack for flexible Velostat tactile matrices. A XIAO RP2350 scans 512 taxels at 80 fps by default, up to a measured 200 fps, and turns the raw matrix into a cleaned pressure map and contact records before the data ever reaches the host.",
+    "sections": [
+      {
+        "content": "TaxelScan reads a 16 x 32 pressure surface of 512 taxels at 80 frames per second by default and has been measured at 200 fps. A Seeed XIAO RP2350 turns the raw matrix into a cleaned pressure map and contact records, with area, force proxy, peak, centroid, and bounds, before the data reaches the host. The project is more than a matrix multiplexer. Its main contribution is the combination of a purpose-built analog readout and a contact-safe conditioning pipeline that handles electronic drift, Velostat creep, impulses, and isolated phantoms without absorbing a sustained grasp."
+      },
+      {
+        "heading": "Reader Board",
+        "content": "A four-layer KiCad board with dedicated ground and power planes. The project includes the schematic, routed PCB, production Gerbers, BOM, placement data, and a passive two-finger fork adapter for gripper use.",
+        "bullets": [
+          "Row drive from four SN74LVC595A shift registers, 32 actively driven rows. Unselected rows are held actively low, so matrix sneak paths terminate at a low impedance instead of floating.",
+          "The LVC drivers hold their output level under the combined current of a heavily loaded row, so drive sag never shows up as lost pressure.",
+          "Column readout through two CD74HC4067 multiplexers, 32 columns split across two ADC banks on the RP2350's 12-bit ADC.",
+          "Analog front end of 3.3 kΩ sense pulldowns and TLV9062 unity-gain buffers between the mux and the ADC.",
+          "Two 32-way, 0.5 mm FFC connectors for the sensor, and USB-C to the host."
+        ]
+      },
+      {
+        "heading": "Signal Conditioning",
+        "content": "Core 1 scans on a fixed deadline while core 0 conditions and transmits the previous frame, so the scan keeps a stable sample clock even when USB or the host stalls. Three details carry most of the design.",
+        "bullets": [
+          "Live dark reference. Every row is driven low before and after the row walk. That bracketed measurement captures ADC offset, amplifier offset, mux leakage, and supply movement, and it stays valid while the sensor is pressed.",
+          "Contact-safe adaptive baseline. Falling correction is fast and ungated, because a baseline sitting too high suppresses real contact, which is the dangerous direction on a robot. Rising correction is slow, capped, and frozen around active contacts, with a one-taxel halo.",
+          "A static grasp cannot be learned away. Release requires spatial incoherence and a dead perimeter, and cumulative upward drift is hard-capped, so the worst case is a bounded and reported loss rather than an open-ended one.",
+          "Contact extraction on the MCU. Per-taxel thresholds, hysteresis, debounce, isolated-speck removal, and connected components produce usable contacts instead of asking every host to reinterpret raw ADC counts.",
+          "Everything is reported. Adapted, frozen, released, and capped counts ride in every frame trailer alongside scan, conditioning, and emit timings."
+        ]
+      },
+      {
+        "heading": "Measured Performance",
+        "content": "All numbers were measured on the board rather than estimated. At the default 12.5 ms frame period the 16 x 32 scan takes 10.86 ms on core 1 and conditioning takes 1.76 ms on core 0. The fastest setting completed 2,999 frames in 15 seconds at 200 fps with no new overruns. A native build of the conditioning code runs against synthetic frames in a simulator, which logged zero false positives across ten minutes of pure noise.",
+        "bullets": [
+          "Frame rate is checked from the sequence-number delta rather than the reported period, so a board quietly dropping frames cannot flatter itself.",
+          "Boot-time tare scans 8 warm-up frames, discards them, then averages 32 for the reference.",
+          "A Python live viewer serves the heatmap, contact overlay, and telemetry to the browser over server-sent events and can log soak tests to CSV."
+        ]
+      },
+      {
+        "heading": "Credit",
+        "content": "The sensor pads, electrode geometry, and original readout topology come from the FlexiTac project. TaxelScan is an independent reader board and firmware implementation, released under the MIT license."
+      }
+    ],
+    "stats": [
+      {
+        "value": "512",
+        "label": "taxels, a 16 x 32 matrix read through two FFC connectors"
+      },
+      {
+        "value": "200 fps",
+        "label": "fastest measured frame rate, 2,999 frames in 15 s with zero new overruns"
+      },
+      {
+        "value": "10.86 ms",
+        "label": "full-matrix scan on core 1 at the default 80 fps setting"
+      },
+      {
+        "value": "1.76 ms",
+        "label": "conditioning and contact extraction per frame on core 0"
+      }
+    ],
+    "tags": [
+      "Tactile Sensing",
+      "PCB Design",
+      "KiCad",
+      "RP2350",
+      "Embedded C++",
+      "Signal Processing",
+      "Analog Design",
+      "Python"
+    ],
+    "links": {
+      "github": "https://github.com/MLeggiero/taxelscan"
+    },
+    "gallery": [
+      {
+        "src": "/images/taxelscan/pcb-top.png",
+        "caption": "The reader board: four SN74LVC595A row drivers top left, two CD74HC4067 column multiplexers bottom left, TLV9062 buffers in the middle, XIAO RP2350 footprint on the right, and the two 32-way FFC connectors along the bottom edge."
+      },
+      {
+        "src": "/images/taxelscan/pcb-connectors.png",
+        "caption": "Low-angle render used to verify the FFC connector fit and component clearances before ordering."
+      },
+      {
+        "src": "/images/taxelscan/pcb-bottom.png",
+        "caption": "Bottom side of the four-layer board. Dedicated ground and power planes keep the analog readout quiet."
+      },
+      {
+        "src": "/images/taxelscan/fork-adapter.png",
+        "caption": "Passive two-finger fork adapter. One reader board drives two sensor pads, one per gripper finger, by splitting the 32 columns 16 and 16."
+      }
+    ],
+    "preview": "/images/previews/taxelscan.webp"
+  },
+  {
     "id": 4,
     "slug": "mimic-robot-arm",
     "title": "Mimic: 3-Axis Robot Arm",

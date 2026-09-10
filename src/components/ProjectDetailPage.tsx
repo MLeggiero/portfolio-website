@@ -8,6 +8,7 @@ import StatTiles from './StatTiles';
 import BurgBotFace from './BurgBotFace';
 import BurgBotShowcase from './BurgBotShowcase';
 import MimicShowcase from './MimicShowcase';
+import TaxelScanShowcase from './TaxelScanShowcase';
 import { VQ_BASE, VQ_ARXIV, clipGroups } from '../data/vqactflowClips';
 
 interface Section {
@@ -70,6 +71,7 @@ const ProjectDetailPage = () => {
     const isVQ = project.slug === 'vqactflow';
     const isBurgBot = project.slug === 'burg-bot';
     const isMimic = project.slug === 'mimic-robot-arm';
+    const isTaxelScan = project.slug === 'taxelscan';
 
     return (
         <div className="min-h-screen bg-background">
@@ -174,6 +176,7 @@ const ProjectDetailPage = () => {
 
                 {isBurgBot && <BurgBotShowcase />}
                 {isMimic && <MimicShowcase video={project.video} />}
+                {isTaxelScan && <TaxelScanShowcase />}
 
                 {/* Headline numbers */}
                 {project.stats && project.stats.length > 0 && (
