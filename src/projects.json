@@ -309,13 +309,13 @@
     "slug": "mimic-robot-arm",
     "title": "Mimic: 3-Axis Robot Arm",
     "category": "Robotics",
-    "role": "Personal Project: Design, Fabrication & Controls",
+    "role": "Four-Person Course Project: Design, Fabrication & Controls",
     "period": "2025 – Present",
     "image": "/images/mimic-robot-arm.png",
     "description": "A 3-axis brushless DC robot arm using ODrive motor controllers, custom KiCAD PCB design, and CAN bus communication, built to learn industrial motion control.",
     "sections": [
       {
-        "content": "Mimic is a personal project to design and build a capable robot arm using industrial-grade components rather than hobby servos. The goal is to learn brushless motor control, power electronics, encoder feedback, and real-time communication protocols used in professional robotic systems."
+        "content": "Mimic is a four-person course project for ME 6705 to design and build a capable robot arm using industrial-grade components rather than hobby servos. The goal is to learn brushless motor control, power electronics, encoder feedback, and real-time communication protocols used in professional robotic systems."
       },
       {
         "heading": "System Architecture",
