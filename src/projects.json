@@ -222,98 +222,67 @@
     "role": "Hardware, Firmware & Signal Conditioning",
     "period": "Aug 2026 – Present",
     "image": "/images/taxelscan/rev4-top.png",
-    "description": "An open reader board and embedded conditioning stack for flexible tactile matrices. REV4, designed and verified but not yet built, chains up to eight 1,024-taxel boards over RS-485. REV1 is working hardware, measured at up to 200 fps over 512 taxels.",
+    "description": "Open reader board and firmware for flexible tactile matrices. REV1 is built and measured. REV4, designed but not yet built, chains eight 1,024-taxel boards over RS-485.",
     "sections": [
       {
-        "content": "TaxelScan turns a flexible tactile matrix into a cleaned pressure map and contact records, with area, force proxy, peak, centroid, and bounds, before the data reaches the host. The project is more than a matrix multiplexer. Its main contribution is the combination of a purpose-built analog readout and a contact-safe conditioning pipeline that handles electronic drift, sensor creep, impulses, and isolated phantoms without absorbing a sustained grasp. REV1 is built and measured on a 512-taxel Velostat matrix. REV4 is the next board: a 32 x 32 carbon-nanotube mat per board, up to eight boards on one harness."
+        "content": "TaxelScan turns a flexible tactile matrix into a cleaned pressure map and contact records before the data reaches the host, without learning a sustained grasp away as drift."
       },
       {
-        "heading": "REV4: Eight Mats, One Harness",
-        "content": "Up to eight boards share one RS-485 harness, start every frame on the same edge, and reach the host through the first board's USB-C port. That is 8,192 taxels from a single cable, with a predicted 60 Hz across all eight boards and about 22 ms from sensor to host, plus USB.",
+        "heading": "REV4",
+        "content": "Up to eight boards share one RS-485 harness, start each frame on a hardware sync edge, and reach the host through one USB-C port. Predicted: 60 Hz across all eight.",
         "bullets": [
-          "The RP2354A sits directly on the board in place of the XIAO module: two Cortex-M33 cores at 150 MHz, with 2 MB of flash in the package.",
-          "A six-way JST GH harness carries 5 V, ground, and two twisted pairs. The data pair is half duplex and polled by the master. The sync pair carries a 100 µs pulse per frame, and every board starts on its falling edge.",
-          "Boards are addressed by three solder jumpers, and 120 Ω termination is fitted only on the two end boards through a separate assembly file.",
-          "Each sense line has a 10 kΩ 0.1% pulldown and a gain of 6 ahead of the ADC, set for a mat assumed to be 1 MΩ at rest and 50 kΩ pressed. Rows and ADC reference share one 3.3 V rail, so the reading is ratiometric.",
-          "A 32 x 32 scan with two dark sweeps is predicted at 10.9 ms, a ceiling of 92 fps, with about 3.5 ms of conditioning on the second core.",
-          "Power comes from USB-C or the harness through a diode-OR, into a TPS62162 buck that still regulates 3.3 V from the 3.7 to 4.0 V left at the far end of the harness."
+          "RP2354A on the board, with 10 kΩ pulldowns and a gain of 6 ahead of its 12-bit ADC.",
+          "Dropping REV3's 16-bit ADC cuts parts from $33 to about $15 per board, at 10 to 14 times the noise per conversion before filtering."
         ]
       },
       {
-        "heading": "REV3 to REV4: Dropping the External ADC",
-        "content": "REV4 is the REV3 board with its LTC1865L 16-bit converter taken out and both sense banks read by the RP2354A's own 12-bit ADC. The outline, row drive, muxes, gain stage, harness, and USB-C power path carry over.",
+        "heading": "REV4 Verification",
         "bullets": [
-          "Parts cost falls from $33.08 to about $15 per board at JLCPCB prices for 10 boards, an estimate rather than a quote. The converter alone was $18.47, and removing it also removed a low-stock line from the order.",
-          "The cost is resolution. At ENOB 9.0 to 9.5 the internal ADC has 10 to 14 times more noise per conversion than REV3's estimate, before oversampling and conditioning. It is the same converter REV1 reads its mat with, and the front end adds only 0.13 LSB rms.",
-          "The board was re-routed from scratch so that every signal track runs at 0, 45, or 90 degrees. Only 0.03% of the copper is off-angle, all of it plane ties."
+          "41 injected netlist faults, all caught. DRC and ERC clean.",
+          "Gerber e-test: 522 pads, 0 opens, 0 unintended shorts.",
+          "Every IC checked against its datasheet. Hot-plug simulation caught 7.06 V on a 6 V buck, now fixed.",
+          "Outside design review: six layout comments, each measured, and 98 via holes cleared from SMD pads."
         ]
       },
       {
-        "heading": "REV4: Verification Before Ordering",
-        "content": "Since the board cannot yet be measured, the checks were built to find what would otherwise only show up at bring-up. Every IC was checked pin by pin against its datasheet, and the analog chain and USB hot plug were simulated in ngspice.",
+        "heading": "REV1 Measured",
         "bullets": [
-          "The netlist is generated by a script that asserts all 134 nets. A fault-injection suite plants 41 faults, and every one is caught.",
-          "KiCad DRC with zones refilled shows 0 unconnected and 0 copper errors, with 0 ERC errors and clean schematic parity.",
-          "A separate e-test renders the Gerbers and drill files themselves and checks them against the netlist: 522 pads, 0 opens, and 0 shorts apart from the three address jumpers that are bridged by design.",
-          "Simulation found that a 5.5 V supply and a captive cable could put 7.06 V on the original 6 V buck during hot plug. The board now uses the 20 V TPS62162 and a larger damper, and the USB rail peaks at 6.78 V against a 7 V limit.",
-          "The core regulator was re-laid to match Raspberry Pi's minimal design, shrinking the switching loop from about 20 mm² to 2.6 mm², against 2.3 mm² in the reference.",
-          "The obvious harness cable would have joined pin 1 to pin 6 and put 5 V on the sync line, because the two connectors are turned 180 degrees to each other. The correct wiring is now specified and marked on the silkscreen.",
-          "A DC solve of the whole mat shows the analog chain and MCU survive any taxel resistance, including a dead short. The row drivers stay inside their 24 mA rating at any press pattern down to 4.1 kΩ, and this mat gives 2.8 mA.",
-          "An outside design review by an experienced electrical engineer raised six layout comments. Each was measured on the board. The main finding was 98 via holes sitting in SMD pads. All are now clear, leaving only the 9 in the exposed pads, where the makers' reference layouts put them, so tented vias are enough."
+          "Frame rate depends mostly on how many taxels are scanned: fewer taxels, faster frames.",
+          "512 taxels: 80 fps by default, and 200 fps at the fastest settings (2,999 frames in 15 s, no new overruns).",
+          "Downscaled scan: 500 Hz, the top rate the firmware and viewer support.",
+          "Scan 10.86 ms, conditioning 1.76 ms per frame at the 512-taxel default."
         ]
       },
       {
-        "heading": "REV1 Reader Board",
-        "content": "A four-layer KiCad board with dedicated ground and power planes, built around a Seeed XIAO RP2350. The project includes the schematic, routed PCB, production Gerbers, BOM, placement data, and a passive two-finger fork adapter for gripper use.",
+        "heading": "Signal Conditioning",
         "bullets": [
-          "Row drive from four SN74LVC595A shift registers, 32 actively driven rows. Unselected rows are held actively low, so matrix sneak paths terminate at a low impedance instead of floating.",
-          "The LVC drivers hold their output level under the combined current of a heavily loaded row, so drive sag never shows up as lost pressure.",
-          "Column readout through two CD74HC4067 multiplexers, 32 columns split across two ADC banks on the RP2350's 12-bit ADC.",
-          "Analog front end of 3.3 kΩ sense pulldowns and TLV9062 unity-gain buffers between the mux and the ADC.",
-          "Two 32-way, 0.5 mm FFC connectors for the sensor, and USB-C to the host."
-        ]
-      },
-      {
-        "heading": "REV1 Signal Conditioning",
-        "content": "Core 1 scans on a fixed deadline while core 0 conditions and transmits the previous frame, so the scan keeps a stable sample clock even when USB or the host stalls. Three details carry most of the design.",
-        "bullets": [
-          "Live dark reference. Every row is driven low before and after the row walk. That bracketed measurement captures ADC offset, amplifier offset, mux leakage, and supply movement, and it stays valid while the sensor is pressed.",
-          "Contact-safe adaptive baseline. Falling correction is fast and ungated, because a baseline sitting too high suppresses real contact, which is the dangerous direction on a robot. Rising correction is slow, capped, and frozen around active contacts, with a one-taxel halo.",
-          "A static grasp cannot be learned away. Release requires spatial incoherence and a dead perimeter, and cumulative upward drift is hard-capped, so the worst case is a bounded and reported loss rather than an open-ended one.",
-          "Contact extraction on the MCU. Per-taxel thresholds, hysteresis, debounce, isolated-speck removal, and connected components produce usable contacts instead of asking every host to reinterpret raw ADC counts.",
-          "Everything is reported. Adapted, frozen, released, and capped counts ride in every frame trailer alongside scan, conditioning, and emit timings."
-        ]
-      },
-      {
-        "heading": "REV1 Measured Performance",
-        "content": "All numbers here were measured on the REV1 board rather than estimated. At the default 12.5 ms frame period the 16 x 32 scan takes 10.86 ms on core 1 and conditioning takes 1.76 ms on core 0. The fastest setting completed 2,999 frames in 15 seconds at 200 fps with no new overruns. A native build of the conditioning code runs against synthetic frames in a simulator, which logged zero false positives across ten minutes of pure noise.",
-        "bullets": [
-          "Frame rate is checked from the sequence-number delta rather than the reported period, so a board quietly dropping frames cannot flatter itself.",
-          "Boot-time tare scans 8 warm-up frames, discards them, then averages 32 for the reference.",
-          "A Python live viewer serves the heatmap, contact overlay, and telemetry to the browser over server-sent events and can log soak tests to CSV."
+          "Live dark reference: every row is driven low around each scan, cancelling offset and leakage even under load.",
+          "Adaptive baseline: falls fast, rises slowly, and freezes around contacts.",
+          "Contact extraction on the MCU: thresholds, hysteresis, debounce, and connected components.",
+          "Core 1 scans on a fixed deadline and core 0 conditions, so a USB stall cannot disturb the sample clock."
         ]
       },
       {
         "heading": "Credit",
-        "content": "The sensor pads, electrode geometry, and original readout topology come from the FlexiTac project. TaxelScan is an independent reader board and firmware implementation, released under the MIT license."
+        "content": "Sensor pads, electrode geometry, and original readout topology come from FlexiTac. MIT licensed."
       }
     ],
     "stats": [
       {
         "value": "8,192",
-        "label": "taxels on one REV4 harness, eight boards at 1,024 each (design value)"
+        "label": "taxels on one REV4 harness (design)"
       },
       {
         "value": "60 Hz",
-        "label": "REV4 target across eight boards (predicted, not yet measured)"
+        "label": "REV4 target, eight boards (predicted)"
       },
       {
         "value": "~$15",
-        "label": "REV4 parts per board, down from $33.08 on REV3 (estimate, 10 boards)"
+        "label": "REV4 parts per board (estimate)"
       },
       {
         "value": "200 fps",
-        "label": "measured on REV1 at 512 taxels, 2,999 frames in 15 s with zero new overruns"
+        "label": "REV1 at 512 taxels (measured)"
       }
     ],
     "tags": [
@@ -332,28 +301,7 @@
     "links": {
       "github": "https://github.com/MLeggiero/taxelscan/tree/rev4"
     },
-    "gallery": [
-      {
-        "src": "/images/taxelscan/rev4-review-vias.png",
-        "caption": "REV4 design review: plane vias in the pads on 8 October (left), and beside them after the review (right). The vias left in the large exposed pad are where the reference layouts put them."
-      },
-      {
-        "src": "/images/taxelscan/pcb-top.png",
-        "caption": "The REV1 reader board: four SN74LVC595A row drivers top left, two CD74HC4067 column multiplexers bottom left, TLV9062 buffers in the middle, XIAO RP2350 footprint on the right, and the two 32-way FFC connectors along the bottom edge."
-      },
-      {
-        "src": "/images/taxelscan/pcb-connectors.png",
-        "caption": "Low-angle render of REV1, used to verify the FFC connector fit and component clearances before ordering."
-      },
-      {
-        "src": "/images/taxelscan/pcb-bottom.png",
-        "caption": "Bottom side of the four-layer REV1 board. Dedicated ground and power planes keep the analog readout quiet."
-      },
-      {
-        "src": "/images/taxelscan/fork-adapter.png",
-        "caption": "Passive two-finger fork adapter. One reader board drives two sensor pads, one per gripper finger, by splitting the 32 columns 16 and 16."
-      }
-    ],
+    "gallery": [],
     "preview": "/images/previews/taxelscan.webp"
   },
   {

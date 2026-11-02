@@ -11,18 +11,15 @@
 const REPO = 'https://github.com/MLeggiero/taxelscan';
 
 const COMPARISON: { block: string; rev1: string; rev4: string }[] = [
-    { block: 'Status', rev1: 'Built and measured', rev4: 'Designed and verified, not yet built' },
-    { block: 'Sensor', rev1: '16 x 32 Velostat matrix, 512 taxels', rev4: '32 x 32 carbon-nanotube mat, 1,024 taxels per board' },
-    { block: 'Scale', rev1: 'One board', rev4: 'Up to eight boards on one harness, 8,192 taxels' },
-    { block: 'Controller', rev1: 'Seeed XIAO RP2350 module', rev4: 'RP2354A on the board, two Cortex-M33 cores at 150 MHz' },
-    { block: 'Converter', rev1: 'RP2350 12-bit ADC', rev4: 'RP2354A 12-bit ADC, both banks in round robin at 500 ksps' },
-    { block: 'Row drive', rev1: '4 x SN74LVC595A, 32 actively driven rows', rev4: 'Same' },
-    { block: 'Column readout', rev1: '2 x CD74HC4067, 32 columns across two ADC banks', rev4: 'Same' },
-    { block: 'Analog front end', rev1: '3.3 kΩ sense pulldowns, TLV9062 unity-gain buffers', rev4: '10 kΩ 0.1% pulldowns, TLV9062 at a gain of 6' },
-    { block: 'Sensor interface', rev1: 'Two 32-way, 0.5 mm FFC connectors', rev4: 'Same' },
-    { block: 'Host link', rev1: 'USB-C', rev4: 'USB-C on the first board, RS-485 data and sync between boards' },
-    { block: 'Frame rate', rev1: '80 fps default, 200 fps measured', rev4: '60 Hz target for eight boards, 92 fps ceiling (predicted)' },
-    { block: 'PCB', rev1: 'Four layers with dedicated ground and power planes', rev4: 'Four layers, 60.3 x 35.9 mm, 102 parts, all on top' },
+    { block: 'Status', rev1: 'Built and measured', rev4: 'Designed, not yet built' },
+    { block: 'Sensor', rev1: '16 x 32 Velostat, 512 taxels', rev4: '32 x 32 carbon nanotube, 1,024 taxels' },
+    { block: 'Scale', rev1: 'One board', rev4: 'Eight boards, 8,192 taxels' },
+    { block: 'Controller', rev1: 'XIAO RP2350 module', rev4: 'RP2354A on the board' },
+    { block: 'Readout', rev1: '4 x SN74LVC595A, 2 x CD74HC4067', rev4: 'Same' },
+    { block: 'Front end', rev1: '3.3 kΩ, unity-gain TLV9062', rev4: '10 kΩ, TLV9062 at a gain of 6' },
+    { block: 'Host link', rev1: 'USB-C', rev4: 'USB-C, RS-485 between boards' },
+    { block: 'Frame rate', rev1: '200 fps at 512 taxels, 500 Hz downscaled', rev4: '60 Hz target (predicted)' },
+    { block: 'PCB', rev1: 'Four layers', rev4: 'Four layers, 60.3 x 35.9 mm' },
 ];
 
 const TaxelScanShowcase = () => {
@@ -52,10 +49,8 @@ const TaxelScanShowcase = () => {
                 </div>
                 <p className="mt-4 p-4 border border-white/10 text-sm text-neutral-400 leading-relaxed">
                     <span className="text-white font-bold">Status: </span>
-                    designed and verified in KiCad, with the fabrication package ready. The
-                    board has not been built and its acquisition firmware is not written, so
-                    every REV4 number on this page is a design or datasheet value rather than
-                    a measurement.
+                    ready to fabricate, not yet built, firmware not written. REV4 numbers are
+                    design values, not measurements.
                 </p>
                 <div className="flex flex-wrap gap-x-6 gap-y-2 mt-4 text-sm">
                     <a
@@ -72,7 +67,7 @@ const TaxelScanShowcase = () => {
                         rel="noopener noreferrer"
                         className="text-primary hover:text-white transition-colors"
                     >
-                        REV1 board and firmware on GitHub
+                        REV1 on GitHub
                     </a>
                 </div>
             </div>
@@ -127,8 +122,7 @@ const TaxelScanShowcase = () => {
                         loading="lazy"
                     />
                     <figcaption className="p-3 text-xs text-neutral-500 leading-relaxed">
-                        A hand on the sensor and the live pressure map from the REV1 reader board,
-                        recorded together. Each finger resolves to its own contact.
+                        Each finger resolves to its own contact.
                     </figcaption>
                 </figure>
             </div>
@@ -139,10 +133,7 @@ const TaxelScanShowcase = () => {
                     The pipeline
                 </h2>
                 <p className="text-neutral-400 leading-relaxed mb-5">
-                    Ten stages split across the RP2350's two cores, running on REV1 today. Core 1
-                    owns acquisition on a fixed deadline. Core 0 owns everything that turns raw
-                    counts into a pressure map and a contact list. REV4 is planned to carry this
-                    pipeline over, since its ADC counts are in the same domain.
+                    Ten stages across two cores, running on REV1. REV4 is planned to reuse it.
                 </p>
                 <figure className="bg-white border border-white/10">
                     <img
