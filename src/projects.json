@@ -97,6 +97,96 @@
     "preview": "/images/previews/vqactflow.webp"
   },
   {
+    "id": 13,
+    "slug": "fast-touch",
+    "title": "Fast Touch: Tactile Control for Tool Use",
+    "category": "Robotics",
+    "role": "Robot Learning Research",
+    "period": "Sep 2026 – Present",
+    "image": "/images/fast-touch/hero.jpg",
+    "description": "A simulated humanoid hand that holds a hammer through each blow, using a learned tactile controller at up to 1 kHz beneath a 30 Hz VLA planner.",
+    "sections": [
+      {
+        "content": "A vision-language-action (VLA) planner sets a humanoid's arm and hand motion at 30 Hz, too slow to react within a hammer blow. Beneath it, a learned controller reads the hand's tactile skin and motor currents and adjusts the grip at up to 1 kHz. All results so far are from simulation."
+      },
+      {
+        "heading": "Setup",
+        "bullets": [
+          "Dexmate Vega U humanoid with a 20-joint WUJI Hand 2 in MuJoCo, driving a nail with a scanned claw hammer.",
+          "448 simulated taxels on the palm and on each finger's tip and middle segment, modeled on TaxelScan.",
+          "The controller adds a position and a torque offset to each hand joint. A scripted swing stands in for the planner in these tests.",
+          "A PPO teacher with privileged state is distilled into a student that senses only taxels, joint angles and motor currents. Training runs on GPU in mjlab; results come from an 8 kHz CPU simulation."
+        ]
+      },
+      {
+        "heading": "Results",
+        "bullets": [
+          "On a slippery handle (μ = 0.2) at half grip strength, the grip alone loses 43% of strikes and the 250 Hz controller loses none (60 episodes of 10 strikes).",
+          "At 30 Hz, the planner's rate, the controller still loses 13% of strikes. At 100 Hz and above it loses under 0.5%.",
+          "To match the hold of the 1 kHz controller trained with a current penalty, the grip alone needs 22–28% more of its full-strength current than the controller draws. At 30 Hz the margin is 4–7%.",
+          "With that penalty, the 250 Hz and 1 kHz controllers learn to hold the tool lightly and squeeze 3–5 ms after it starts to turn; the 30 Hz controller does not."
+        ]
+      },
+      {
+        "heading": "Status",
+        "content": "The VLA planner (GR00T N1.7) does not yet complete the hammer task in closed loop. Drill tasks and hardware tests with TaxelScan skins are next."
+      },
+      {
+        "heading": "Credit",
+        "content": "Robot and hand models from Dexmate (Apache 2.0) and WUJI (MIT). Hammer scan from the YCB object set (CC BY 4.0). Rendered scene assets from Poly Haven (CC0)."
+      }
+    ],
+    "stats": [
+      {
+        "value": "0%",
+        "label": "strikes lost at 250 Hz on a slippery handle at half grip (grip alone: 43%)"
+      },
+      {
+        "value": "13%",
+        "label": "strikes lost at 30 Hz, the planner's rate"
+      },
+      {
+        "value": "22–28%",
+        "label": "more current the grip alone needs to match the 1 kHz controller's hold (three seeds)"
+      },
+      {
+        "value": "448",
+        "label": "simulated taxels on the hand"
+      }
+    ],
+    "tags": [
+      "Robotics",
+      "Tactile Sensing",
+      "Reinforcement Learning",
+      "Humanoid",
+      "Dexterous Manipulation",
+      "VLA",
+      "GR00T",
+      "MuJoCo",
+      "mjlab",
+      "PyTorch",
+      "Blender"
+    ],
+    "links": {
+      "github": "https://github.com/MLeggiero/tactile-encode"
+    },
+    "gallery": [
+      {
+        "src": "/images/fast-touch/strike.jpg",
+        "caption": "Blender render of a simulated 250 Hz trial at contact, with the nail drawn as a hinge pin."
+      },
+      {
+        "src": "/images/fast-touch/effort.png",
+        "caption": "Tool rotation in the hand against motor current. The dashed line is the grip alone at 50–100% strength."
+      },
+      {
+        "src": "/images/fast-touch/squeeze.png",
+        "caption": "Extra closing torque around a blow, as trained and with effort priced 10×."
+      }
+    ],
+    "preview": "/images/previews/fast-touch.webp"
+  },
+  {
     "id": 11,
     "slug": "burg-bot",
     "title": "burg-bot: Autonomous Mapping Robot",

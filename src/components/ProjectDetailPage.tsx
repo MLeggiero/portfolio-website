@@ -9,6 +9,7 @@ import BurgBotFace from './BurgBotFace';
 import BurgBotShowcase from './BurgBotShowcase';
 import MimicShowcase from './MimicShowcase';
 import TaxelScanShowcase from './TaxelScanShowcase';
+import FastTouchShowcase from './FastTouchShowcase';
 import { VQ_BASE, VQ_ARXIV, clipGroups } from '../data/vqactflowClips';
 
 interface Section {
@@ -72,6 +73,7 @@ const ProjectDetailPage = () => {
     const isBurgBot = project.slug === 'burg-bot';
     const isMimic = project.slug === 'mimic-robot-arm';
     const isTaxelScan = project.slug === 'taxelscan';
+    const isFastTouch = project.slug === 'fast-touch';
 
     return (
         <div className="min-h-screen bg-background">
@@ -177,6 +179,7 @@ const ProjectDetailPage = () => {
                 {isBurgBot && <BurgBotShowcase />}
                 {isMimic && <MimicShowcase video={project.video} />}
                 {isTaxelScan && <TaxelScanShowcase />}
+                {isFastTouch && <FastTouchShowcase />}
 
                 {/* Headline numbers */}
                 {project.stats && project.stats.length > 0 && (
