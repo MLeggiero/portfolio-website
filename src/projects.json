@@ -2,7 +2,6 @@
   {
     "id": 10,
     "slug": "vqactflow",
-    "hidden": true,
     "title": "VQActFlow: Action Mode Steering",
     "category": "Robotics",
     "role": "Robot Learning Research",
