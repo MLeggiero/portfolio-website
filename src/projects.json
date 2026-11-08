@@ -96,6 +96,96 @@
     "preview": "/images/previews/vqactflow.webp"
   },
   {
+    "id": 13,
+    "slug": "fast-touch",
+    "title": "Fast Touch: Tactile Control for Tool Use",
+    "category": "Robotics",
+    "role": "Robot Learning Research",
+    "period": "Sep 2026 – Present",
+    "image": "/images/fast-touch/hero.jpg",
+    "description": "A simulated humanoid hand that holds a hammer through each blow, using a learned tactile controller at up to 1 kHz beneath a 30 Hz VLA planner.",
+    "sections": [
+      {
+        "content": "A vision-language-action (VLA) planner sets a humanoid's arm and hand motion at 30 Hz, too slow to react within a hammer blow. Beneath it, a learned controller reads the hand's tactile skin and motor currents and adjusts the grip at up to 1 kHz. All results so far are from simulation."
+      },
+      {
+        "heading": "Setup",
+        "bullets": [
+          "Dexmate Vega U humanoid with a 20-joint WUJI Hand 2 in MuJoCo, driving a nail with a scanned claw hammer.",
+          "448 simulated taxels on the palm and on each finger's tip and middle segment, modeled on TaxelScan.",
+          "The controller adds a position and a torque offset to each hand joint. A scripted swing stands in for the planner in these tests.",
+          "A PPO teacher with privileged state is distilled into a student that senses only taxels, joint angles and motor currents. Training runs on GPU in mjlab; results come from an 8 kHz CPU simulation."
+        ]
+      },
+      {
+        "heading": "Results",
+        "bullets": [
+          "On a slippery handle (μ = 0.2) at half grip strength, the grip alone loses 43% of strikes and the 250 Hz controller loses none (60 episodes of 10 strikes).",
+          "At 30 Hz, the planner's rate, the controller still loses 13% of strikes. At 100 Hz and above it loses under 0.5%.",
+          "To match the hold of the 1 kHz controller trained with a current penalty, the grip alone needs 22–28% more of its full-strength current than the controller draws. At 30 Hz the margin is 4–7%.",
+          "With that penalty, the 250 Hz and 1 kHz controllers learn to hold the tool lightly and squeeze 3–5 ms after it starts to turn; the 30 Hz controller does not."
+        ]
+      },
+      {
+        "heading": "Status",
+        "content": "The VLA planner (GR00T N1.7) does not yet complete the hammer task in closed loop. Drill tasks and hardware tests with TaxelScan skins are next."
+      },
+      {
+        "heading": "Credit",
+        "content": "Robot and hand models from Dexmate (Apache 2.0) and WUJI (MIT). Hammer scan from the YCB object set (CC BY 4.0). Rendered scene assets from Poly Haven (CC0)."
+      }
+    ],
+    "stats": [
+      {
+        "value": "0%",
+        "label": "strikes lost at 250 Hz on a slippery handle at half grip (grip alone: 43%)"
+      },
+      {
+        "value": "13%",
+        "label": "strikes lost at 30 Hz, the planner's rate"
+      },
+      {
+        "value": "22–28%",
+        "label": "more current the grip alone needs to match the 1 kHz controller's hold (three seeds)"
+      },
+      {
+        "value": "448",
+        "label": "simulated taxels on the hand"
+      }
+    ],
+    "tags": [
+      "Robotics",
+      "Tactile Sensing",
+      "Reinforcement Learning",
+      "Humanoid",
+      "Dexterous Manipulation",
+      "VLA",
+      "GR00T",
+      "MuJoCo",
+      "mjlab",
+      "PyTorch",
+      "Blender"
+    ],
+    "links": {
+      "github": "https://github.com/MLeggiero/tactile-encode"
+    },
+    "gallery": [
+      {
+        "src": "/images/fast-touch/strike.jpg",
+        "caption": "Blender render of a simulated 250 Hz trial at contact, with the nail drawn as a hinge pin."
+      },
+      {
+        "src": "/images/fast-touch/effort.png",
+        "caption": "Tool rotation in the hand against motor current. The dashed line is the grip alone at 50–100% strength."
+      },
+      {
+        "src": "/images/fast-touch/squeeze.png",
+        "caption": "Extra closing torque around a blow, as trained and with effort priced 10×."
+      }
+    ],
+    "preview": "/images/previews/fast-touch.webp"
+  },
+  {
     "id": 11,
     "slug": "burg-bot",
     "title": "burg-bot: Autonomous Mapping Robot",
@@ -220,64 +310,68 @@
     "category": "Robotics",
     "role": "Hardware, Firmware & Signal Conditioning",
     "period": "Aug 2026 – Present",
-    "image": "/images/taxelscan/pcb-connectors.png",
-    "description": "An open reader board and embedded conditioning stack for flexible Velostat tactile matrices. A XIAO RP2350 scans 512 taxels at 80 fps by default, up to a measured 200 fps, and turns the raw matrix into a cleaned pressure map and contact records before the data ever reaches the host.",
+    "image": "/images/taxelscan/rev4-top.png",
+    "description": "Open reader board and firmware for flexible tactile matrices. REV1 is built and measured. REV4, designed but not yet built, chains eight 1,024-taxel boards over RS-485.",
     "sections": [
       {
-        "content": "TaxelScan reads a 16 x 32 pressure surface of 512 taxels at 80 frames per second by default and has been measured at 200 fps. A Seeed XIAO RP2350 turns the raw matrix into a cleaned pressure map and contact records, with area, force proxy, peak, centroid, and bounds, before the data reaches the host. The project is more than a matrix multiplexer. Its main contribution is the combination of a purpose-built analog readout and a contact-safe conditioning pipeline that handles electronic drift, Velostat creep, impulses, and isolated phantoms without absorbing a sustained grasp."
+        "content": "TaxelScan turns a flexible tactile matrix into a cleaned pressure map and contact records before the data reaches the host, without learning a sustained grasp away as drift."
       },
       {
-        "heading": "Reader Board",
-        "content": "A four-layer KiCad board with dedicated ground and power planes. The project includes the schematic, routed PCB, production Gerbers, BOM, placement data, and a passive two-finger fork adapter for gripper use.",
+        "heading": "REV4",
+        "content": "Up to eight boards share one RS-485 harness, start each frame on a hardware sync edge, and reach the host through one USB-C port. Predicted: 60 Hz across all eight.",
         "bullets": [
-          "Row drive from four SN74LVC595A shift registers, 32 actively driven rows. Unselected rows are held actively low, so matrix sneak paths terminate at a low impedance instead of floating.",
-          "The LVC drivers hold their output level under the combined current of a heavily loaded row, so drive sag never shows up as lost pressure.",
-          "Column readout through two CD74HC4067 multiplexers, 32 columns split across two ADC banks on the RP2350's 12-bit ADC.",
-          "Analog front end of 3.3 kΩ sense pulldowns and TLV9062 unity-gain buffers between the mux and the ADC.",
-          "Two 32-way, 0.5 mm FFC connectors for the sensor, and USB-C to the host."
+          "RP2354A on the board, with 10 kΩ pulldowns and a gain of 6 ahead of its 12-bit ADC.",
+          "Dropping REV3's 16-bit ADC cuts parts from $33 to about $15 per board, at 10 to 14 times the noise per conversion before filtering."
+        ]
+      },
+      {
+        "heading": "REV4 Verification",
+        "bullets": [
+          "41 injected netlist faults, all caught. DRC and ERC clean.",
+          "Gerber e-test: 522 pads, 0 opens, 0 unintended shorts.",
+          "Every IC checked against its datasheet. Hot-plug simulation caught 7.06 V on a 6 V buck, now fixed.",
+          "Outside design review: six layout comments, each measured, and 98 via holes cleared from SMD pads."
+        ]
+      },
+      {
+        "heading": "REV1 Measured",
+        "bullets": [
+          "Frame rate depends mostly on how many taxels are scanned: fewer taxels, faster frames.",
+          "512 taxels: 80 fps by default, and 200 fps at the fastest settings (2,999 frames in 15 s, no new overruns).",
+          "Downscaled scan: 500 Hz, the top rate the firmware and viewer support.",
+          "Scan 10.86 ms, conditioning 1.76 ms per frame at the 512-taxel default."
         ]
       },
       {
         "heading": "Signal Conditioning",
-        "content": "Core 1 scans on a fixed deadline while core 0 conditions and transmits the previous frame, so the scan keeps a stable sample clock even when USB or the host stalls. Three details carry most of the design.",
         "bullets": [
-          "Live dark reference. Every row is driven low before and after the row walk. That bracketed measurement captures ADC offset, amplifier offset, mux leakage, and supply movement, and it stays valid while the sensor is pressed.",
-          "Contact-safe adaptive baseline. Falling correction is fast and ungated, because a baseline sitting too high suppresses real contact, which is the dangerous direction on a robot. Rising correction is slow, capped, and frozen around active contacts, with a one-taxel halo.",
-          "A static grasp cannot be learned away. Release requires spatial incoherence and a dead perimeter, and cumulative upward drift is hard-capped, so the worst case is a bounded and reported loss rather than an open-ended one.",
-          "Contact extraction on the MCU. Per-taxel thresholds, hysteresis, debounce, isolated-speck removal, and connected components produce usable contacts instead of asking every host to reinterpret raw ADC counts.",
-          "Everything is reported. Adapted, frozen, released, and capped counts ride in every frame trailer alongside scan, conditioning, and emit timings."
-        ]
-      },
-      {
-        "heading": "Measured Performance",
-        "content": "All numbers were measured on the board rather than estimated. At the default 12.5 ms frame period the 16 x 32 scan takes 10.86 ms on core 1 and conditioning takes 1.76 ms on core 0. The fastest setting completed 2,999 frames in 15 seconds at 200 fps with no new overruns. A native build of the conditioning code runs against synthetic frames in a simulator, which logged zero false positives across ten minutes of pure noise.",
-        "bullets": [
-          "Frame rate is checked from the sequence-number delta rather than the reported period, so a board quietly dropping frames cannot flatter itself.",
-          "Boot-time tare scans 8 warm-up frames, discards them, then averages 32 for the reference.",
-          "A Python live viewer serves the heatmap, contact overlay, and telemetry to the browser over server-sent events and can log soak tests to CSV."
+          "Live dark reference: every row is driven low around each scan, cancelling offset and leakage even under load.",
+          "Adaptive baseline: falls fast, rises slowly, and freezes around contacts.",
+          "Contact extraction on the MCU: thresholds, hysteresis, debounce, and connected components.",
+          "Core 1 scans on a fixed deadline and core 0 conditions, so a USB stall cannot disturb the sample clock."
         ]
       },
       {
         "heading": "Credit",
-        "content": "The sensor pads, electrode geometry, and original readout topology come from the FlexiTac project. TaxelScan is an independent reader board and firmware implementation, released under the MIT license."
+        "content": "Sensor pads, electrode geometry, and original readout topology come from FlexiTac. MIT licensed."
       }
     ],
     "stats": [
       {
-        "value": "512",
-        "label": "taxels, a 16 x 32 matrix read through two FFC connectors"
+        "value": "8,192",
+        "label": "taxels on one REV4 harness (design)"
+      },
+      {
+        "value": "60 Hz",
+        "label": "REV4 target, eight boards (predicted)"
+      },
+      {
+        "value": "~$15",
+        "label": "REV4 parts per board (estimate)"
       },
       {
         "value": "200 fps",
-        "label": "fastest measured frame rate, 2,999 frames in 15 s with zero new overruns"
-      },
-      {
-        "value": "10.86 ms",
-        "label": "full-matrix scan on core 1 at the default 80 fps setting"
-      },
-      {
-        "value": "1.76 ms",
-        "label": "conditioning and contact extraction per frame on core 0"
+        "label": "REV1 at 512 taxels (measured)"
       }
     ],
     "tags": [
@@ -285,32 +379,18 @@
       "PCB Design",
       "KiCad",
       "RP2350",
+      "RP2354A",
+      "RS-485",
       "Embedded C++",
       "Signal Processing",
       "Analog Design",
+      "ngspice",
       "Python"
     ],
     "links": {
-      "github": "https://github.com/MLeggiero/taxelscan"
+      "github": "https://github.com/MLeggiero/taxelscan/tree/rev4"
     },
-    "gallery": [
-      {
-        "src": "/images/taxelscan/pcb-top.png",
-        "caption": "The reader board: four SN74LVC595A row drivers top left, two CD74HC4067 column multiplexers bottom left, TLV9062 buffers in the middle, XIAO RP2350 footprint on the right, and the two 32-way FFC connectors along the bottom edge."
-      },
-      {
-        "src": "/images/taxelscan/pcb-connectors.png",
-        "caption": "Low-angle render used to verify the FFC connector fit and component clearances before ordering."
-      },
-      {
-        "src": "/images/taxelscan/pcb-bottom.png",
-        "caption": "Bottom side of the four-layer board. Dedicated ground and power planes keep the analog readout quiet."
-      },
-      {
-        "src": "/images/taxelscan/fork-adapter.png",
-        "caption": "Passive two-finger fork adapter. One reader board drives two sensor pads, one per gripper finger, by splitting the 32 columns 16 and 16."
-      }
-    ],
+    "gallery": [],
     "preview": "/images/previews/taxelscan.webp"
   },
   {
@@ -318,13 +398,13 @@
     "slug": "mimic-robot-arm",
     "title": "Mimic: 3-Axis Robot Arm",
     "category": "Robotics",
-    "role": "Personal Project: Design, Fabrication & Controls",
+    "role": "Four-Person Course Project: Design, Fabrication & Controls",
     "period": "2025 – Present",
     "image": "/images/mimic-robot-arm.png",
     "description": "A 3-axis brushless DC robot arm using ODrive motor controllers, custom KiCAD PCB design, and CAN bus communication, built to learn industrial motion control.",
     "sections": [
       {
-        "content": "Mimic is a personal project to design and build a capable robot arm using industrial-grade components rather than hobby servos. The goal is to learn brushless motor control, power electronics, encoder feedback, and real-time communication protocols used in professional robotic systems."
+        "content": "Mimic is a four-person course project for ME 6705 to design and build a capable robot arm using industrial-grade components rather than hobby servos. The goal is to learn brushless motor control, power electronics, encoder feedback, and real-time communication protocols used in professional robotic systems."
       },
       {
         "heading": "System Architecture",
@@ -357,6 +437,7 @@
       "Power Electronics"
     ],
     "links": {
+      "github": "https://github.com/MLeggiero/mimic_arm",
       "cad": "https://cad.onshape.com/documents/6f74789e6928968fbbcf52b6/w/efcfbf1f57de97415874b8ae/e/aa2c3d6ff899997e372c49d5?renderMode=0&uiState=6aa05270dfb63f41b0244c64"
     },
     "gallery": [],
